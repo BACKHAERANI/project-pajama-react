@@ -13,6 +13,9 @@ function TopNav() {
         {!auth.isLoggedIn && (
           <>
             <li>
+              <MyLink to="/clothes/">의상대여</MyLink>
+            </li>
+            <li>
               <MyLink to="/accounts/login/">Login</MyLink>
             </li>
           </>
