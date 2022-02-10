@@ -4,13 +4,15 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import PageClothesDetail from './Pages/clothes/PageClothesDetail';
 import PageClothesForm from './Pages/clothes/PageClothesForm';
 import PageClothesIndex from './Pages/clothes/PageClothesIndex';
+import PageMain from './Pages/main/PageMain';
+import './App.css';
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <TopNav />
       <Routes>
-        <Route path="/" element={<Navigate to="/clothes/" />} />
+        <Route path="/" element={<PageMain />} />
         <Route path="/accounts/login/" element={<PageLogin />} />
         <Route path="/clothes/" element={<PageClothesIndex />} />
         <Route path="/clothes/:clothesId/" element={<PageClothesDetail />} />
