@@ -4,6 +4,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import PageClothesDetail from './Pages/clothes/PageClothesDetail';
 import PageClothesForm from './Pages/clothes/PageClothesForm';
 import PageClothesIndex from './Pages/clothes/PageClothesIndex';
+import PageSignup from './Pages/acoounts/PageSignup';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/clothes/" />} />
         <Route path="/accounts/login/" element={<PageLogin />} />
+        <Route path="/accounts/signup/" element={<PageSignup />} />
         <Route path="/clothes/" element={<PageClothesIndex />} />
         <Route path="/clothes/:clothesId/" element={<PageClothesDetail />} />
         <Route path="/clothes/new/" element={<PageClothesForm />} />
