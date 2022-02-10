@@ -6,9 +6,10 @@ function PageClothesIndex() {
   const navigate = useNavigate();
   return (
     <div>
-      <h2>의상대여</h2>
       <ClothesCategory />
-      <button onClick={() => navigate('/clothes/new/')}>빌려줄래요!</button>
+      <div className="float-right my-5 mr-10">
+        <button onClick={() => navigate('/clothes/new/')}>빌려줄래요!</button>
+      </div>
 
       <ClothesList />
     </div>

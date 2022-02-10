@@ -1,12 +1,6 @@
-import { useAuth } from '../../Base/Context/AuthContext';
 import { NavLink } from 'react-router-dom';
 
 function ClothesCategory() {
-  const [auth, , , logout] = useAuth();
-
-  const handleLogout = () => {
-    logout();
-  };
   return (
     <div className="my-3">
       <ul className="flex gap-4">
@@ -32,6 +26,7 @@ function ClothesCategory() {
           <MyLink to="/clothes/ACC & CAP">ACC & CAP</MyLink>
         </li>
       </ul>
+      <hr className="my-3" />
     </div>
   );
 }

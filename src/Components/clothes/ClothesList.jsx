@@ -1,30 +1,56 @@
 import { useApiAxios } from '../../Base/api/base';
-import { useEffect } from 'react';
+import { useAuth } from '../../Base/Context/AuthContext';
+import { useEffect, useState } from 'react';
 import ClothesSummary from './ClothesSummary';
+import { Link, useNavigate } from 'react-router-dom';
 
 function ClothesList() {
-  const [{ data: clothesList, loading, error }, refetch] = useApiAxios(
-    '/clothes/api/clothes/',
+  const [query, setQuery] = useState('');
+  const [{ data: clothesList }, refetch] = useApiAxios(
+    {
+      url: `/clothes/api/clothes/`,
+      method: 'GET',
+    },
     { manual: true },
   );
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    console.log(value);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      console.log('ENTER');
+      const value = e.target.value;
+      setQuery(value);
+    }
+  };
 
   useEffect(() => {
     refetch();
   }, []);
+
   return (
-    <div className="my-5 ">
-      {loading && '로딩 중 ...'}
-      {error && '로딩 중 에러가 발생했습니다.'}
-      {clothesList && (
-        <div>
-          {clothesList.map((clothes) => (
-            <div key={clothes.id}>
-              <ClothesSummary clothes={clothes} />
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+    <>
+      <div className="my-5 items-end">
+        {clothesList && (
+          <div className="flex flex-row my-20">
+            {clothesList.map((clothes) => (
+              <div key={clothes.clothes_num}>
+                <ClothesSummary clothes={clothes} />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      <input
+        type="text"
+        placeholder="검색어를 입력해주세요."
+        onChange={handleChange}
+        onKeyPress={handleKeyPress}
+      />
+    </>
   );
 }
 
