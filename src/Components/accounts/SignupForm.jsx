@@ -176,32 +176,6 @@ function SignForm() {
             </p>
           ))}
         </div>
-        {/* <div>
-          <input
-            className="mt-5 border w-80 h-10 text-center"
-            name="user_type"
-            value={fieldValues.user_type}
-            onChange={handleFieldChange}
-          />
-          {errorMessages.user_type?.map((message, index) => (
-            <p key={index} className="text-xs text-red-400">
-              {message}
-            </p>
-          ))}
-        </div>
-        <div>
-          <input
-            className="mt-5 border w-80 h-10 text-center"
-            name="user_auth"
-            value={fieldValues.user_auth}
-            onChange={handleFieldChange}
-          />
-          {errorMessages.user_auth?.map((message, index) => (
-            <p key={index} className="text-xs text-red-400">
-              {message}
-            </p>
-          ))}
-        </div> */}
         <button
           className="mt-5 border w-80 h-10 text-center "
           onClick={handleSubmit}
