@@ -31,30 +31,35 @@ function TopNav() {
             {auth.isLoggedIn && (
               <>
                 <button
-                  className="pb-1 text-gray-500 text-xs flex flex-col mt-2 md:flex-row md:mt-0 md:mx-1
+                  className="pb-1 text-gray-500 text-xs flex flex-col mt-2 md:flex-row md:mt-0 md:mx-3
                           hover:text-purple-300 "
                   onClick={handleLogout}
                 >
                   로그아웃
                 </button>
-                <MyLink to="/accounts//">마이페이지</MyLink>
+                <MyLink to="/accounts/profile/">마이페이지</MyLink>
 
-                <MyLink to="/accounts/login/">장바구니</MyLink>
+                <MyLink to="/clothes/cart/">장바구니</MyLink>
               </>
             )}
           </div>
         </div>
       </div>
-      <hr />
+
       <div className="flex">
-        <div className="text-align: right-1 mt-6 ml-12 ">
+        <div className="text-align: right-1 mt-8 mb-3 mr-12 ">
           <Link to="/clothes/" className="text-gray-800">
-            의상대여
+            Clothes
           </Link>
         </div>
-        <div className="text-align: right-1 mt-6 ml-12 ">
-          <Link to="/clothes/" className="text-gray-800">
-            가나다
+        <div className="text-align: right-1 mt-8 mb-3 mr-12 ">
+          <Link to="/community/" className="text-gray-800">
+            Community
+          </Link>
+        </div>
+        <div className="text-align: right-1 mt-8 mb-3 mr-12 ">
+          <Link to="/notice/" className="text-gray-800">
+            Notice
           </Link>
         </div>
       </div>
@@ -66,7 +71,7 @@ function MyLink({ to, children }) {
   return (
     <Link
       to={to}
-      className="flex-justify-between pb-1 text-gray-500 text-xs flex flex-col mt-2 md:flex-row md:mt-0 md:mx-1
+      className="flex-justify-between pb-1 text-gray-500 text-xs flex flex-col mt-2 md:flex-row md:mt-0 md:mx-3
       hover:text-purple-300 "
     >
       {children}

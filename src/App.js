@@ -23,6 +23,9 @@ function App() {
         <Route path="/clothes/new/" element={<PageClothesForm />} />
         <Route path="/clothes/:clothesId/edit/" element={<PageClothesForm />} />
       </Routes>
+
+      <hr className="mt-5" />
+      <h6 className="text-xs mt-4 mb-7 text-gray-500">@PaJaMa compamy.</h6>
     </div>
   );
 }
