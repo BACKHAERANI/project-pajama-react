@@ -7,8 +7,11 @@ import PageClothesIndex from './Pages/clothes/PageClothesIndex';
 
 import PageMain from './Pages/main/PageMain';
 import './App.css';
-
 import PageSignup from './Pages/acoounts/PageSignup';
+import PageNoticeList from './Pages/notice/PageNoticeList';
+import PageProfileCheck from './Pages/mypage/PageProfileCheck';
+import PageProfileDetail from './Pages/mypage/PageProfileDetail';
+import PageProfileForm from './Pages/mypage/PageProfileForm';
 
 function App() {
   return (
@@ -22,6 +25,10 @@ function App() {
         <Route path="/clothes/:clothesId/" element={<PageClothesDetail />} />
         <Route path="/clothes/new/" element={<PageClothesForm />} />
         <Route path="/clothes/:clothesId/edit/" element={<PageClothesForm />} />
+        <Route path="/notice/" element={<PageNoticeList />} />
+        <Route path="/mypage/profile/check/" element={<PageProfileCheck />} />
+        <Route path="/mypage/profile/detail/" element={<PageProfileDetail />} />
+        <Route path="/mypage/profile/edit/" element={<PageProfileForm />} />
       </Routes>
 
       <hr className="mt-5" />
