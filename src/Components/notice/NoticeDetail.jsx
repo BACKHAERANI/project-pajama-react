@@ -4,6 +4,7 @@ import { useApiAxios } from '../../Base/api/base';
 import LoadingIndicator from '../LoadingIndicator';
 
 function NoticeDetail({ notice_num }) {
+  const navigate = useNavigate();
   const [{ data: notice, loading, error }, refetch] = useApiAxios(
     {
       url: `/notice/api/notice/${notice_num}/`,
@@ -11,6 +12,20 @@ function NoticeDetail({ notice_num }) {
     },
     { manual: true },
   );
+
+  const [{ loading: deleteLoading, error: deleteError }, deletenotice] =
+    useApiAxios(
+      { url: `/notice/api/notice/${notice_num}/`, method: 'DELETE' },
+      { manual: true },
+    );
+
+  const handleDelete = () => {
+    if (window.confirm('삭제하시겠습니까?')) {
+      deletenotice().then(() => {
+        navigate('/notice/');
+      });
+    }
+  };
 
   useEffect(() => {
     refetch();
@@ -36,9 +51,22 @@ function NoticeDetail({ notice_num }) {
         </>
       )}
       <hr className="my-3" />
-      <div className="flex gap-4 mt-3 mb-10">
-        <Link to="/notice/" className="hover:text-purple-400">
-          목록으로
+      <div className="flex">
+        <button
+          disabled={deleteLoading}
+          onClick={handleDelete}
+          className="hover:text-red-400"
+        >
+          삭제
+        </button>
+        <Link
+          to={`/notice/${notice_num}/edit/`}
+          className="ml-4 hover:text-blue-400"
+        >
+          수정
+        </Link>
+        <Link to="/notice/" className="ml-4 hover:text-purple-400">
+          목록
         </Link>
       </div>
     </div>

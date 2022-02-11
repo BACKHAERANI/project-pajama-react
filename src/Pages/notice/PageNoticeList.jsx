@@ -12,7 +12,7 @@ function PageNoticeList() {
       <NoticeList />
 
       <button
-        onClick={() => navigate('/Noitce/new/')}
+        onClick={() => navigate('/notice/new/')}
         className="mt-4 mb-3 bg-gray-400"
       >
         글쓰기

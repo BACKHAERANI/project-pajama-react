@@ -1,4 +1,4 @@
-import PageLogin from './Pages/acoounts/PageLogin';
+import PageLogin from './Pages/accounts/PageLogin';
 import TopNav from './TopNav';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import PageClothesDetail from './Pages/clothes/PageClothesDetail';
@@ -7,7 +7,7 @@ import PageClothesIndex from './Pages/clothes/PageClothesIndex';
 
 import PageMain from './Pages/main/PageMain';
 import './App.css';
-import PageSignup from './Pages/acoounts/PageSignup';
+import PageSignup from './Pages/accounts/PageSignup';
 import PageNoticeList from './Pages/notice/PageNoticeList';
 import PageProfileCheck from './Pages/mypage/PageProfileCheck';
 import PageProfileDetail from './Pages/mypage/PageProfileDetail';
