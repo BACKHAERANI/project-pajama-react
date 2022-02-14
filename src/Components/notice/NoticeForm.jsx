@@ -1,7 +1,8 @@
 import produce from 'immer';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApiAxios } from '../../Base/api/base';
+import { useAuth } from '../../Base/Context/AuthContext';
 import useFieldValues from '../../Base/hooks/useFieldValues';
 import LoadingIndicator from '../LoadingIndicator';
 
@@ -13,11 +14,13 @@ const INIT_FIELD_VALUES = {
   img3: '',
   img4: '',
   img5: '',
-  user_id: 'superuser',
+  user_id: '',
 };
 
 function NoticeForm({ notice_num }) {
   const Navigate = useNavigate();
+  const [auth] = useAuth();
+  const [formData, setFormData] = useState();
 
   const [{ data: notice, loading, error }, refetch] = useApiAxios(
     {
@@ -44,8 +47,9 @@ function NoticeForm({ notice_num }) {
     { manual: true },
   );
 
-  const { fieldValues, handleFieldChange, setFieldValues, formData } =
-    useFieldValues(notice || INIT_FIELD_VALUES);
+  const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
+    notice || INIT_FIELD_VALUES,
+  );
 
   // useEffect할때 사진을 빈문자열로 만들어준다. - 사진을 저장하지 안해도 저장가능
   useEffect(() => {
@@ -63,6 +67,18 @@ function NoticeForm({ notice_num }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const formData = new FormData();
+    Object.entries(fieldValues).forEach(([name, value]) => {
+      if (Array.isArray(value)) {
+        const fileList = value;
+        fileList.forEach((file) => formData.append(name, file));
+      } else {
+        formData.append(name, value);
+      }
+    });
+    formData.append('user_id', auth.user_id);
+
     saveRequest({
       data: formData,
     }).then((response) => {
