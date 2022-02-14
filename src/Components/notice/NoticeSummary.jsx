@@ -1,4 +1,3 @@
-import { useReducer } from 'react';
 import { Link } from 'react-router-dom';
 
 function NoticeSummary({ notice }) {
