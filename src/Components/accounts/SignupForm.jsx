@@ -179,6 +179,7 @@ function SignForm() {
         <button
           className="mt-5 border w-80 h-10 text-center "
           onClick={handleSubmit}
+          Navigate
         >
           회원가입
         </button>
