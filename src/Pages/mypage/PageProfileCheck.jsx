@@ -1,4 +1,4 @@
-import ProfileCheck from '../../Components/mypage/ProfileCheck';
+import ProfileCheck from 'Components/mypage/ProfileCheck';
 
 function PageProfileCheck() {
   return (

@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import QnaDetail from '../../Components/qna/QnaDetail';
+import QnaDetail from 'Components/qna/QnaDetail';
 
 function PageQnaDetail() {
   const { qna_num } = useParams();

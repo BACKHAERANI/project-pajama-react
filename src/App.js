@@ -1,23 +1,23 @@
-import PageLogin from './Pages/accounts/PageLogin';
-import TopNav from './TopNav';
-import { useAuth } from './Base/Context/AuthContext';
+import PageLogin from 'Pages/accounts/PageLogin';
+import TopNav from 'TopNav';
+import { useAuth } from 'Base/Context/AuthContext';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import PageClothesDetail from './Pages/clothes/PageClothesDetail';
-import PageClothesForm from './Pages/clothes/PageClothesForm';
-import PageClothesIndex from './Pages/clothes/PageClothesIndex';
+import PageClothesDetail from 'Pages/clothes/PageClothesDetail';
+import PageClothesForm from 'Pages/clothes/PageClothesForm';
+import PageClothesIndex from 'Pages/clothes/PageClothesIndex';
 
-import PageMain from './Pages/main/PageMain';
-import './App.css';
-import PageSignup from './Pages/accounts/PageSignup';
-import PageNoticeList from './Pages/notice/PageNoticeList';
-import PageProfileCheck from './Pages/mypage/PageProfileCheck';
-import PageProfileDetail from './Pages/mypage/PageProfileDetail';
-import PageProfileForm from './Pages/mypage/PageProfileForm';
-import PageNoticeDetail from './Pages/notice/PageNoticeDetail';
-import PageNoticeForm from './Pages/notice/PageNoticeForm';
-import PageQnaIndex from './Pages/qna/PageQnaIndex';
-import PageQnaForm from './Pages/qna/PageQnaForm';
-import PageQnaDetail from './Pages/qna/PageQnaDetail';
+import PageMain from 'Pages/main/PageMain';
+import 'App.css';
+import PageSignup from 'Pages/accounts/PageSignup';
+import PageNoticeList from 'Pages/notice/PageNoticeList';
+import PageProfileCheck from 'Pages/mypage/PageProfileCheck';
+import PageProfileDetail from 'Pages/mypage/PageProfileDetail';
+import PageProfileForm from 'Pages/mypage/PageProfileForm';
+import PageNoticeDetail from 'Pages/notice/PageNoticeDetail';
+import PageNoticeForm from 'Pages/notice/PageNoticeForm';
+import PageQnaIndex from 'Pages/qna/PageQnaIndex';
+import PageQnaForm from 'Pages/qna/PageQnaForm';
+import PageQnaDetail from 'Pages/qna/PageQnaDetail';
 
 function App() {
   const [auth, _, login] = useAuth();

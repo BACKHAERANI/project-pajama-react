@@ -1,9 +1,9 @@
-import { useApiAxios } from '../../Base/api/base';
+import { useApiAxios } from 'Base/api/base';
 
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import LoadingIndicator from '../../Components/LoadingIndicator';
-// import PageReviewIndex from '../../Pages/review/PageReviewIndex';
+import LoadingIndicator from 'Components/LoadingIndicator';
+// import PageReviewIndex from 'Pages/review/PageReviewIndex';
 
 function ClothesDetail({ clothesId }) {
   const navigate = useNavigate();

@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import QnaForm from '../../Components/qna/QnaForm';
+import QnaForm from 'Components/qna/QnaForm';
 
 function PageQnaForm() {
   const navigate = useNavigate();

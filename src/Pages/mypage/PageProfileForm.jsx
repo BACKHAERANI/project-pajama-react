@@ -1,4 +1,4 @@
-import ProfileForm from '../../Components/mypage/ProfileForm';
+import ProfileForm from 'Components/mypage/ProfileForm';
 
 function PageProfileForm() {
   return (

@@ -1,5 +1,5 @@
-import { useApiAxios } from '../../Base/api/base';
-import useFieldValues from '../../Base/hooks/useFieldValues';
+import { useApiAxios } from 'Base/api/base';
+import useFieldValues from 'Base/hooks/useFieldValues';
 import { useNavigate } from 'react-router-dom';
 
 const INIT_FILED_VALUES = {

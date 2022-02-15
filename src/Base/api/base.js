@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { API_HOST } from '../../Constants';
+import { API_HOST } from 'Constants';
 import { makeUseAxios } from 'axios-hooks';
 import { useState, useEffect } from 'react';
 

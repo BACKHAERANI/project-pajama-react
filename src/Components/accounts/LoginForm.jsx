@@ -1,6 +1,6 @@
-import { useApiAxios } from '../../Base/api/base';
-import { useAuth } from '../../Base/Context/AuthContext';
-import useFieldValues from '../../Base/hooks/useFieldValues';
+import { useApiAxios } from 'Base/api/base';
+import { useAuth } from 'Base/Context/AuthContext';
+import useFieldValues from 'Base/hooks/useFieldValues';
 import { useNavigate } from 'react-router-dom';
 
 const INITIAL_FIELD_VALUES = { user_id: '', password: '' };

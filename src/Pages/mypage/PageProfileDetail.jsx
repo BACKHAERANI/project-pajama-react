@@ -1,4 +1,4 @@
-import ProfileDetail from '../../Components/mypage/ProfileDetail';
+import ProfileDetail from 'Components/mypage/ProfileDetail';
 import { useParams } from 'react-router-dom';
 
 function PageProfileDetail() {

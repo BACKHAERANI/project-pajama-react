@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useApiAxios } from '../../Base/api/base';
+import { useApiAxios } from 'Base/api/base';
 import QnaSummary from './QnaSummary';
 
 function QnaList() {

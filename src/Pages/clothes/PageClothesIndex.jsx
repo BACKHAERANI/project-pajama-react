@@ -1,4 +1,4 @@
-import ClothesList from '../../Components/clothes/ClothesList';
+import ClothesList from 'Components/clothes/ClothesList';
 import { useNavigate } from 'react-router-dom';
 
 function PageClothesIndex() {

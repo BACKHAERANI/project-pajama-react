@@ -1,4 +1,4 @@
-import SignForm from '../../Components/accounts/SignupForm';
+import SignForm from 'Components/accounts/SignupForm';
 
 function PageSignup() {
   return (

@@ -1,10 +1,10 @@
-import { useApiAxios } from '../../Base/api/base';
-import LoadingIndicator from '../../Components/LoadingIndicator';
-import useFieldValues from '../../Base/hooks/useFieldValues';
+import { useApiAxios } from 'Base/api/base';
+import LoadingIndicator from 'Components/LoadingIndicator';
+import useFieldValues from 'Base/hooks/useFieldValues';
 import produce from 'immer';
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../Base/Context/AuthContext';
+import { useAuth } from 'Base/Context/AuthContext';
 
 const INIT_FIELD_VALUES = {
   title: '',

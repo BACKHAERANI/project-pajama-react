@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import NoticeDetail from '../../Components/notice/NoticeDetail';
+import NoticeDetail from 'Components/notice/NoticeDetail';
 
 function PageNoticeDetail() {
   const { notice_num } = useParams();
