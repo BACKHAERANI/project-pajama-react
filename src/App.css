@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@200&family=Noto+Sans+KR&display=swap');
 .App {
   width: 1000px;
   margin: 0 auto;
+  font-family: 'Noto Sans KR', sans-serif;
 }
