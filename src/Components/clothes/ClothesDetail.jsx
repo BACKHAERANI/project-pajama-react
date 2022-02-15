@@ -3,7 +3,7 @@ import { useApiAxios } from '../../Base/api/base';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import LoadingIndicator from '../../Components/LoadingIndicator';
-import PageReviewIndex from '../../Pages/review/PageReviewIndex';
+// import PageReviewIndex from '../../Pages/review/PageReviewIndex';
 
 function ClothesDetail({ clothesId }) {
   const navigate = useNavigate();
@@ -78,9 +78,7 @@ function ClothesDetail({ clothesId }) {
         </>
       )}
       <hr className="my-3" />
-      <h5>
-        <PageReviewIndex />
-      </h5>
+      <h5>{/* <PageReviewIndex /> */}</h5>
       <hr className="my-3" />
       <div className="flex flex-row-reverse gap-4 mt-3 mb-10">
         <Link to="/clothes/" className="hover:text-red-400">

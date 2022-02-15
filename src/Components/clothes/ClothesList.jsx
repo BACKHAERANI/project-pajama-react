@@ -3,8 +3,8 @@ import { useAuth } from '../../Base/Context/AuthContext';
 import { useEffect, useState } from 'react';
 import ClothesSummary from './ClothesSummary';
 import ReactPaginate from 'react-paginate';
-import '../../Base/css/Pagination.css';
-import StateCategory from '../../StateCategory';
+// import '../../Base/css/Pagination.css';
+// import StateCategory from '../../StateCategory';
 // import ClothesCategory from './ClothesCategory';
 
 const STATELIST = [
