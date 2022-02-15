@@ -2,9 +2,11 @@ import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useApiAxios } from 'Base/api/base';
 import LoadingIndicator from 'Components/LoadingIndicator';
+import { useAuth } from 'Base/Context/AuthContext';
 
 function NoticeDetail({ notice_num }) {
   const navigate = useNavigate();
+  const [auth] = useAuth();
   const [{ data: notice, loading, error }, refetch] = useApiAxios(
     {
       url: `/notice/api/notice/${notice_num}/`,
@@ -52,19 +54,24 @@ function NoticeDetail({ notice_num }) {
       )}
       <hr className="my-3" />
       <div className="flex">
-        <button
-          disabled={deleteLoading}
-          onClick={handleDelete}
-          className="hover:text-red-400"
-        >
-          삭제
-        </button>
-        <Link
-          to={`/notice/${notice_num}/edit/`}
-          className="ml-4 hover:text-blue-400"
-        >
-          수정
-        </Link>
+        {auth.is_superuser && (
+          <>
+            <button
+              disabled={deleteLoading}
+              onClick={handleDelete}
+              className="hover:text-red-400"
+            >
+              삭제
+            </button>
+            <Link
+              to={`/notice/${notice_num}/edit/`}
+              className="ml-4 hover:text-blue-400"
+            >
+              수정
+            </Link>
+          </>
+        )}
+
         <Link to="/notice/" className="ml-4 hover:text-purple-400">
           목록
         </Link>

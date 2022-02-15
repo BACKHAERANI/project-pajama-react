@@ -1,9 +1,11 @@
 import NoticeList from 'Components/notice/NoticeList';
 import { useNavigate } from 'react-router-dom';
 import 'Base/css/Pagination.css';
+import { useAuth } from 'Base/Context/AuthContext';
 
 function PageNoticeList() {
   const navigate = useNavigate();
+  const [auth] = useAuth();
 
   return (
     <div>
@@ -13,12 +15,14 @@ function PageNoticeList() {
 
       <NoticeList />
 
-      <button
-        onClick={() => navigate('/notice/new/')}
-        className="mt-4 mb-3 bg-gray-400"
-      >
-        글쓰기
-      </button>
+      {auth.is_superuser && (
+        <button
+          onClick={() => navigate('/notice/new/')}
+          className="mt-4 mb-3 bg-gray-400"
+        >
+          글쓰기
+        </button>
+      )}
     </div>
   );
 }
