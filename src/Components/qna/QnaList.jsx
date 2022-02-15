@@ -18,6 +18,7 @@ function QnaList() {
         qnaList.map((qna) => (
           <div>
             <QnaSummary qna={qna} key={qna.qna_num} />
+            <hr />
           </div>
         ))}
     </div>
