@@ -1,4 +1,4 @@
-import ClothesDetail from '../../Components/clothes/ClothesDetail';
+import ClothesDetail from 'Components/clothes/ClothesDetail';
 import { useParams } from 'react-router-dom';
 
 function PageClothesDetail() {

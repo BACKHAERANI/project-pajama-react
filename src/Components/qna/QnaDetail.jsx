@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useApiAxios } from '../../Base/api/base';
-import LoadingIndicator from '../LoadingIndicator';
+import { useApiAxios } from 'Base/api/base';
+import LoadingIndicator from 'Components/LoadingIndicator';
 
 function QnaDetail({ qna_num }) {
   const navigate = useNavigate();

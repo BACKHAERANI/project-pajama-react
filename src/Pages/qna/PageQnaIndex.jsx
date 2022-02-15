@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import QnaList from '../../Components/qna/QnaList';
+import QnaList from 'Components/qna/QnaList';
 
 function PageQnaIndex() {
   const navigate = useNavigate();

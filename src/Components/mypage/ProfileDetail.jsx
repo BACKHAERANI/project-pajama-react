@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useApiAxios } from '../../Base/api/base';
-import { useAuth } from '../../Base/Context/AuthContext';
-import LoadingIndicator from '../LoadingIndicator';
+import { useApiAxios } from 'Base/api/base';
+import { useAuth } from 'Base/Context/AuthContext';
+import LoadingIndicator from 'Components/LoadingIndicator';
 
 function ProfileDetail({ user_id }) {
   const [auth] = useAuth();

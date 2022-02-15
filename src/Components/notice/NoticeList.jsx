@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useApiAxios } from '../../Base/api/base';
+import { useApiAxios } from 'Base/api/base';
 import NoticeSummary from './NoticeSummary';
 import ReactPaginate from 'react-paginate';
-import '../../Base/css/Pagination.css';
+import 'Base/css/Pagination.css';
 import { useNavigate } from 'react-router-dom';
 
 function NoticeList({ itemsPerPage = 10 }) {

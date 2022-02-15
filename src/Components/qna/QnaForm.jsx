@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { useApiAxios } from '../../Base/api/base';
-import useFieldValues from '../../Base/hooks/useFieldValues';
+import { useApiAxios } from 'Base/api/base';
+import useFieldValues from 'Base/hooks/useFieldValues';
 import produce from 'immer';
 import { Navigate, useNavigate } from 'react-router-dom';
 

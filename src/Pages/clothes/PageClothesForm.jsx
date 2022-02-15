@@ -1,4 +1,4 @@
-import ClothesForm from '../../Components/clothes/ClothesForm';
+import ClothesForm from 'Components/clothes/ClothesForm';
 import { useNavigate, useParams } from 'react-router-dom';
 
 function PageClothesForm() {

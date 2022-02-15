@@ -1,6 +1,6 @@
-import NoticeList from '../../Components/notice/NoticeList';
+import NoticeList from 'Components/notice/NoticeList';
 import { useNavigate } from 'react-router-dom';
-import '../../Base/css/Pagination.css';
+import 'Base/css/Pagination.css';
 
 function PageNoticeList() {
   const navigate = useNavigate();
