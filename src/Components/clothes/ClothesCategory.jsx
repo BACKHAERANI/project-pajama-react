@@ -1,61 +1,67 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+function ClothesCategory({ setCategory }) {
+  const handlecategory = (e) => {
+    console.log(e.target.value);
+    setCategory(e.target.value);
+  };
 
-const STATELIST = [
-  'TOP',
-  'BLOUSE',
-  'DRESS',
-  'PANTS',
-  'SKIRT',
-  'OUTER',
-  'ACC & CAP',
-];
-
-function ClothesCategory() {
-  const [category, setCategory] = useState(STATELIST[0]);
   return (
-    <div className="my-3">
-      <ul className="flex gap-4">
-        <li>
-          <MyLink to="/clothes/">{STATELIST[0]}</MyLink>
-        </li>
-        <li>
-          <MyLink to="/clothes/">{STATELIST[1]}</MyLink>
-        </li>
-        <li>
-          <MyLink to="/clothes/">{STATELIST[2]}</MyLink>
-        </li>
-        <li>
-          <MyLink to="/clothes/">{STATELIST[3]}</MyLink>
-        </li>
-        <li>
-          <MyLink to="/clothes/">{STATELIST[4]}</MyLink>
-        </li>
-        <li>
-          <MyLink to="/clothes/">{STATELIST[5]}</MyLink>
-        </li>
-        <li>
-          <MyLink to="/clothes/">{STATELIST[6]}</MyLink>
-        </li>
-      </ul>
-      <hr className="my-3" />
+    <div>
+      <button className="mr-5" onClick={handlecategory} name="ALL" value="ALL">
+        ALL
+      </button>
+      <button className="mr-5" onClick={handlecategory} name="TOP" value="TOP">
+        TOP
+      </button>
+      <button
+        className="mr-5"
+        onClick={handlecategory}
+        name="BLOUSE & SHIRT"
+        value="BLOUSE & SHIRT"
+      >
+        BLOUSE & SHIRT
+      </button>
+      <button
+        className="mr-5"
+        onClick={handlecategory}
+        name="DRESS"
+        value="DRESS"
+      >
+        DRESS
+      </button>
+      <button
+        className="mr-5"
+        onClick={handlecategory}
+        name="PANTS"
+        value="PANTS"
+      >
+        PANTS
+      </button>
+      <button
+        className="mr-5"
+        onClick={handlecategory}
+        name="SKIRT"
+        value="SKIRT"
+      >
+        SKIRT
+      </button>
+      <button
+        className="mr-5"
+        onClick={handlecategory}
+        name="OUTER"
+        value="OUTER"
+      >
+        OUTER
+      </button>
+      <button
+        className="mr-5"
+        onClick={handlecategory}
+        name="ACC & CAP"
+        value="ACC & CAP"
+      >
+        ACC & CAP
+      </button>
     </div>
   );
 }
-
-function MyLink({ to, children }) {
-  return (
-    <NavLink
-      to={to}
-      className={({ isActive }) =>
-        baseClassName + ' ' + (isActive ? 'border-b-4 border-red-400' : '')
-      }
-    >
-      {children}
-    </NavLink>
-  );
-}
-const baseClassName =
-  'px-4 pt-3 pb-2 font-semibold hover:bg-red-200 hover:text-red-500 hover:text-white';
 
 export default ClothesCategory;
