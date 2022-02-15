@@ -15,9 +15,9 @@ import PageProfileDetail from './Pages/mypage/PageProfileDetail';
 import PageProfileForm from './Pages/mypage/PageProfileForm';
 import PageNoticeDetail from './Pages/notice/PageNoticeDetail';
 import PageNoticeForm from './Pages/notice/PageNoticeForm';
-// import PageQnaIndex from './Pages/qna/PageQnaIndex';
-// import PageQnaForm from './Pages/qna/PageQnaForm';
-// import PageQnaDetail from './Pages/qna/PageQnaDetail';
+import PageQnaIndex from './Pages/qna/PageQnaIndex';
+import PageQnaForm from './Pages/qna/PageQnaForm';
+import PageQnaDetail from './Pages/qna/PageQnaDetail';
 
 function App() {
   const [auth, _, login] = useAuth();
@@ -50,11 +50,11 @@ function App() {
             element={<PageProfileDetail />}
           />
           <Route path="/mypage/profile/edit/" element={<PageProfileForm />} />
-          {/* 
+
           <Route path="/qna/" element={<PageQnaIndex />} />
           <Route path="/qna/:qna_num/" element={<PageQnaDetail />} />
           <Route path="/qna/new/" element={<PageQnaForm />} />
-          <Route path="/qna/:qna_num/edit/" element={<PageQnaForm />} /> */}
+          <Route path="/qna/:qna_num/edit/" element={<PageQnaForm />} />
         </Routes>
 
         <hr className="mt-5" />
@@ -89,11 +89,11 @@ function App() {
             element={<PageProfileDetail />}
           />
           <Route path="/mypage/profile/edit/" element={<PageProfileForm />} />
-          {/* 
-        <Route path="/qna/" element={<PageQnaIndex />} />
-        <Route path="/qna/:qna_num/" element={<PageQnaDetail />} />
-        <Route path="/qna/new/" element={<PageQnaForm />} />
-        <Route path="/qna/:qna_num/edit/" element={<PageQnaForm />} /> */}
+
+          <Route path="/qna/" element={<PageQnaIndex />} />
+          <Route path="/qna/:qna_num/" element={<PageQnaDetail />} />
+          <Route path="/qna/new/" element={<PageQnaForm />} />
+          <Route path="/qna/:qna_num/edit/" element={<PageQnaForm />} />
         </Routes>
 
         <hr className="mt-5" />
@@ -125,11 +125,11 @@ function App() {
             element={<PageProfileDetail />}
           />
           <Route path="/mypage/profile/edit/" element={<PageProfileForm />} />
-          {/* 
-        <Route path="/qna/" element={<PageQnaIndex />} />
-        <Route path="/qna/:qna_num/" element={<PageQnaDetail />} />
-        <Route path="/qna/new/" element={<PageQnaForm />} />
-        <Route path="/qna/:qna_num/edit/" element={<PageQnaForm />} /> */}
+
+          <Route path="/qna/" element={<PageQnaIndex />} />
+          <Route path="/qna/:qna_num/" element={<PageQnaDetail />} />
+          <Route path="/qna/new/" element={<PageQnaForm />} />
+          <Route path="/qna/:qna_num/edit/" element={<PageQnaForm />} />
         </Routes>
 
         <hr className="mt-5" />
