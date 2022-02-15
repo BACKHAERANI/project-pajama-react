@@ -1,29 +1,41 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
+const STATELIST = [
+  'TOP',
+  'BLOUSE',
+  'DRESS',
+  'PANTS',
+  'SKIRT',
+  'OUTER',
+  'ACC & CAP',
+];
+
 function ClothesCategory() {
+  const [category, setCategory] = useState(STATELIST[0]);
   return (
     <div className="my-3">
       <ul className="flex gap-4">
         <li>
-          <MyLink to="/clothes/TOP">TOP</MyLink>
+          <MyLink to="/clothes/">{STATELIST[0]}</MyLink>
         </li>
         <li>
-          <MyLink to="/clothes/BLOUSE">BLOUSE</MyLink>
+          <MyLink to="/clothes/">{STATELIST[1]}</MyLink>
         </li>
         <li>
-          <MyLink to="/clothes/DRESS">DRESS</MyLink>
+          <MyLink to="/clothes/">{STATELIST[2]}</MyLink>
         </li>
         <li>
-          <MyLink to="/clothes/PANTS">PANTS</MyLink>
+          <MyLink to="/clothes/">{STATELIST[3]}</MyLink>
         </li>
         <li>
-          <MyLink to="/clothes/SKIRT">SKIRT</MyLink>
+          <MyLink to="/clothes/">{STATELIST[4]}</MyLink>
         </li>
         <li>
-          <MyLink to="/clothes/OUTER">OUTER</MyLink>
+          <MyLink to="/clothes/">{STATELIST[5]}</MyLink>
         </li>
         <li>
-          <MyLink to="/clothes/ACC & CAP">ACC & CAP</MyLink>
+          <MyLink to="/clothes/">{STATELIST[6]}</MyLink>
         </li>
       </ul>
       <hr className="my-3" />

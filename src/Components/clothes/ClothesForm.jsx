@@ -9,20 +9,21 @@ import { useAuth } from '../../Base/Context/AuthContext';
 const INIT_FIELD_VALUES = {
   title: '',
   content: '',
+  price: '',
+  region: '',
 };
 
 function ClothesForm({ clothesId, handleDidSave }) {
-  const { auth } = useAuth;
+  const [auth] = useAuth();
   const navigate = useNavigate();
 
-  const [{ data: clothesData, loading: getLoading, error: getError }] =
-    useApiAxios(
-      {
-        url: `/clothes/api/clothes/${clothesId}/`,
-        method: 'GET',
-      },
-      { manual: !clothesId },
-    );
+  const [{ data: clothesData }, Save] = useApiAxios(
+    {
+      url: `/clothes/api/clothes/${clothesId}/`,
+      method: 'GET',
+    },
+    { manual: !clothesId },
+  );
 
   const [
     {
@@ -34,24 +35,24 @@ function ClothesForm({ clothesId, handleDidSave }) {
   ] = useApiAxios(
     {
       url: !clothesId
-        ? '/clothes/api/clothes/'
+        ? `/clothes/api/clothes/`
         : `/clothes/api/clothes/${clothesId}/`,
       method: !clothesId ? 'POST' : 'PUT',
     },
     { manual: true },
   );
 
-  const handleSave = () => {
-    if (window.confirm('저장하시겠습니까?')) {
-      saveRequest().then(() => {
-        navigate('/clothes/');
-      });
-    }
-  };
-
   const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
     clothesData || INIT_FIELD_VALUES,
   );
+
+  const handleSave = () => {
+    if (window.confirm('저장하시겠습니까?')) {
+      Save().then(() => {
+        navigate(`/clothes/${clothesId}`);
+      });
+    }
+  };
 
   useEffect(() => {
     setFieldValues(
@@ -81,8 +82,9 @@ function ClothesForm({ clothesId, handleDidSave }) {
     saveRequest({
       data: formData,
     }).then((response) => {
-      const savedPost = response.data;
-      if (handleDidSave) handleDidSave(savedPost);
+      const savedClothes = response.data;
+      if (handleDidSave) handleDidSave(savedClothes);
+      navigate(`/clothes/${clothesId}`);
     });
   };
 
@@ -103,16 +105,21 @@ function ClothesForm({ clothesId, handleDidSave }) {
             type="text"
             className="p-1 bg-gray-100 w-full outline-none focus:border focus:border-gray-400 focus:border-dashed hover:transition-transform duration-300"
           />
+          {saveErrorMessages.title?.map((message, index) => (
+            <p key={index} className="text-xs text-red-400">
+              {message}
+            </p>
+          ))}
         </div>
 
         <div className="my-3">
-          카테고리
           <select
             className="mt-5 border w-80 h-10 text-center"
             name="category"
             value={fieldValues.category}
             onChange={handleFieldChange}
           >
+            <option value="">카테고리</option>
             <option value="TOP">TOP</option>
             <option value="BLOUSE & SHIRT">BLOUSE & SHIRT</option>
             <option value="DRESS">DRESS</option>
@@ -121,6 +128,11 @@ function ClothesForm({ clothesId, handleDidSave }) {
             <option value="OUTER">OUTER</option>
             <option value="ACC & CAP">ACC & CAP</option>
           </select>
+          {saveErrorMessages.category?.map((message, index) => (
+            <p key={index} className="text-xs text-red-400">
+              {message}
+            </p>
+          ))}
         </div>
 
         <div className="my-3">
@@ -133,6 +145,11 @@ function ClothesForm({ clothesId, handleDidSave }) {
             type="int"
             className="p-1 bg-gray-100 w-full outline-none focus:border focus:border-gray-400 focus:border-dashed hover:transition-transform duration-300"
           />
+          {saveErrorMessages.price?.map((message, index) => (
+            <p key={index} className="text-xs text-red-400">
+              {message}
+            </p>
+          ))}
         </div>
 
         <div className="my-3">
@@ -145,6 +162,11 @@ function ClothesForm({ clothesId, handleDidSave }) {
             type="text"
             className="p-1 bg-gray-100 w-full outline-none focus:border focus:border-gray-400 focus:border-dashed hover:transition-transform duration-300"
           />
+          {saveErrorMessages.region?.map((message, index) => (
+            <p key={index} className="text-xs text-red-400">
+              {message}
+            </p>
+          ))}
         </div>
 
         <div className="my-3">
@@ -156,28 +178,40 @@ function ClothesForm({ clothesId, handleDidSave }) {
             onChange={handleFieldChange}
             className="p-1 bg-gray-100 w-full h-80 outline-none focus:border focus:border-gray-400 focus:border-dashed"
           />
+          {saveErrorMessages.content?.map((message, index) => (
+            <p key={index} className="text-xs text-red-400">
+              {message}
+            </p>
+          ))}
         </div>
 
         <div className="my-3">
-          제품사진
           <input
             type="file"
             accept=".png, .jpg, .jpeg"
             name="img1"
             onChange={handleFieldChange}
           />
+          {saveErrorMessages.img1?.map((message, index) => (
+            <p key={index} className="text-xs text-red-400">
+              {message}
+            </p>
+          ))}
         </div>
         <div className="my-3">
-          제품사진
           <input
             type="file"
             accept=".png, .jpg, .jpeg"
             name="img2"
             onChange={handleFieldChange}
           />
+          {saveErrorMessages.img2?.map((message, index) => (
+            <p key={index} className="text-xs text-red-400">
+              {message}
+            </p>
+          ))}
         </div>
         <div className="my-3">
-          제품사진
           <input
             type="file"
             accept=".png, .jpg, .jpeg"
@@ -186,7 +220,6 @@ function ClothesForm({ clothesId, handleDidSave }) {
           />
         </div>
         <div className="my-3">
-          제품사진
           <input
             type="file"
             accept=".png, .jpg, .jpeg"
@@ -195,7 +228,6 @@ function ClothesForm({ clothesId, handleDidSave }) {
           />
         </div>
         <div className="my-3">
-          제품사진
           <input
             type="file"
             accept=".png, .jpg, .jpeg"

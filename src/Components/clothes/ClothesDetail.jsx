@@ -3,6 +3,7 @@ import { useApiAxios } from '../../Base/api/base';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import LoadingIndicator from '../../Components/LoadingIndicator';
+import PageReviewIndex from '../../Pages/review/PageReviewIndex';
 
 function ClothesDetail({ clothesId }) {
   const navigate = useNavigate();
@@ -52,6 +53,13 @@ function ClothesDetail({ clothesId }) {
           <h5 className="text-l my-5">
             [지역:{clothes.region}] [가격:{clothes.price}원]
           </h5>
+          <div>
+            {clothes.content.split(/[\r\n]+/).map((line, index) => (
+              <p className="my-3" key={index}>
+                {line}
+              </p>
+            ))}
+          </div>
           {clothes.img1 && (
             <img src={clothes.img1} alt={clothes.title} className="rounded" />
           )}
@@ -67,18 +75,12 @@ function ClothesDetail({ clothesId }) {
           {clothes.img5 && (
             <img src={clothes.img5} alt={clothes.title} className="rounded" />
           )}
-
-          <div>
-            {clothes.content.split(/[\r\n]+/).map((line, index) => (
-              <p className="my-3" key={index}>
-                {line}
-              </p>
-            ))}
-          </div>
         </>
       )}
       <hr className="my-3" />
-      <h5>리뷰</h5>
+      <h5>
+        <PageReviewIndex />
+      </h5>
       <hr className="my-3" />
       <div className="flex flex-row-reverse gap-4 mt-3 mb-10">
         <Link to="/clothes/" className="hover:text-red-400">

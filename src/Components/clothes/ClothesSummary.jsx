@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function ClothesSummary({ clothes }) {
   return (
-    <div className="items-end">
+    <div>
       <Link to={`/clothes/${clothes.clothes_num}/`}>
         {clothes.img1 && (
           <img
