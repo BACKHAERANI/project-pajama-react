@@ -1,10 +1,12 @@
 import { useAuth } from './Base/Context/AuthContext';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 
 function TopNav() {
+  const navigate = useNavigate();
   const [auth, , , logout] = useAuth();
   const handleLogout = () => {
     logout();
+    navigate('/');
   };
 
   return (
