@@ -1,15 +1,12 @@
 import ClothesForm from 'Components/clothes/ClothesForm';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 function PageClothesForm() {
-  const navigate = useNavigate();
-
-  const { clothesId } = useParams();
+  const { clothes_num } = useParams();
   return (
-    <ClothesForm
-      clothesId={clothesId}
-      handledDidSave={(savedPost) => navigate(`/clothes/${savedPost.id}/`)}
-    />
+    <div>
+      <ClothesForm clothes_num={clothes_num} />
+    </div>
   );
 }
 

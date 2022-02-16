@@ -15,7 +15,7 @@ function ClothesList({ itemsPerPage = 9 }) {
 
   const [{ data, loading, error }, getClothes] = useApiAxios(
     {
-      url: `/clothes/api/clothes`,
+      url: `/clothes/api/clothes/`,
       method: 'GET',
     },
     { manual: true },

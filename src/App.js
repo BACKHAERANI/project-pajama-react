@@ -32,10 +32,13 @@ function App() {
           <Route path="/accounts/signup/" element={<PageSignup />} />
 
           <Route path="/clothes/" element={<PageClothesIndex />} />
-          <Route path="/clothes/:clothesId/" element={<PageClothesDetail />} />
+          <Route
+            path="/clothes/:clothes_num/"
+            element={<PageClothesDetail />}
+          />
           <Route path="/clothes/new/" element={<PageClothesForm />} />
           <Route
-            path="/clothes/:clothesId/edit/"
+            path="/clothes/:clothes_num/edit/"
             element={<PageClothesForm />}
           />
 
@@ -71,10 +74,13 @@ function App() {
           <Route path="/accounts/signup/" element={<PageSignup />} />
 
           <Route path="/clothes/" element={<PageClothesIndex />} />
-          <Route path="/clothes/:clothesId/" element={<PageClothesDetail />} />
+          <Route
+            path="/clothes/:clothes_num/"
+            element={<PageClothesDetail />}
+          />
           <Route path="/clothes/new/" element={<PageClothesForm />} />
           <Route
-            path="/clothes/:clothesId/edit/"
+            path="/clothes/:clothes_num/edit/"
             element={<PageClothesForm />}
           />
 
@@ -110,9 +116,9 @@ function App() {
           <Route path="/accounts/signup/" element={<PageSignup />} />
 
           {/* <Route path="/clothes/" element={<PageClothesIndex />} />
-        <Route path="/clothes/:clothesId/" element={<PageClothesDetail />} />
+        <Route path="/clothes/:clothes_num/" element={<PageClothesDetail />} />
         <Route path="/clothes/new/" element={<PageClothesForm />} />
-        <Route path="/clothes/:clothesId/edit/" element={<PageClothesForm />} />
+        <Route path="/clothes/:clothes_num/edit/" element={<PageClothesForm />} />
 
         <Route path="/notice/" element={<PageNoticeList />} />
         <Route path="/notice/:notice_num/" element={<PageNoticeDetail />} />

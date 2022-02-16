@@ -5,12 +5,12 @@ import { useEffect } from 'react';
 import LoadingIndicator from 'Components/LoadingIndicator';
 // import PageReviewIndex from 'Pages/review/PageReviewIndex';
 
-function ClothesDetail({ clothesId }) {
+function ClothesDetail({ clothes_num }) {
   const navigate = useNavigate();
 
   const [{ data: clothes, loading, error }, refetch] = useApiAxios(
     {
-      url: `/clothes/api/clothes/${clothesId}/`,
+      url: `/clothes/api/clothes/${clothes_num}/`,
       method: 'GET',
     },
     { manual: true },
@@ -19,7 +19,7 @@ function ClothesDetail({ clothesId }) {
   const [{ loading: deleteLoading, error: deleteError }, deleteClothes] =
     useApiAxios(
       {
-        url: `/clothes/api/clothes/${clothesId}/`,
+        url: `/clothes/api/clothes/${clothes_num}/`,
         method: 'DELETE',
       },
       { manual: true },
@@ -84,7 +84,10 @@ function ClothesDetail({ clothesId }) {
         <Link to="/clothes/" className="hover:text-red-400">
           목록
         </Link>
-        <Link to={`/clothes/${clothesId}/edit/`} className="hover:text-red-400">
+        <Link
+          to={`/clothes/${clothes_num}/edit/`}
+          className="hover:text-red-400"
+        >
           수정
         </Link>
         <button

@@ -13,16 +13,16 @@ const INIT_FIELD_VALUES = {
   region: '',
 };
 
-function ClothesForm({ clothesId, handleDidSave }) {
+function ClothesForm({ clothes_num, handleDidSave }) {
   const [auth] = useAuth();
   const navigate = useNavigate();
 
   const [{ data: clothesData }, Save] = useApiAxios(
     {
-      url: `/clothes/api/clothes/${clothesId}/`,
+      url: `/clothes/api/clothes/${clothes_num}/`,
       method: 'GET',
     },
-    { manual: !clothesId },
+    { manual: !clothes_num },
   );
 
   const [
@@ -34,10 +34,10 @@ function ClothesForm({ clothesId, handleDidSave }) {
     saveRequest,
   ] = useApiAxios(
     {
-      url: !clothesId
+      url: !clothes_num
         ? `/clothes/api/clothes/`
-        : `/clothes/api/clothes/${clothesId}/`,
-      method: !clothesId ? 'POST' : 'PUT',
+        : `/clothes/api/clothes/${clothes_num}/`,
+      method: !clothes_num ? 'POST' : 'PUT',
     },
     { manual: true },
   );
@@ -49,7 +49,7 @@ function ClothesForm({ clothesId, handleDidSave }) {
   const handleSave = () => {
     if (window.confirm('저장하시겠습니까?')) {
       Save().then(() => {
-        navigate(`/clothes/${clothesId}`);
+        navigate(`/clothes/${clothes_num}/`);
       });
     }
   };
@@ -68,24 +68,29 @@ function ClothesForm({ clothesId, handleDidSave }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (window.confirm('저장하시겠습니까?')) {
+      Save().then(() => {
+        const formData = new FormData();
+        Object.entries(fieldValues).forEach(([name, value]) => {
+          if (Array.isArray(value)) {
+            const fileList = value;
+            fileList.forEach((file) => formData.append(name, file));
+          } else {
+            formData.append(name, value);
+          }
+        });
+        formData.append('user_id', auth.user_id);
+        console.log(formData);
 
-    const formData = new FormData();
-    Object.entries(fieldValues).forEach(([name, value]) => {
-      if (Array.isArray(value)) {
-        const fileList = value;
-        fileList.forEach((file) => formData.append(name, file));
-      } else {
-        formData.append(name, value);
-      }
-    });
-
-    saveRequest({
-      data: formData,
-    }).then((response) => {
-      const savedClothes = response.data;
-      if (handleDidSave) handleDidSave(savedClothes);
-      navigate(`/clothes/${clothesId}`);
-    });
+        saveRequest({
+          data: formData,
+        }).then((response) => {
+          const savedClothes = response.data;
+          if (handleDidSave) handleDidSave(savedClothes);
+          navigate(`/clothes/${savedClothes.clothes_num}/`);
+        });
+      });
+    }
   };
 
   return (
@@ -95,6 +100,7 @@ function ClothesForm({ clothesId, handleDidSave }) {
         `저장 중 에러가 발생했습니다. (${saveError.response.status} ${saveError.response.statusText})`}
 
       <form onSubmit={handleSubmit}>
+        <h2>Clothes Form {clothes_num ? '수정' : '입력'}</h2>
         <div className="my-3">
           제목
           <input
@@ -241,7 +247,7 @@ function ClothesForm({ clothesId, handleDidSave }) {
           </Link>
         </div>
         <div className="float-right my-3">
-          <button onClick={handleSave}>저장</button>
+          <button>저장</button>
         </div>
       </form>
     </div>
