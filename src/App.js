@@ -18,6 +18,9 @@ import PageNoticeForm from 'Pages/notice/PageNoticeForm';
 import PageQnaIndex from 'Pages/qna/PageQnaIndex';
 import PageQnaForm from 'Pages/qna/PageQnaForm';
 import PageQnaDetail from 'Pages/qna/PageQnaDetail';
+import PageReviewIndex from 'Pages/review/PageReviewIndex';
+import PageReviewDetail from 'Pages/review/PageReviewDetail';
+import PageReviewForm from 'Pages/review/PageReviewForm';
 
 function App() {
   const [auth, _, login] = useAuth();
@@ -58,6 +61,13 @@ function App() {
           <Route path="/qna/:qna_num/" element={<PageQnaDetail />} />
           <Route path="/qna/new/" element={<PageQnaForm />} />
           <Route path="/qna/:qna_num/edit/" element={<PageQnaForm />} />
+          <Route path="/review/" element={<PageReviewIndex />} />
+          <Route path="/review/:review_num/" element={<PageReviewDetail />} />
+          <Route path="/review/new/" element={<PageReviewForm />} />
+          <Route
+            path="/review/:review_num/edit/"
+            element={<PageReviewForm />}
+          />
         </Routes>
 
         <hr className="mt-5" />
@@ -100,6 +110,13 @@ function App() {
           <Route path="/qna/:qna_num/" element={<PageQnaDetail />} />
           <Route path="/qna/new/" element={<PageQnaForm />} />
           <Route path="/qna/:qna_num/edit/" element={<PageQnaForm />} />
+          <Route path="/review/" element={<PageReviewIndex />} />
+          <Route path="/review/:review_num/" element={<PageReviewDetail />} />
+          <Route path="/review/new/" element={<PageReviewForm />} />
+          <Route
+            path="/review/:review_num/edit/"
+            element={<PageReviewForm />}
+          />
         </Routes>
 
         <hr className="mt-5" />
@@ -136,6 +153,13 @@ function App() {
           <Route path="/qna/:qna_num/" element={<PageQnaDetail />} />
           <Route path="/qna/new/" element={<PageQnaForm />} />
           <Route path="/qna/:qna_num/edit/" element={<PageQnaForm />} />
+          <Route path="/review/" element={<PageReviewIndex />} />
+          <Route path="/review/:review_num/" element={<PageReviewDetail />} />
+          <Route path="/review/new/" element={<PageReviewForm />} />
+          <Route
+            path="/review/:review_num/edit/"
+            element={<PageReviewForm />}
+          />
         </Routes>
 
         <hr className="mt-5" />

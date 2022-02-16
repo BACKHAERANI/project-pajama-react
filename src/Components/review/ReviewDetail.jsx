@@ -1,16 +1,16 @@
-import { useApiAxios } from 'Base/api/base';
+import { useApiAxios } from '../../Base/api/base';
 
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import LoadingIndicator from 'Components/LoadingIndicator';
-import PageReviewIndex from 'Pages/review/PageReviewIndex';
+import LoadingIndicator from '../../Components/LoadingIndicator';
+import PageReviewIndex from '../../Pages/review/PageReviewIndex';
 
-function ClothesDetail({ clothes_num }) {
+function ReviewDetail({ payment_detail_num }) {
   const navigate = useNavigate();
 
-  const [{ data: clothes, loading, error }, refetch] = useApiAxios(
+  const [{ data: review, loading, error }, refetch] = useApiAxios(
     {
-      url: `/clothes/api/clothes/${clothes_num}/`,
+      url: `/review/api/review_detail/${payment_detail_num}/`,
       method: 'GET',
     },
     { manual: true },
@@ -19,7 +19,7 @@ function ClothesDetail({ clothes_num }) {
   const [{ loading: deleteLoading, error: deleteError }, deleteClothes] =
     useApiAxios(
       {
-        url: `/clothes/api/clothes/${clothes_num}/`,
+        url: `/review/api/review_detail/${payment_detail_num}/`,
         method: 'DELETE',
       },
       { manual: true },
@@ -28,7 +28,7 @@ function ClothesDetail({ clothes_num }) {
   const handleDelete = () => {
     if (window.confirm('삭제하시겠습니까?')) {
       deleteClothes().then(() => {
-        navigate('/clothes/');
+        navigate('/review/');
       });
     }
   };
@@ -46,34 +46,31 @@ function ClothesDetail({ clothes_num }) {
       {deleteError &&
         `삭제 요청 중 에러가 발생했습니다. (${deleteError.response.status} ${deleteError.response.statusText})`}
 
-      {clothes && (
+      {review && (
         <>
-          <h3 className="text-2xl my-5">{clothes.title}</h3>
-          <h4 className="text-xl my-5">[카테고리:{clothes.category}]</h4>
-          <h5 className="text-l my-5">
-            [지역:{clothes.region}] [가격:{clothes.price}원]
-          </h5>
+          <h3 className="text-2xl my-5">{review.title}</h3>
+          <h4>{review.score}</h4>
           <div>
-            {clothes.content.split(/[\r\n]+/).map((line, index) => (
+            {review.content.split(/[\r\n]+/).map((line, index) => (
               <p className="my-3" key={index}>
                 {line}
               </p>
             ))}
           </div>
-          {clothes.img1 && (
-            <img src={clothes.img1} alt={clothes.title} className="rounded" />
+          {review.img1 && (
+            <img src={review.img1} alt={review.title} className="rounded" />
           )}
-          {clothes.img2 && (
-            <img src={clothes.img2} alt={clothes.title} className="rounded" />
+          {review.img2 && (
+            <img src={review.img2} alt={review.title} className="rounded" />
           )}
-          {clothes.img3 && (
-            <img src={clothes.img3} alt={clothes.title} className="rounded" />
+          {review.img3 && (
+            <img src={review.img3} alt={review.title} className="rounded" />
           )}
-          {clothes.img4 && (
-            <img src={clothes.img4} alt={clothes.title} className="rounded" />
+          {review.img4 && (
+            <img src={review.img4} alt={review.title} className="rounded" />
           )}
-          {clothes.img5 && (
-            <img src={clothes.img5} alt={clothes.title} className="rounded" />
+          {review.img5 && (
+            <img src={review.img5} alt={review.title} className="rounded" />
           )}
         </>
       )}
@@ -87,7 +84,7 @@ function ClothesDetail({ clothes_num }) {
           목록
         </Link>
         <Link
-          to={`/clothes/${clothes_num}/edit/`}
+          to={`/review/${payment_detail_num}/edit/`}
           className="hover:text-red-400"
         >
           수정
@@ -104,4 +101,4 @@ function ClothesDetail({ clothes_num }) {
   );
 }
 
-export default ClothesDetail;
+export default ReviewDetail;
