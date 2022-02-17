@@ -5,7 +5,6 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import PageClothesDetail from 'Pages/clothes/PageClothesDetail';
 import PageClothesForm from 'Pages/clothes/PageClothesForm';
 import PageClothesIndex from 'Pages/clothes/PageClothesIndex';
-
 import PageMain from 'Pages/main/PageMain';
 import 'App.css';
 import PageSignup from 'Pages/accounts/PageSignup';
@@ -21,6 +20,7 @@ import PageQnaDetail from 'Pages/qna/PageQnaDetail';
 import PageReviewIndex from 'Pages/review/PageReviewIndex';
 import PageReviewDetail from 'Pages/review/PageReviewDetail';
 import PageReviewForm from 'Pages/review/PageReviewForm';
+import PageCartList from 'Pages/cart/PageCartList';
 import PageCommunityIndex from 'Pages/community/PageCommunityIndex';
 import PageCommunityDetail from 'Pages/community/PageCommunityDetail';
 import PageCommunityForm from 'Pages/community/PageCommunityForm';
@@ -48,6 +48,17 @@ function App() {
             element={<PageClothesForm />}
           />
 
+          <Route path="/community/" element={<PageCommunityIndex />} />
+          <Route
+            path="/community/:community_num/"
+            element={<PageCommunityDetail />}
+          />
+          <Route path="/community/new/" element={<PageCommunityForm />} />
+          <Route
+            path="/community/:community_num/edit/"
+            element={<PageCommunityForm />}
+          />
+
           <Route path="/notice/" element={<PageNoticeList />} />
           <Route path="/notice/:notice_num/" element={<PageNoticeDetail />} />
           <Route path="/notice/new/" element={<PageNoticeForm />} />
@@ -71,16 +82,6 @@ function App() {
             path="/review/:review_num/edit/"
             element={<PageReviewForm />}
           />
-          <Route path="/community/" element={<PageCommunityIndex />} />
-          <Route
-            path="/community/:community_num/"
-            element={<PageCommunityDetail />}
-          />
-          <Route path="/community/new/" element={<PageCommunityForm />} />
-          <Route
-            path="/community/:community_num/edit/"
-            element={<PageCommunityForm />}
-          />
         </Routes>
 
         <hr className="mt-5" />
@@ -96,6 +97,8 @@ function App() {
           <Route path="/accounts/login/" element={<PageLogin />} />
           <Route path="/accounts/signup/" element={<PageSignup />} />
 
+          <Route path="/cart/" element={<PageCartList />} />
+
           <Route path="/clothes/" element={<PageClothesIndex />} />
           <Route
             path="/clothes/:clothes_num/"
@@ -107,11 +110,19 @@ function App() {
             element={<PageClothesForm />}
           />
 
+          <Route path="/community/" element={<PageCommunityIndex />} />
+          <Route
+            path="/community/:community_num/"
+            element={<PageCommunityDetail />}
+          />
+          <Route path="/community/new/" element={<PageCommunityForm />} />
+          <Route
+            path="/community/:community_num/edit/"
+            element={<PageCommunityForm />}
+          />
+
           <Route path="/notice/" element={<PageNoticeList />} />
           <Route path="/notice/:notice_num/" element={<PageNoticeDetail />} />
-          {/* <Route path="/notice/new/" element={<PageNoticeForm />} />
-        <Route path="/notice/:notice_num/edit" element={<PageNoticeForm />} /> */}
-
           <Route path="/mypage/profile/check/" element={<PageProfileCheck />} />
           <Route
             path="/mypage/profile/detail/"
@@ -129,16 +140,6 @@ function App() {
           <Route
             path="/review/:review_num/edit/"
             element={<PageReviewForm />}
-          />
-          <Route path="/community/" element={<PageCommunityIndex />} />
-          <Route
-            path="/community/:community_num/"
-            element={<PageCommunityDetail />}
-          />
-          <Route path="/community/new/" element={<PageCommunityForm />} />
-          <Route
-            path="/community/:community_num/edit/"
-            element={<PageCommunityForm />}
           />
         </Routes>
 
@@ -155,15 +156,11 @@ function App() {
           <Route path="/accounts/login/" element={<PageLogin />} />
           <Route path="/accounts/signup/" element={<PageSignup />} />
 
-          {/* <Route path="/clothes/" element={<PageClothesIndex />} />
-        <Route path="/clothes/:clothes_num/" element={<PageClothesDetail />} />
-        <Route path="/clothes/new/" element={<PageClothesForm />} />
-        <Route path="/clothes/:clothes_num/edit/" element={<PageClothesForm />} />
-
-        <Route path="/notice/" element={<PageNoticeList />} />
-        <Route path="/notice/:notice_num/" element={<PageNoticeDetail />} />
-        {/* <Route path="/notice/new/" element={<PageNoticeForm />} />
-        <Route path="/notice/:notice_num/edit" element={<PageNoticeForm />} /> */}
+          <Route path="/clothes/" element={<PageClothesIndex />} />
+          <Route
+            path="/clothes/:clothes_num/"
+            element={<PageClothesDetail />}
+          />
 
           <Route path="/mypage/profile/check/" element={<PageProfileCheck />} />
           <Route
@@ -172,27 +169,8 @@ function App() {
           />
           <Route path="/mypage/profile/edit/" element={<PageProfileForm />} />
 
-          <Route path="/qna/" element={<PageQnaIndex />} />
-          <Route path="/qna/:qna_num/" element={<PageQnaDetail />} />
-          <Route path="/qna/new/" element={<PageQnaForm />} />
-          <Route path="/qna/:qna_num/edit/" element={<PageQnaForm />} />
           <Route path="/review/" element={<PageReviewIndex />} />
           <Route path="/review/:review_num/" element={<PageReviewDetail />} />
-          <Route path="/review/new/" element={<PageReviewForm />} />
-          <Route
-            path="/review/:review_num/edit/"
-            element={<PageReviewForm />}
-          />
-          <Route path="/community/" element={<PageCommunityIndex />} />
-          <Route
-            path="/community/:community_num/"
-            element={<PageCommunityDetail />}
-          />
-          <Route path="/community/new/" element={<PageCommunityForm />} />
-          <Route
-            path="/community/:community_num/edit/"
-            element={<PageCommunityForm />}
-          />
         </Routes>
 
         <hr className="mt-5" />
