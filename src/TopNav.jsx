@@ -32,6 +32,10 @@ function TopNav() {
 
             {auth.isLoggedIn && (
               <>
+                <div className="pb-1 text-gray-500 text-xs flex flex-col mt-2 md:flex-row md:mt-0 md:mx-3">
+                  {`함께 해요,  ${auth.user_nickname}님`}
+                </div>
+
                 <button
                   className="pb-1 text-gray-500 text-xs flex flex-col mt-2 md:flex-row md:mt-0 md:mx-3
                           hover:text-purple-300 "
@@ -41,7 +45,7 @@ function TopNav() {
                 </button>
                 <MyLink to="/accounts/profile/">마이페이지</MyLink>
 
-                <MyLink to="/clothes/cart/">장바구니</MyLink>
+                <MyLink to="/cart/">장바구니</MyLink>
               </>
             )}
           </div>
