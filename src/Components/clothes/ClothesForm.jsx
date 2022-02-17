@@ -68,29 +68,25 @@ function ClothesForm({ clothes_num, handleDidSave }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (window.confirm('저장하시겠습니까?')) {
-      Save().then(() => {
-        const formData = new FormData();
-        Object.entries(fieldValues).forEach(([name, value]) => {
-          if (Array.isArray(value)) {
-            const fileList = value;
-            fileList.forEach((file) => formData.append(name, file));
-          } else {
-            formData.append(name, value);
-          }
-        });
-        formData.append('user_id', auth.user_id);
-        console.log(formData);
 
-        saveRequest({
-          data: formData,
-        }).then((response) => {
-          const savedClothes = response.data;
-          if (handleDidSave) handleDidSave(savedClothes);
-          navigate(`/clothes/${savedClothes.clothes_num}/`);
-        });
-      });
-    }
+    const formData = new FormData();
+    Object.entries(fieldValues).forEach(([name, value]) => {
+      if (Array.isArray(value)) {
+        const fileList = value;
+        fileList.forEach((file) => formData.append(name, file));
+      } else {
+        formData.append(name, value);
+      }
+    });
+    formData.append('user_id', auth.user_id);
+
+    saveRequest({
+      data: formData,
+    }).then((response) => {
+      const savedClothes = response.data;
+
+      navigate(`/clothes/${savedClothes.clothes_num}/`);
+    });
   };
 
   return (
