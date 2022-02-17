@@ -21,6 +21,9 @@ import PageQnaDetail from 'Pages/qna/PageQnaDetail';
 import PageReviewIndex from 'Pages/review/PageReviewIndex';
 import PageReviewDetail from 'Pages/review/PageReviewDetail';
 import PageReviewForm from 'Pages/review/PageReviewForm';
+import PageCommunityIndex from 'Pages/community/PageCommunityIndex';
+import PageCommunityDetail from 'Pages/community/PageCommunityDetail';
+import PageCommunityForm from 'Pages/community/PageCommunityForm';
 
 function App() {
   const [auth, _, login] = useAuth();
@@ -67,6 +70,16 @@ function App() {
           <Route
             path="/review/:review_num/edit/"
             element={<PageReviewForm />}
+          />
+          <Route path="/community/" element={<PageCommunityIndex />} />
+          <Route
+            path="/community/:community_num/"
+            element={<PageCommunityDetail />}
+          />
+          <Route path="/community/new/" element={<PageCommunityForm />} />
+          <Route
+            path="/community/:community_num/edit/"
+            element={<PageCommunityForm />}
           />
         </Routes>
 
@@ -117,6 +130,16 @@ function App() {
             path="/review/:review_num/edit/"
             element={<PageReviewForm />}
           />
+          <Route path="/community/" element={<PageCommunityIndex />} />
+          <Route
+            path="/community/:community_num/"
+            element={<PageCommunityDetail />}
+          />
+          <Route path="/community/new/" element={<PageCommunityForm />} />
+          <Route
+            path="/community/:community_num/edit/"
+            element={<PageCommunityForm />}
+          />
         </Routes>
 
         <hr className="mt-5" />
@@ -159,6 +182,16 @@ function App() {
           <Route
             path="/review/:review_num/edit/"
             element={<PageReviewForm />}
+          />
+          <Route path="/community/" element={<PageCommunityIndex />} />
+          <Route
+            path="/community/:community_num/"
+            element={<PageCommunityDetail />}
+          />
+          <Route path="/community/new/" element={<PageCommunityForm />} />
+          <Route
+            path="/community/:community_num/edit/"
+            element={<PageCommunityForm />}
           />
         </Routes>
 
