@@ -24,7 +24,7 @@ function NoticeForm({ notice_num }) {
 
   const [{ data: notice, loading, error }, refetch] = useApiAxios(
     {
-      url: `/notice/api/notice/${notice_num}`,
+      url: `/notice/api/notice/${notice_num}/`,
       method: 'GET',
     },
     { manual: !notice_num },
@@ -83,7 +83,7 @@ function NoticeForm({ notice_num }) {
       data: formData,
     }).then((response) => {
       const savednotice = response.data;
-      Navigate(`/notice/${savednotice.notice_num}`);
+      Navigate(`/notice/${savednotice.notice_num}/`);
     });
   };
   return (
