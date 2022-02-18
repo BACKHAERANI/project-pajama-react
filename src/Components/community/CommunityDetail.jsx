@@ -12,11 +12,15 @@ function CommunityDetail({ community_num }) {
       url: `/community/api/community/${community_num}/`,
       method: 'GET',
     },
+
     { manual: true },
   );
 
   const [{ loading: deleteLoading }, deletecommunity] = useApiAxios(
-    { url: `/community/api/community/${community_num}/`, method: 'DELETE' },
+    {
+      url: `/community/api/community/${community_num}/`,
+      method: 'DELETE',
+    },
     { manual: true },
   );
 
@@ -100,7 +104,7 @@ function CommunityDetail({ community_num }) {
         <Link to="/community/" className="ml-4 hover:text-purple-400">
           목록
         </Link>
-        {auth.user_id && (
+        {community?.user_id?.user_id === auth.user_id && !auth.is_superuser && (
           <>
             <Link
               to={`/community/${community_num}/edit/`}
@@ -124,7 +128,7 @@ function CommunityDetail({ community_num }) {
               onClick={handleDelete}
               className="hover:text-red-400"
             >
-              관리자 삭제
+              삭제
             </button>
           </>
         )}
