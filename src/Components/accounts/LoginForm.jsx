@@ -1,7 +1,7 @@
 import { useApiAxios } from 'Base/api/base';
 import { useAuth } from 'Base/Context/AuthContext';
 import useFieldValues from 'Base/hooks/useFieldValues';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const INITIAL_FIELD_VALUES = { user_id: '', password: '' };
 
@@ -85,7 +85,17 @@ function LoginForm() {
             Login
           </button>
         </div>
+        <hr />
       </form>
+      <div className="my-5">
+        <span>Re-DanSe로 달려와요 =======> </span>
+        <Link
+          to="/accounts/signup/"
+          className="h-10 border-2 border-purple-500 hover:bg-purple-500"
+        >
+          회원가입
+        </Link>
+      </div>
     </div>
   );
 }
