@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import LoadingIndicator from 'Components/LoadingIndicator';
 import PageReviewIndex from 'Pages/review/PageReviewIndex';
 import { useAuth } from 'Base/Context/AuthContext';
+import PageCartForm from 'Pages/cart/PageCartForm';
 
 function ClothesDetail({ clothes_num }) {
   const navigate = useNavigate();
@@ -85,6 +86,8 @@ function ClothesDetail({ clothes_num }) {
           </div>
         </>
       )}
+      <hr className="my-3" />
+      <PageCartForm clothes_num={clothes_num} />
       <hr className="my-3" />
       <h5>
         <PageReviewIndex />
