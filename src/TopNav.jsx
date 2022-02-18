@@ -43,7 +43,7 @@ function TopNav() {
                 >
                   로그아웃
                 </button>
-                <MyLink to="/accounts/profile/">마이페이지</MyLink>
+                <MyLink to="/qna/">마이페이지</MyLink>
 
                 <MyLink to="/cart/">장바구니</MyLink>
               </>
