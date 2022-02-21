@@ -21,6 +21,7 @@ function NoticeForm({ notice_num }) {
   const Navigate = useNavigate();
   const [auth] = useAuth();
   const [formData, setFormData] = useState();
+  const [imageSrc, setImageSrc] = useState('');
 
   const [{ data: notice, loading, error }, refetch] = useApiAxios(
     {
@@ -86,6 +87,18 @@ function NoticeForm({ notice_num }) {
       Navigate(`/notice/${savednotice.notice_num}/`);
     });
   };
+
+  const encodeFileToBase64 = (e, fileData) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(fileData);
+    return new Promise((resolve) => {
+      reader.onload = () => {
+        setImageSrc(reader.result);
+        resolve();
+        handleFieldChange(e);
+      };
+    });
+  };
   return (
     <div>
       <h1>공지사항 {notice_num ? '수정' : '입력'} </h1>
@@ -130,6 +143,8 @@ function NoticeForm({ notice_num }) {
             name="img1"
             onChange={handleFieldChange}
           />
+          <img src={imageSrc || notice?.img1} alt="img1" />
+
           {saveErrorMessages.img1?.map((message, index) => (
             <p key={index} className="text-xs text-red-400">
               {message}
@@ -144,6 +159,7 @@ function NoticeForm({ notice_num }) {
             name="img2"
             onChange={handleFieldChange}
           />
+          <img src={imageSrc || notice?.img2} alt="img2" />
           {saveErrorMessages.img2?.map((message, index) => (
             <p key={index} className="text-xs text-red-400">
               {message}
@@ -158,6 +174,7 @@ function NoticeForm({ notice_num }) {
             name="img3"
             onChange={handleFieldChange}
           />
+          <img src={imageSrc || notice?.img3} alt="img3" />
           {saveErrorMessages.img3?.map((message, index) => (
             <p key={index} className="text-xs text-red-400">
               {message}
@@ -172,6 +189,7 @@ function NoticeForm({ notice_num }) {
             name="img4"
             onChange={handleFieldChange}
           />
+          <img src={imageSrc || notice?.img4} alt="img4" />
           {saveErrorMessages.img4?.map((message, index) => (
             <p key={index} className="text-xs text-red-400">
               {message}
@@ -186,6 +204,7 @@ function NoticeForm({ notice_num }) {
             name="img5"
             onChange={handleFieldChange}
           />
+          <img src={imageSrc || notice?.img5} alt="img5" />
           {saveErrorMessages.img5?.map((message, index) => (
             <p key={index} className="text-xs text-red-400">
               {message}
