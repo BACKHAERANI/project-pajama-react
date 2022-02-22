@@ -30,7 +30,7 @@ function TopNav() {
               </>
             )}
 
-            {auth.isLoggedIn && (
+            {auth.isLoggedIn && !auth.is_superuser && (
               <>
                 <div className="pb-1 text-gray-500 text-xs flex flex-col mt-2 md:flex-row md:mt-0 md:mx-3">
                   {`함께 해요,  ${auth.user_nickname}님`}
@@ -46,6 +46,25 @@ function TopNav() {
                 <MyLink to="/qna/">마이페이지</MyLink>
 
                 <MyLink to="/cart/">장바구니</MyLink>
+              </>
+            )}
+
+            {auth.is_superuser && (
+              <>
+                <div className="pb-1 text-gray-500 text-xs flex flex-col mt-2 md:flex-row md:mt-0 md:mx-3">
+                  {`함께 해요,  관리자님`}
+                </div>
+
+                <button
+                  className="pb-1 text-gray-500 text-xs flex flex-col mt-2 md:flex-row md:mt-0 md:mx-3
+                          hover:text-purple-300 "
+                  onClick={handleLogout}
+                >
+                  로그아웃
+                </button>
+                <MyLink to="/qna/">마이페이지</MyLink>
+
+                <MyLink to="/admin/">관리자페이지</MyLink>
               </>
             )}
           </div>

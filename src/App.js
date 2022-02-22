@@ -25,6 +25,9 @@ import PageCommunityIndex from 'Pages/community/PageCommunityIndex';
 import PageCommunityDetail from 'Pages/community/PageCommunityDetail';
 import PageCommunityForm from 'Pages/community/PageCommunityForm';
 import PagePayment from 'Pages/payment/PagePayment';
+import PageUserIndex from 'Pages/adminuser/PageUserIndex';
+import PageAdminQna from 'Pages/adminuser/PageAdminQna';
+import UserEdit from 'Components/adminuser/UserEdit';
 
 function App() {
   const [auth, _, login] = useAuth();
@@ -37,7 +40,9 @@ function App() {
           <Route path="/" element={<PageMain />} />
           <Route path="/accounts/login/" element={<PageLogin />} />
           <Route path="/accounts/signup/" element={<PageSignup />} />
-
+          <Route path="/admin/" element={<PageUserIndex />} />
+          <Route path="/admin/:user_id/edit/" element={<UserEdit />} />
+          <Route path="/admin/qna/" element={<PageAdminQna />} />
           <Route path="/clothes/" element={<PageClothesIndex />} />
           <Route
             path="/clothes/:clothes_num/"
