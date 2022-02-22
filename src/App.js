@@ -24,6 +24,7 @@ import PageCartList from 'Pages/cart/PageCartList';
 import PageCommunityIndex from 'Pages/community/PageCommunityIndex';
 import PageCommunityDetail from 'Pages/community/PageCommunityDetail';
 import PageCommunityForm from 'Pages/community/PageCommunityForm';
+import PagePayment from 'Pages/payment/PagePayment';
 
 function App() {
   const [auth, _, login] = useAuth();
@@ -98,6 +99,7 @@ function App() {
           <Route path="/accounts/signup/" element={<PageSignup />} />
 
           <Route path="/cart/" element={<PageCartList />} />
+          <Route path="/payment/" element={<PagePayment />} />
 
           <Route path="/clothes/" element={<PageClothesIndex />} />
           <Route
