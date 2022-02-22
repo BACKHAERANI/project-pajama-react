@@ -3,22 +3,28 @@ import { useAuth } from 'Base/Context/AuthContext';
 import DebugStates from 'DebugStates';
 import { useEffect, useState } from 'react';
 import CartSummary from './CartSummary';
+import { Link, useNavigate } from 'react-router-dom';
 
 function CartList() {
   const [auth] = useAuth();
+  const [checkedInputs, setCheckedInputs] = useState([]);
   const [{ data: cartList, loading, error }, refetch] = useApiAxios(
     { url: '/cart/api/cart/', method: 'GET' },
     { manual: true },
   );
-  const [shoppingList, setShoppingList] = useState([]);
+  const Navigate = useNavigate();
 
   useEffect(() => {
     refetch();
   }, []);
 
-  const handleSingleCheck = (e) => {
-    const value = e.target.value;
-    console.log(value);
+  const changeHandler = (checked, id) => {
+    if (checked) {
+      setCheckedInputs([...checkedInputs, id]);
+    } else {
+      // 체크 해제
+      setCheckedInputs(checkedInputs.filter((el) => el !== id));
+    }
   };
 
   return (
@@ -33,20 +39,27 @@ function CartList() {
           .map((cart, index) => (
             <div>
               <input
+                id={cart.cart_num}
                 type="checkbox"
-                name="cart_num"
-                value={cart.cart_num}
-                onChange={handleSingleCheck}
-                // checked={bChecked}
-                // onChange={(e) => checkHandler(e)}
+                onChange={(e) => {
+                  changeHandler(e.currentTarget.checked, cart.cart_num);
+                }}
+                checked={checkedInputs.includes(cart.cart_num) ? true : false}
               />
+
               <div className="text-lg"> {index + 1} </div>
               <CartSummary cart={cart} key={cart.cart_num} />
               <hr />
             </div>
           ))}
-
-      <button>결제</button>
+      <Link
+        to={'/payment/'}
+        state={cartList?.filter((cart) =>
+          checkedInputs.includes(cart.cart_num),
+        )}
+      >
+        결제
+      </Link>
 
       <DebugStates cartList={cartList} />
     </div>
