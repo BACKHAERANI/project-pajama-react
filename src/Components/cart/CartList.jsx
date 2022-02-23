@@ -5,14 +5,21 @@ import { useEffect, useState } from 'react';
 import CartSummary from './CartSummary';
 import { Link, useNavigate } from 'react-router-dom';
 
-function CartList() {
+function CartList({ cart_num }) {
   const [auth] = useAuth();
+  const Navigate = useNavigate();
   const [checkedInputs, setCheckedInputs] = useState([]);
+  const [cartDeleteId, setCartDeleteId] = useState();
   const [{ data: cartList, loading, error }, refetch] = useApiAxios(
     { url: '/cart/api/cart/', method: 'GET' },
     { manual: true },
   );
-  const Navigate = useNavigate();
+
+  const [{ loading: deleteLoading, error: deleteError }, deletecart] =
+    useApiAxios(
+      { url: `/cart/api/cart/${cart_num}/`, method: 'DELETE' },
+      { manual: true },
+    );
 
   useEffect(() => {
     refetch();
@@ -27,12 +34,31 @@ function CartList() {
     }
   };
 
+  //장바구니 삭제기능
+  const checkedDelete = (id) => {
+    deletecart({
+      url: `/cart/api/cart/${id}/`,
+      method: 'DELETE',
+    }).then(() => {
+      window.location.replace(`/cart/`);
+    });
+  };
+
+  const handleDelete = () => {
+    checkedInputs.map((cart_num) => {
+      checkedDelete(cart_num);
+    });
+    setCheckedInputs([]);
+  };
+
   return (
     <div>
       <h1 className="text-lx">장바구니</h1>
 
       <hr />
-
+      <button disabled={deleteLoading} onClick={handleDelete}>
+        삭제
+      </button>
       {cartList &&
         cartList
           .filter((cart) => cart.user_id.user_id === auth.user_id)
