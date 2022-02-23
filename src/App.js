@@ -28,6 +28,7 @@ import PagePayment from 'Pages/payment/PagePayment';
 import PageUserIndex from 'Pages/adminuser/PageUserIndex';
 import PageAdminQna from 'Pages/adminuser/PageAdminQna';
 import UserEdit from 'Components/adminuser/UserEdit';
+import PagePaymentDetail from 'Pages/payment/PagePaymentDetail';
 
 function App() {
   const [auth, _, login] = useAuth();
@@ -102,6 +103,10 @@ function App() {
 
           <Route path="/cart/" element={<PageCartList />} />
           <Route path="/payment/" element={<PagePayment />} />
+          <Route
+            path="/payment/:payment_num/"
+            element={<PagePaymentDetail />}
+          />
 
           <Route path="/clothes/" element={<PageClothesIndex />} />
           <Route

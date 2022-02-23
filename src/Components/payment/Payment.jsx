@@ -4,7 +4,7 @@ import useFieldValues from 'Base/hooks/useFieldValues';
 import LoadingIndicator from 'Components/LoadingIndicator';
 import DebugStates from 'DebugStates';
 import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const INIT_FIELD_VALUES = {
   total_amount: '',
@@ -72,7 +72,6 @@ function Payment() {
   const totalPrice = state
     .map((item) => item.clothes_num.price)
     .reduce((prev, curr) => prev + curr, 0);
-  console.log(totalPrice);
 
   return (
     <div>
@@ -154,7 +153,7 @@ function Payment() {
         </div>
         <hr />
         <button className="text-lg mr-10 hover:bg-purple-300">결제</button>
-        <button className="text-lg mr-10 hover:bg-purple-300">취소</button>
+        <Link to={'/cart/'}>취소 </Link>
       </form>
       <DebugStates state={state} />
     </div>
