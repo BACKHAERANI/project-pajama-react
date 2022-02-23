@@ -132,9 +132,10 @@ function App() {
 
           <Route path="/notice/" element={<PageNoticeList />} />
           <Route path="/notice/:notice_num/" element={<PageNoticeDetail />} />
+
           <Route path="/profile/" element={<PageProfileCheck />} />
           <Route path="/profile/:user_id/" element={<PageProfileDetail />} />
-          <Route path="/profile/edit/" element={<PageProfileForm />} />
+          <Route path="/profile/:user_id/edit/" element={<PageProfileForm />} />
 
           <Route path="/qna/" element={<PageQnaIndex />} />
           <Route path="/qna/:qna_num/" element={<PageQnaDetail />} />
