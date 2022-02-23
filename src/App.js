@@ -70,12 +70,9 @@ function App() {
           <Route path="/notice/new/" element={<PageNoticeForm />} />
           <Route path="/notice/:notice_num/edit" element={<PageNoticeForm />} />
 
-          <Route path="/mypage/profile/check/" element={<PageProfileCheck />} />
-          <Route
-            path="/mypage/profile/detail/"
-            element={<PageProfileDetail />}
-          />
-          <Route path="/mypage/profile/edit/" element={<PageProfileForm />} />
+          <Route path="/profile/" element={<PageProfileCheck />} />
+          <Route path="/profile/:user_id/" element={<PageProfileDetail />} />
+          <Route path="/profile/:user_id/edit/" element={<PageProfileForm />} />
 
           <Route path="/qna/" element={<PageQnaIndex />} />
           <Route path="/qna/:qna_num/" element={<PageQnaDetail />} />
@@ -130,12 +127,9 @@ function App() {
 
           <Route path="/notice/" element={<PageNoticeList />} />
           <Route path="/notice/:notice_num/" element={<PageNoticeDetail />} />
-          <Route path="/mypage/profile/check/" element={<PageProfileCheck />} />
-          <Route
-            path="/mypage/profile/detail/"
-            element={<PageProfileDetail />}
-          />
-          <Route path="/mypage/profile/edit/" element={<PageProfileForm />} />
+          <Route path="/profile/" element={<PageProfileCheck />} />
+          <Route path="/profile/:user_id/" element={<PageProfileDetail />} />
+          <Route path="/profile/edit/" element={<PageProfileForm />} />
 
           <Route path="/qna/" element={<PageQnaIndex />} />
           <Route path="/qna/:qna_num/" element={<PageQnaDetail />} />
