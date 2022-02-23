@@ -2,6 +2,35 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      keyframes: {
+        slider: {
+          '0%': {
+            transform: 'translateX(0px)',
+          },
+          '100%': {
+            transform: 'translateX(-1000px)',
+          },
+        },
+        fadeIn: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
+        'fade-in-down': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(-10px)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
+      },
+      animation: {
+        'fade-in-down': 'fade-in-down 1s infinite',
+        fadeIn: 'fadeIn 2s ease-in forwards',
+        slider: 'slider 10s linear infinite',
+      },
       flexBasis: {
         '1/10': '10%',
         '2/10': '20%',
@@ -20,6 +49,9 @@ module.exports = {
         // '6/7': '85.7142857%',
       },
     },
+  },
+  variants: {
+    animation: ['responsive', 'motion-safe', 'motion-reduce'],
   },
   plugins: [],
 };
