@@ -11,7 +11,7 @@ const initailValues = {};
 
 function ProfileForm() {
   const navigate = useNavigate();
-  const [auth] = useAuth();
+  const [auth, , , logout] = useAuth();
   const { fieldValues, handleFieldChange } = useFieldValues(initailValues);
   const [{ errorMessages }, saveUserInfo] = useApiAxios(
     {
@@ -29,7 +29,8 @@ function ProfileForm() {
       data: { ...fieldValues },
     })
       .then(() => {
-        navigate(`/profile/${auth.user_id}/`);
+        logout();
+        navigate(`/accounts/login/`);
       })
       .catch((error) => {
         console.log(error);
@@ -85,7 +86,7 @@ function ProfileForm() {
                       hover:bg-opacity-90
                       "
             >
-              Send Message
+              Modify
             </button>
 
             <button
