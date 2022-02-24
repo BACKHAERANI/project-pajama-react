@@ -3,13 +3,11 @@ import { useAuth } from 'Base/Context/AuthContext';
 import DebugStates from 'DebugStates';
 import { useEffect, useState } from 'react';
 import CartSummary from './CartSummary';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function CartList({ cart_num }) {
   const [auth] = useAuth();
-  const Navigate = useNavigate();
   const [checkedInputs, setCheckedInputs] = useState([]);
-  const [cartDeleteId, setCartDeleteId] = useState();
   const [{ data: cartList, loading, error }, refetch] = useApiAxios(
     { url: '/cart/api/cart/', method: 'GET' },
     { manual: true },
