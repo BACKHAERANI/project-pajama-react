@@ -43,6 +43,10 @@ function NoticeDetail({ notice_num }) {
           <h3 className="text-2xl my-5">{notice.title}</h3>
           <p>by {notice?.user_id?.user_nickname}</p>
           {notice.img1 && <img src={notice.img1} alt={notice.title} />}
+          {notice.img2 && <img src={notice.img2} alt={notice.title} />}
+          {notice.img3 && <img src={notice.img3} alt={notice.title} />}
+          {notice.img4 && <img src={notice.img4} alt={notice.title} />}
+          {notice.img5 && <img src={notice.img5} alt={notice.title} />}
           <div>
             {notice.content.split(/[\r\n]+/).map((line, index) => (
               <p className="my-3" key={index}>
