@@ -17,7 +17,10 @@ function Payment() {
   const [auth] = useAuth();
   let location = useLocation();
   let state = location.state;
+
   const [amount, setAmount] = useState(state.length);
+
+  const { fieldValues, handleFieldChange } = useFieldValues(INIT_FIELD_VALUES);
 
   const [
     {
@@ -34,8 +37,6 @@ function Payment() {
     { manual: true },
   );
 
-  const { fieldValues, handleFieldChange } = useFieldValues(INIT_FIELD_VALUES);
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -51,13 +52,39 @@ function Payment() {
     formData.append('user_id', auth.user_id);
     formData.append('total_amount', amount);
     formData.append('total_price', totalPrice);
+
     saveRequest({
       data: formData,
     }).then((response) => {
       const savedpayment = response.data;
       Navigate(`/payment/${savedpayment.payment_num}/`);
+      console.log('결제완료');
     });
-    console.log('결제완료');
+  };
+
+  //결제한 제품을 장바구니에서 삭제
+  const [{ errorMessages }, paymentstatuschange] = useApiAxios(
+    {
+      url: `/cart/api/cart/${state.cart_num}/`,
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${auth.access}`,
+      },
+    },
+    { manual: true },
+  );
+
+  const handleCartdelete = () => {
+    state.map((cart) => {
+      paymentstatuschange({
+        url: `/cart/api/cart/${cart.cart_num}/`,
+        method: 'DELETE',
+      })
+        .then(() => {})
+        .catch((error) => {
+          console.log(error);
+        });
+    });
   };
 
   //username,user_tel  map 중복값 제거를 위해 id를 제거한 필터
@@ -72,6 +99,11 @@ function Payment() {
   const totalPrice = state
     .map((item) => item.clothes_num.price)
     .reduce((prev, curr) => prev + curr, 0);
+
+  const handleSave = (e) => {
+    handleSubmit(e);
+    handleCartdelete(e);
+  };
 
   return (
     <div>
@@ -108,8 +140,9 @@ function Payment() {
           })}
         </div>
       </div>
+
       <hr />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSave}>
         <div>
           <div>
             <select name="return_method">
