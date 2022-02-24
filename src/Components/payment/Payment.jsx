@@ -6,21 +6,17 @@ import DebugStates from 'DebugStates';
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-const INIT_FIELD_VALUES = {
-  total_amount: '',
-  payment_method: '',
-  total_price: '',
-};
+const INIT_FIELD_VALUES = {};
 
 function Payment() {
   const Navigate = useNavigate();
   const [auth] = useAuth();
   let location = useLocation();
   let state = location.state;
-
   const [amount, setAmount] = useState(state.length);
 
-  const { fieldValues, handleFieldChange } = useFieldValues(INIT_FIELD_VALUES);
+  const { fieldValues, handleFieldChange, setFieldValues } =
+    useFieldValues(INIT_FIELD_VALUES);
 
   const [
     {
@@ -37,32 +33,28 @@ function Payment() {
     { manual: true },
   );
 
+  let clothesArray = [];
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    Object.entries(fieldValues).forEach(([name, value]) => {
-      if (Array.isArray(value)) {
-        const fileList = value;
-        fileList.forEach((file) => formData.append(name, file));
-      } else {
-        formData.append(name, value);
-      }
-    });
-    formData.append('user_id', auth.user_id);
-    formData.append('total_amount', amount);
-    formData.append('total_price', totalPrice);
+    setClothesNum();
 
     saveRequest({
-      data: formData,
+      data: {
+        ...fieldValues,
+        payment_detail_set: clothesArray,
+        total_price: totalPrice,
+        total_amount: amount,
+        user_id: auth.user_id,
+      },
     }).then((response) => {
-      const savedpayment = response.data;
-      Navigate(`/payment/${savedpayment.payment_num}/`);
-      console.log('결제완료');
+      console.log(response.data);
+      Navigate(`/payment/${response.data.payment_num}`);
     });
   };
 
-  //결제한 제품을 장바구니에서 삭제
+  // //결제한 제품을 장바구니에서 삭제
   const [{ errorMessages }, paymentstatuschange] = useApiAxios(
     {
       url: `/cart/api/cart/${state.cart_num}/`,
@@ -100,6 +92,13 @@ function Payment() {
     .map((item) => item.clothes_num.price)
     .reduce((prev, curr) => prev + curr, 0);
 
+  const setClothesNum = () => {
+    state.map((item) => {
+      clothesArray.push({ clothes_num: item.clothes_num.clothes_num });
+    });
+    console.log(clothesArray);
+  };
+
   const handleSave = (e) => {
     handleSubmit(e);
     handleCartdelete(e);
@@ -108,6 +107,7 @@ function Payment() {
   return (
     <div>
       <div>
+        <DebugStates fieldValues={fieldValues} />
         {saveLoading && <LoadingIndicator>저장하고 있어요.</LoadingIndicator>}
         {saveError &&
           `저장 중 에러가 발생했습니다.(${saveError.response.status} ${saveError.response.statusText})`}
