@@ -1,8 +1,10 @@
+import { useAuth } from 'Base/Context/AuthContext';
 import { useEffect, useState } from 'react';
 import { useApiAxios } from 'Base/api/base';
 import ReactPaginate from 'react-paginate';
 import 'Base/css/Pagination.css';
-import UserSummary from './UserSummary';
+import { Link } from 'react-router-dom';
+import { render } from '@testing-library/react';
 
 function UserList({ itemsPerPage = 10 }) {
   const [query, setQuery] = useState();
@@ -10,8 +12,9 @@ function UserList({ itemsPerPage = 10 }) {
   const [pageCount, setPageCount] = useState();
   const [page, setPage] = useState(0);
   const [reload, setReload] = useState(false);
+  const [auth] = useAuth();
 
-  const [{ data, loading, error }, getUser] = useApiAxios(
+  const [{ data: user, loading, error }, getUser] = useApiAxios(
     {
       url: `/user/api/users/?${page ? 'page=' + (page + 1) : 'page=1'}${
         query ? '&query=' + query : ''
@@ -64,14 +67,27 @@ function UserList({ itemsPerPage = 10 }) {
       {loading && '로딩 중 ...'}
       {error && '로딩 중 에러가 발생했습니다.'}
       <div className="flex flex-row">
-        <h3 className="basis-1/3">아이디</h3>
-        <h3 className="basis-1/3">이름</h3>
-        <h3 className="basis-1/3">상태</h3>
+        <h3 className="basis-1/4">번호</h3>
+        <h3 className="basis-1/4">아이디</h3>
+        <h3 className="basis-1/4">이름</h3>
+        <h3 className="basis-1/4">상태</h3>
       </div>
       <div>
-        {currentItems?.map((user) => (
-          <UserSummary user={user} key={user.user_id} />
-        ))}
+        {currentItems?.map(
+          (user, index) =>
+            user.is_active && (
+              <div className="flex flex-row my-5">
+                <div className="basis-1/5 text-lg"> {index + 1} </div>
+                <div className="basis-1/3">
+                  <Link to={`/admin/edit/${user.user_id}/`}>
+                    {user.user_id}
+                  </Link>
+                </div>
+                <div className="basis-1/3">{user.username}</div>
+                <div className="basis-1/3">[활성]</div>
+              </div>
+            ),
+        )}
       </div>
       <ReactPaginate
         className="pagination"

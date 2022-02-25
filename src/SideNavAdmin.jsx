@@ -7,7 +7,7 @@ function SideNavAdmin() {
         관리자페이지
       </div>
       <MyLink to="/admin/">개인회원관리</MyLink>
-      <MyLink to="/">탈퇴회원관리</MyLink>
+      <MyLink to="/admin/dropout/">탈퇴회원관리</MyLink>
       <MyLink to="/admin/qna/">1:1 문의관리</MyLink>
     </div>
   );

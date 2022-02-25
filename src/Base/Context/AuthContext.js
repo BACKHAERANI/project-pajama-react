@@ -17,6 +17,7 @@ function AuthProvider({ children }) {
       username,
       is_staff,
       is_superuser,
+      is_active,
       user_nickname,
     }) => {
       setAuth({
@@ -28,6 +29,7 @@ function AuthProvider({ children }) {
         user_nickname,
         is_staff,
         is_superuser,
+        is_active,
       });
     },
     [setAuth],
