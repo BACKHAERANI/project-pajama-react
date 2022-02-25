@@ -4,6 +4,11 @@ import useFieldValues from 'Base/hooks/useFieldValues';
 import produce from 'immer';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from 'Base/Context/AuthContext';
+import DebugStates from 'DebugStates';
+
+const DATA_FIELDS = ['answer'];
+
+const initailValues = {};
 
 const INIT_FIELD_VALUES = {
   title: '',
@@ -17,11 +22,7 @@ function QnaForm({ qna_num, handleDidSave }) {
   const navigate = useNavigate();
   const [auth] = useAuth();
   const [formData, setFormData] = useState();
-
-  const [{ data: qna, loading: getLoading, error: getError }, refetch] =
-    useApiAxios(`/qna/api/qna/${qna_num}/`, {
-      manual: !qna_num,
-    });
+  const [answer, setAnswer] = useState();
 
   const [
     {
@@ -32,22 +33,36 @@ function QnaForm({ qna_num, handleDidSave }) {
     saveRequest,
   ] = useApiAxios(
     {
-      url: !qna_num ? '/qna/api/qna/' : `/qna/api/qna/${qna_num}/`,
-      method: !qna_num ? 'POST' : 'PUT',
+      url: '/qna/api/qna/',
+      method: 'POST',
     },
     { manual: true },
   );
-  const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
-    qna || INIT_FIELD_VALUES,
+  const { fieldValues, handleFieldChange, setFieldValues } =
+    useFieldValues(INIT_FIELD_VALUES);
+
+  const [{ errorMessages }, saveUserInfo] = useApiAxios(
+    {
+      url: `/qna/api/qna/${qna_num}/`,
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${auth.access}`,
+      },
+    },
+    { manual: true },
   );
 
-  useEffect(() => {
-    setFieldValues(
-      produce((draft) => {
-        draft.img = '';
-      }),
-    );
-  }, [qna]);
+  const handleSubmit2 = () => {
+    saveUserInfo({
+      data: { answer: answer },
+    })
+      .then(() => {
+        navigate(`/qna/${qna_num}/`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -74,56 +89,71 @@ function QnaForm({ qna_num, handleDidSave }) {
     });
   };
 
-  return (
-    <div>
-      <h2>QnA Form {qna_num ? '수정' : '입력'}</h2>
-
-      <form onSubmit={handleSubmit}>
+  if (auth.isLoggedIn && auth.is_superuser) {
+    return (
+      <div>
+        {DATA_FIELDS.map((dataType, index) => (
+          <div key={index}>
+            <input
+              type="text"
+              name={dataType}
+              onChange={(e) => {
+                setAnswer(e.target.value);
+              }}
+              placeholder={dataType}
+            />
+          </div>
+        ))}
         <div>
-          title
-          <input
-            type="text"
-            name="title"
-            value={fieldValues.title}
-            onChange={handleFieldChange}
-          />
-        </div>
+          <button onClick={handleSubmit2}>Modify</button>
 
-        <div>
-          content
-          <input
-            type="text"
-            name="content"
-            value={fieldValues.content}
-            onChange={handleFieldChange}
-          />
+          <button onClick={() => navigate(`/qna/${qna_num}`)}>Cancle</button>
         </div>
+        <DebugStates fieldValues={fieldValues} />
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <h2>QnA Form {qna_num ? '수정' : '입력'}</h2>
 
-        <div>
-          <input
-            type="file"
-            name="img"
-            onChange={handleFieldChange}
-            accept=".jpg, .png, .jpeg"
-          />
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div>
+            title
+            <input
+              type="text"
+              name="title"
+              value={fieldValues.title}
+              onChange={handleFieldChange}
+            />
+          </div>
 
-        <div>
-          answer
-          <input
-            type="text"
-            name="answer"
-            value={fieldValues.answer}
-            onChange={handleFieldChange}
-          />
-        </div>
+          <div>
+            content
+            <input
+              type="text"
+              name="content"
+              value={fieldValues.content}
+              onChange={handleFieldChange}
+            />
+          </div>
 
-        <div>
-          <button>저장</button>
-        </div>
-      </form>
-    </div>
-  );
+          <div>
+            <input
+              type="file"
+              name="img"
+              onChange={handleFieldChange}
+              accept=".jpg, .png, .jpeg"
+            />
+          </div>
+
+          <div>
+            <button>저장</button>
+          </div>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default QnaForm;

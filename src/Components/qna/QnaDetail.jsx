@@ -43,6 +43,7 @@ function QnaDetail({ qna_num }) {
               <p key={index}>{line}</p>
             ))}
           </div>
+          <div>{qna.answer}</div>
         </>
       )}
 
