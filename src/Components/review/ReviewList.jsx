@@ -13,25 +13,25 @@ function ReviewList({ itemsPerPage = 10 }) {
   const [reload, setReload] = useState(false);
 
   const [{ data, loading, error }, getReview] = useApiAxios(
-    '/review/api/review_detail/',
+    { url: '/review/api/review_detail/', method: 'GET' },
     { manual: true },
   );
 
   useEffect(() => {
-    setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
-    setCurrentItems(data?.results);
-  }, [data]);
+    setReload((prevState) => !prevState);
+  }, [page]);
 
   useEffect(() => {
     getReview()
       .then(({ data }) => {
         setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
         setCurrentItems(data?.results);
+        setQuery('');
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [page]);
+  }, [reload]);
 
   const handlePageClick = (event) => {
     setPage(event.selected);
@@ -39,11 +39,10 @@ function ReviewList({ itemsPerPage = 10 }) {
 
   return (
     <div>
-      <div className="grid grid-cols-3 grid-rows-3 gap-4 my-20">
-        {currentItems &&
-          currentItems?.map((review) => (
-            <ReviewSummary review={review} key={review.payment_detail_num} />
-          ))}
+      <div className="flex flex-row">
+        {currentItems?.map((review, index) => (
+          <ReviewSummary review={review} key={review.payment_detail_num} />
+        ))}
       </div>
       <ReactPaginate
         className="pagination"

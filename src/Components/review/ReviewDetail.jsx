@@ -1,5 +1,5 @@
 import { useApiAxios } from '../../Base/api/base';
-
+import { useAuth } from 'Base/Context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import LoadingIndicator from '../../Components/LoadingIndicator';
@@ -7,7 +7,7 @@ import PageReviewIndex from '../../Pages/review/PageReviewIndex';
 
 function ReviewDetail({ payment_detail_num }) {
   const navigate = useNavigate();
-
+  const [auth] = useAuth();
   const [{ data: review, loading, error }, refetch] = useApiAxios(
     {
       url: `/review/api/review_detail/${payment_detail_num}/`,
@@ -80,22 +80,37 @@ function ReviewDetail({ payment_detail_num }) {
       </h5>
       <hr className="my-3" />
       <div className="flex flex-row-reverse gap-4 mt-3 mb-10">
-        <Link to="/clothes/" className="hover:text-red-400">
+        <Link to="/clothes/" className="ml-4 hover:text-purple-400">
           목록
         </Link>
-        <Link
-          to={`/review/${payment_detail_num}/edit/`}
-          className="hover:text-red-400"
-        >
-          수정
-        </Link>
-        <button
-          disabled={deleteLoading}
-          onClick={handleDelete}
-          className="hover:text-red-400"
-        >
-          삭제
-        </button>
+        {review?.user_id?.user_id === auth.user_id && !auth.is_superuser && (
+          <>
+            <Link
+              to={`/review/${payment_detail_num}/edit/`}
+              className="ml-4 hover:text-purple-400"
+            >
+              수정
+            </Link>
+            <button
+              disabled={deleteLoading}
+              onClick={handleDelete}
+              className="hover:text-red-400"
+            >
+              삭제
+            </button>
+          </>
+        )}
+        {auth.is_superuser && (
+          <>
+            <button
+              disabled={deleteLoading}
+              onClick={handleDelete}
+              className="hover:text-red-400"
+            >
+              삭제
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

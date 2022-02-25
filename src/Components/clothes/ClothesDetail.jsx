@@ -3,9 +3,9 @@ import { useApiAxios } from 'Base/api/base';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import LoadingIndicator from 'Components/LoadingIndicator';
-import PageReviewIndex from 'Pages/review/PageReviewIndex';
 import { useAuth } from 'Base/Context/AuthContext';
 import PageCartForm from 'Pages/cart/PageCartForm';
+import ReviewList from 'Components/review/ReviewList';
 
 function ClothesDetail({ clothes_num }) {
   const navigate = useNavigate();
@@ -90,7 +90,7 @@ function ClothesDetail({ clothes_num }) {
       <PageCartForm clothes_num={clothes_num} />
       <hr className="my-3" />
       <h5>
-        <PageReviewIndex />
+        <ReviewList />
       </h5>
       <hr className="my-3" />
       <div className="flex flex-row-reverse gap-4 mt-3 mb-10">

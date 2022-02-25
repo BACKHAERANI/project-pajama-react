@@ -11,8 +11,8 @@ const INIT_FIELD_VALUES = {
   content: '',
 };
 
-function ReviewForm({ review_num, handleDidSave }) {
-  const { auth } = useAuth;
+function ReviewForm({ payment_detail_num, review_num, handleDidSave }) {
+  const { auth } = useAuth();
   const navigate = useNavigate();
 
   const [{ data: reviewData }, Save] = useApiAxios(
@@ -70,6 +70,7 @@ function ReviewForm({ review_num, handleDidSave }) {
           }
         });
         formData.append('user_id', auth.user_id);
+        formData.append('payment_detail_num', auth.payment_detail_num);
         console.log(formData);
 
         saveRequest({
