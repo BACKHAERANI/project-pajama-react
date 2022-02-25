@@ -18,7 +18,6 @@ import PageQnaIndex from 'Pages/qna/PageQnaIndex';
 import PageQnaForm from 'Pages/qna/PageQnaForm';
 import PageQnaDetail from 'Pages/qna/PageQnaDetail';
 import PageReviewIndex from 'Pages/review/PageReviewIndex';
-import PageReviewDetail from 'Pages/review/PageReviewDetail';
 import PageReviewForm from 'Pages/review/PageReviewForm';
 import PageCartList from 'Pages/cart/PageCartList';
 import PageCommunityIndex from 'Pages/community/PageCommunityIndex';
@@ -30,6 +29,8 @@ import PageAdminQna from 'Pages/adminuser/PageAdminQna';
 import PagePaymentDetail from 'Pages/payment/PagePaymentDetail';
 import PageUserDropOut from 'Pages/adminuser/PageUserDropOut';
 import PageUserDetail from 'Pages/adminuser/PageUserDetail';
+import PagerentalList from 'Pages/mypage/PagerentalList';
+import PageRentalreview from 'Pages/mypage/PageRentalreview';
 
 function App() {
   const [auth, _, login] = useAuth();
@@ -82,12 +83,14 @@ function App() {
           <Route path="/qna/new/" element={<PageQnaForm />} />
           <Route path="/qna/:qna_num/edit/" element={<PageQnaForm />} />
           <Route path="/review/" element={<PageReviewIndex />} />
-          <Route path="/review/:review_num/" element={<PageReviewDetail />} />
-          <Route path="/review/new/" element={<PageReviewForm />} />
           <Route
-            path="/review/:review_num/edit/"
+            path="/review/:payment_detail_num/new/"
             element={<PageReviewForm />}
           />
+          {/* <Route
+            path="/review/:review_num/edit/"
+            element={<PageReviewForm />}
+          /> */}
         </Routes>
 
         <hr className="mt-5" />
@@ -138,16 +141,16 @@ function App() {
           <Route path="/profile/" element={<PageProfileCheck />} />
           <Route path="/profile/:user_id/" element={<PageProfileDetail />} />
           <Route path="/profile/:user_id/edit/" element={<PageProfileForm />} />
+          <Route path="/mypage/rental/" element={<PagerentalList />} />
+          <Route path="/mypage/review/" element={<PageRentalreview />} />
 
           <Route path="/qna/" element={<PageQnaIndex />} />
           <Route path="/qna/:qna_num/" element={<PageQnaDetail />} />
           <Route path="/qna/new/" element={<PageQnaForm />} />
           <Route path="/qna/:qna_num/edit/" element={<PageQnaForm />} />
           <Route path="/review/" element={<PageReviewIndex />} />
-          <Route path="/review/:review_num/" element={<PageReviewDetail />} />
-          <Route path="/review/new/" element={<PageReviewForm />} />
           <Route
-            path="/review/:review_num/edit/"
+            path="/review/:payment_detail_num/new/"
             element={<PageReviewForm />}
           />
         </Routes>
@@ -171,15 +174,7 @@ function App() {
             element={<PageClothesDetail />}
           />
 
-          <Route path="/mypage/profile/check/" element={<PageProfileCheck />} />
-          <Route
-            path="/mypage/profile/detail/"
-            element={<PageProfileDetail />}
-          />
-          <Route path="/mypage/profile/edit/" element={<PageProfileForm />} />
-
           <Route path="/review/" element={<PageReviewIndex />} />
-          <Route path="/review/:review_num/" element={<PageReviewDetail />} />
         </Routes>
 
         <hr className="mt-5" />

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import '../../Base/css/Pagination.css';
 import ReviewSummary from './ReviewSummary';
+import ReviewDetail from './ReviewDetail';
 
 function ReviewList({ itemsPerPage = 10 }) {
   const [query, setQuery] = useState();
