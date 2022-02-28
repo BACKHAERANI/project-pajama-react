@@ -3,7 +3,7 @@ import { useApiAxios } from 'Base/api/base';
 import QnaSummary from './QnaSummary';
 import ReactPaginate from 'react-paginate';
 import { useAuth } from 'Base/Context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function QnaList({ itemsPerPage = 10 }) {
   const [auth] = useAuth();
@@ -61,8 +61,50 @@ function QnaList({ itemsPerPage = 10 }) {
   if (auth.isLoggedIn && auth.is_superuser) {
     return (
       <>
-        {qnaList &&
-          qnaList.map((qna, index) => <QnaSummary qna={qna} key={index} />)}
+        <>
+          <table className="border-t-2  border-gray-150 w-full text-xs">
+            <thead className="border-b font-semibold border-gray-150">
+              <tr>
+                <td className="p-5 text-justify">번호</td>
+                <td className="p-5 text-center">제목</td>
+                <td className="p-5 text-justify">작성자</td>
+                <td className="p-5 text-right">
+                  <div className="mr-6">등록일</div>
+                </td>
+              </tr>
+            </thead>
+
+            {qnaList &&
+              qnaList.map((qna, index) => (
+                <>
+                  <tbody className="border-b border-gray-150">
+                    <tr>
+                      <td className="p-4 pl-6">{index + 1}</td>
+                      <td>
+                        <Link to={`/qna/${qna.qna_num}/`}>{qna.title}</Link>
+                      </td>
+                      <td className="p-4"> {qna.user_id.user_id}</td>
+                      <td className="text-right pr-5">
+                        {qna.registration_date.slice(0, 10)}
+                      </td>
+                    </tr>
+                  </tbody>
+                </>
+              ))}
+            <tfoot className="my-10"></tfoot>
+          </table>
+          <ReactPaginate
+            className="pagination"
+            breakLabel="..."
+            previousLabel="<"
+            nextLabel=">"
+            pageCount={pageCount}
+            pageRangeDisplayed={itemsPerPage}
+            onPageChange={handlePageClick}
+            renderOnZeroPageCount={null}
+          />
+          <div className="p-4 pt-7 pr-1 text-sm text-right inline-block align-middle"></div>
+        </>
       </>
     );
   } else if (auth.isLoggedIn && !auth.is_superuser) {
