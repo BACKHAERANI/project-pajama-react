@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import SideNav from 'SideNav';
 import ReviewList from '../../Components/review/ReviewList';
 
-function PageReviewIndex({ payment_detail_num }) {
+function PageReviewIndex() {
   const navigate = useNavigate();
   return (
     <div>
@@ -14,11 +14,6 @@ function PageReviewIndex({ payment_detail_num }) {
           </div>
           <ReviewList />
         </div>
-      </div>
-      <div className="float-right my-5 mr-10">
-        <button onClick={() => navigate(`/review/new/${payment_detail_num}`)}>
-          리뷰쓰러가기
-        </button>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ function Rating({ score }) {
   return (
     <div>
       <ul className="flex">
-        {[0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5].map((index) => {
+        {[1, 3, 5, 7, 9].map((index) => {
           return (
             <li key={index}>
               {index < score ? <FilledStar /> : <EmptyStar />}

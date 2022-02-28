@@ -9,19 +9,14 @@ import { useAuth } from '../../Base/Context/AuthContext';
 const INIT_FIELD_VALUES = {
   title: '',
   content: '',
+  user_id: '',
 };
 
-function ReviewForm({ payment_detail_num, review_num, handleDidSave }) {
-  const { auth } = useAuth();
+function ReviewForm({ payment_detail_num, handleDidSave }) {
+  const [auth] = useAuth();
   const navigate = useNavigate();
-
-  const [{ data: reviewData }, Save] = useApiAxios(
-    {
-      url: `/review/api/review_detail/${review_num}/`,
-      method: 'GET',
-    },
-    { manual: !review_num },
-  );
+  const { fieldValues, handleFieldChange, setFieldValues } =
+    useFieldValues(INIT_FIELD_VALUES);
 
   const [
     {
@@ -32,56 +27,36 @@ function ReviewForm({ payment_detail_num, review_num, handleDidSave }) {
     saveRequest,
   ] = useApiAxios(
     {
-      url: !review_num
-        ? '/review/api/review_detail/'
-        : `/review/api/review_detail/${review_num}/`,
-      method: !review_num ? 'POST' : 'PUT',
+      url: `/review/api/review_detail/`,
+      method: 'POST',
     },
     { manual: true },
   );
 
-  const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
-    reviewData || INIT_FIELD_VALUES,
-  );
-
-  useEffect(() => {
-    setFieldValues(
-      produce((draft) => {
-        draft.img1 = '';
-        draft.img2 = '';
-        draft.img3 = '';
-        draft.img4 = '';
-        draft.img5 = '';
-      }),
-    );
-  }, [reviewData]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (window.confirm('저장하시겠습니까?')) {
-      Save().then(() => {
-        const formData = new FormData();
-        Object.entries(fieldValues).forEach(([name, value]) => {
-          if (Array.isArray(value)) {
-            const fileList = value;
-            fileList.forEach((file) => formData.append(name, file));
-          } else {
-            formData.append(name, value);
-          }
-        });
-        formData.append('user_id', auth.user_id);
-        formData.append('payment_detail_num', auth.payment_detail_num);
-        console.log(formData);
 
-        saveRequest({
-          data: formData,
-        }).then((response) => {
-          const savedClothes = response.data;
-          if (handleDidSave) handleDidSave(savedClothes);
-          navigate(`/review_detail/${savedClothes.review_num}/`);
-        });
-      });
-    }
+    const formData = new FormData();
+    Object.entries(fieldValues).forEach(([name, value]) => {
+      if (Array.isArray(value)) {
+        const fileList = value;
+        fileList.forEach((file) => formData.append(name, file));
+      } else {
+        formData.append(name, value);
+      }
+    });
+    formData.append('user_id', auth.user_id);
+    formData.append('payment_detail_num', payment_detail_num);
+
+    console.log(formData);
+
+    saveRequest({
+      data: formData,
+    }).then((response) => {
+      const savedreview = response.data;
+      if (handleDidSave) handleDidSave(savedreview);
+      navigate(`/mypage/review/`);
+    });
   };
 
   return (
@@ -90,7 +65,7 @@ function ReviewForm({ payment_detail_num, review_num, handleDidSave }) {
       {saveError &&
         `저장 중 에러가 발생했습니다. (${saveError.response.status} ${saveError.response.statusText})`}
       <form onSubmit={handleSubmit}>
-        <h2>Review Form {review_num ? '수정' : '입력'}</h2>
+        <h2>Review Form 입력</h2>
         <div className="my-3">
           제목
           <input
