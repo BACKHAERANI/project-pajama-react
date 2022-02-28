@@ -1,15 +1,20 @@
 import { Link } from 'react-router-dom';
 
-function QnaSummary({ qna }) {
+function QnaSummary({ qna, index }) {
   return (
-    <div className="flex flex-row">
-      <div className="basis-1/10">{qna.qna_num}</div>
-      <div className="basis-4/10">
-        <Link to={`/qna/${qna.qna_num}/`}>{qna.title}</Link>
-      </div>
-      <div className="basis-3/10">{qna.registration_date}</div>
-      <div className="basis-2/10">{qna?.user_nickname?.user_id}</div>
-    </div>
+    <>
+      <tbody className="border-b border-gray-150">
+        <tr>
+          <td className="p-4 pl-6">{index + 1}</td>
+          <td>
+            <Link to={`/qna/${qna.qna_num}/`}>{qna.title}</Link>
+          </td>
+          <td className="text-right pr-5">
+            {qna.registration_date.slice(0, 10)}
+          </td>
+        </tr>
+      </tbody>
+    </>
   );
 }
 

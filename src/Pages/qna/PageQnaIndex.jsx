@@ -4,24 +4,16 @@ import SideNav from 'SideNav';
 
 function PageQnaIndex() {
   const navigate = useNavigate();
-
   return (
-    <div className="flex">
-      <SideNav />
+    <div className="grid grid-cols-5">
       <div>
-        <div className="flex pt-20 pr-100 text-lg">
-          <h1>[ QnA ]</h1>
-        </div>
+        <SideNav />
+      </div>
 
-        <button
-          className="flex justify-end"
-          onClick={() => navigate('/qna/new/')}
-        >
-          글쓰기
-        </button>
-        <div>
-          <QnaList />
-        </div>
+      <div className="grid col-span-4 auto-rows-max">
+        <h1 className=" pt-10 pb-5 text-xl font-bold">1:1 문의</h1>
+
+        <QnaList />
       </div>
     </div>
   );
