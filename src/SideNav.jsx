@@ -2,12 +2,10 @@ import { Link } from 'react-router-dom';
 
 function SideNav() {
   return (
-    <div className="flex flex-col pr-20 ">
-      <div className="text-align: text-xl right-1 mt-8 mb-3 ml-5 mr-12 ">
-        마이페이지
-      </div>
-      <MyLink to="/mypage/rental/">대여 내역</MyLink>
-      <MyLink to="/mypage/review/">대여 후기</MyLink>
+    <div className="grid pr-14 pt-5 ">
+      <div className="pt-4 pb-5 font-bold text-2xl ">마이페이지</div>
+      <MyLink to="/clothes/">대여 내역</MyLink>
+      <MyLink to="/review/">대여 후기</MyLink>
       <MyLink to="/profile/">개인정보수정</MyLink>
       <MyLink to="/qna/">1:1 문의</MyLink>
     </div>
@@ -16,10 +14,12 @@ function SideNav() {
 
 function MyLink({ to, children }) {
   return (
-    <Link to={to} className="text-align: pl-2 py-3 box-border border">
-      {children}
+    <Link
+      to={to}
+      className="pl-2 py-3 text-sm box-border border border-gray-150"
+    >
+      <div className="ml-2">{children}</div>
     </Link>
   );
 }
-
 export default SideNav;
