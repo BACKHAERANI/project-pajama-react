@@ -6,7 +6,7 @@ import '../../Base/css/Pagination.css';
 import ReviewSummary from './ReviewSummary';
 import ReviewDetail from './ReviewDetail';
 
-function ReviewList({ itemsPerPage = 10 }) {
+function ReviewList({ itemsPerPage = 10, clothes_num }) {
   const [query, setQuery] = useState();
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState();
@@ -14,7 +14,12 @@ function ReviewList({ itemsPerPage = 10 }) {
   const [reload, setReload] = useState(false);
 
   const [{ data, loading, error }, getReview] = useApiAxios(
-    { url: '/review/api/review_detail/', method: 'GET' },
+    {
+      url: `/review/api/review_detail/?${
+        page ? 'page=' + (page + 1) : 'page=1'
+      }&query=${clothes_num}`,
+      method: 'GET',
+    },
     { manual: true },
   );
 
@@ -41,7 +46,7 @@ function ReviewList({ itemsPerPage = 10 }) {
   return (
     <div>
       <div className="flex flex-row">
-        {currentItems?.map((review, index) => (
+        {currentItems?.map((review) => (
           <ReviewSummary review={review} key={review.payment_detail_num} />
         ))}
       </div>

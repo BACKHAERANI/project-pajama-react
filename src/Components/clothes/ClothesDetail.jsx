@@ -90,7 +90,7 @@ function ClothesDetail({ clothes_num }) {
       <PageCartForm clothes_num={clothes_num} />
       <hr className="my-3" />
       <h5>
-        <ReviewList />
+        <ReviewList clothes_num={clothes_num} />
       </h5>
       <hr className="my-3" />
       <div className="flex flex-row-reverse gap-4 mt-3 mb-10">
