@@ -68,11 +68,7 @@ function QnaDetail({ qna_num }) {
       )}
       <div>
         <div className="p-4 pt-7 pr-1 text-sm text-right inline-block align-middle">
-          <button
-            className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
-            disabled={deleteLoading}
-            onClick={handleDlete}
-          >
+          <button className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600">
             <Link to="/qna/">목록</Link>
           </button>
         </div>
