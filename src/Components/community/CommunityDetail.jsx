@@ -43,82 +43,89 @@ function CommunityDetail({ community_num }) {
         `로딩 중 에러가 발생했습니다. (${error.response.status} ${error.response.statusText})`}
       {community && (
         <>
-          <div className="flex">
-            <h3 className="flex-none"> 제목 : {community.title}</h3>
-            <h3 className="grow ml-80">
-              작성자 : {community?.user_id?.user_nickname}
-            </h3>
-            <h3 className="flex-none ml-20">
-              작성일 : {community.registration_date.slice(0, 10)}
-            </h3>
+          <div>
+            <hr className=" border-t border-gray-300 " />
+            <div className="grid grid-cols-6   border border-gray-300 ">
+              <div className="bg-gray-200">
+                <label className=" mt-4 flex justify-center ">제목</label>
+              </div>
+              <div className="col-span-3">
+                <p className=" col-start-3 my-4 ml-4 mr-0 w-10/12">
+                  {community.title}
+                </p>
+              </div>
+              <div className="bg-gray-200">
+                <label className=" mt-4 flex justify-center ">작성자</label>
+              </div>
+              <div>
+                <p className=" col-start-3 my-4 ml-4 mr-0  w-10/12">
+                  {community?.user_id?.user_nickname}
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="grid grid-cols-2 gap-4 my-20">
+          <div className="col-span-6 pl-8 py-6 max-h-full max-w-full">
             {community.img1 && (
               <img
                 src={community.img1}
                 alt={community.title}
-                className="rounded"
+                className="max-w-3xl max-h-full"
               />
             )}
             {community.img2 && (
               <img
                 src={community.img2}
                 alt={community.title}
-                className="rounded"
+                className="max-w-3xl max-h-full"
               />
             )}
             {community.img3 && (
               <img
                 src={community.img3}
                 alt={community.title}
-                className="rounded"
+                className="max-w-3xl max-h-full"
               />
             )}
             {community.img4 && (
               <img
                 src={community.img4}
                 alt={community.title}
-                className="rounded"
+                className="max-w-3xl max-h-full"
               />
             )}
             {community.img5 && (
               <img
                 src={community.img5}
                 alt={community.title}
-                className="rounded"
+                className="max-w-3xl max-h-full"
               />
             )}
           </div>
-          <div>
-            {community.content.split(/[\r\n]+/).map((line, index) => (
-              <p className="my-3" key={index}>
-                {line}
-              </p>
-            ))}
-          </div>
+
+          {community.content.split(/[\r\n]/).map((line, index) => (
+            <p key={index}>{line}</p>
+          ))}
         </>
       )}
       <hr className="my-3" />
-
-      <div className="flex flex-row-reverse gap-4 mt-3 mb-10">
-        <Link to="/community/" className="ml-4 hover:text-purple-400">
-          목록
-        </Link>
+      <div className="flex justify-end">
         {community?.user_id?.user_id === auth.user_id && !auth.is_superuser && (
           <>
-            <Link
-              to={`/community/${community_num}/edit/`}
-              className="ml-4 hover:text-purple-400"
-            >
-              수정
-            </Link>
             <button
               disabled={deleteLoading}
               onClick={handleDelete}
-              className="hover:text-red-400"
+              className="mr-2 w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
             >
               삭제
             </button>
+
+            <Link
+              to={`/community/${community_num}/edit/`}
+              type="button"
+              className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
+            >
+              <h1 className="text-center mt-1.5 text-sm">수정</h1>
+            </Link>
           </>
         )}
         {auth.is_superuser && (
@@ -126,12 +133,24 @@ function CommunityDetail({ community_num }) {
             <button
               disabled={deleteLoading}
               onClick={handleDelete}
-              className="hover:text-red-400"
+              className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
             >
               삭제
             </button>
           </>
         )}
+
+        <div className="flex justify-end">
+          <div className=" ml-2 pr-1 inline-block align-middle flex justify-end">
+            <Link
+              className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
+              type="button"
+              to="/community/"
+            >
+              <h1 className="text-center mt-1.5 text-sm">목록</h1>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );
