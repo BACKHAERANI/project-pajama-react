@@ -52,49 +52,89 @@ function LoginForm() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="mt-16 flex justify-center">
+      <div className="w-2/5">
+        {error?.response?.status === 401 && (
+          <div className="text-red-400">로그인에 실패했습니다.</div>
+        )}
 
-      {error?.response?.status === 401 && (
-        <div className="text-red-400">로그인에 실패했습니다.</div>
-      )}
+        <div className="">
+          <div className=" bg-white shadow-md border border-gray-200 rounded-lg p-10 ">
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              <p className="text-center text-2xl font-medium text-indigo-900 ">
+                LOGIN
+              </p>
+              <div>
+                <label
+                  htmlFor="ID"
+                  className="text-sm font-medium text-gray-900 block mb-2 "
+                >
+                  ID
+                </label>
+                <input
+                  type="text"
+                  name="user_id"
+                  value={fieldValues.user_id}
+                  className="outline-none bg-gray-50 border border-gray-300 text-gray-900  rounded-lg block w-full p-2.5  "
+                  placeholder="아이디를 입력해주세요."
+                  onChange={handleFieldChange}
+                />
+              </div>
 
-      <form onSubmit={handleSubmit}>
-        <div className="my-5">
-          <input
-            type="text"
-            name="user_id"
-            value={fieldValues.user_id}
-            onChange={handleFieldChange}
-            placeholder="아이디를 입력해주세요."
-            className="p-3 bg-gray-100 focus:outline-none focus:border-2 focus:border-purple-500 "
-          />
+              <div>
+                <label
+                  for="password"
+                  className="text-sm font-medium text-gray-900 block mb-2 "
+                >
+                  Password
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  value={fieldValues.password}
+                  placeholder="비밀번호를 입력해주세요"
+                  className="outline-none bg-gray-50 border border-gray-300 text-gray-900  rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 "
+                  onChange={handleFieldChange}
+                />
+              </div>
+              <div className="flex items-start">
+                <div className="flex items-start">
+                  <div className="flex items-center h-5">
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      className="bg-gray-50 border border-gray-300 focus:ring-3 focus:ring-purple-300 h-4 w-4 rounded "
+                    />
+                  </div>
+                  <div class="text-sm ml-3">
+                    <label
+                      for="remember"
+                      className="font-medium text-gray-900 "
+                    >
+                      Remember me
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <button
+                type="submit"
+                className="w-full text-white bg-purple-300 hover:bg-purple-300 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+              >
+                로그인
+              </button>
+              <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
+                Re-DanSe로 달려와요,
+                <Link
+                  to="/accounts/signup/"
+                  className="ml-2 h-10 text-violet-700 hover:underline dark:text-violet-500 "
+                >
+                  [ 회원가입 ]
+                </Link>
+              </div>
+            </form>
+          </div>
         </div>
-        <div className="my-5">
-          <input
-            type="password"
-            name="password"
-            value={fieldValues.password}
-            onChange={handleFieldChange}
-            placeholder="비밀번호를 입력해주세요."
-            className="p-3 bg-gray-100 focus:outline-none focus:border-2 focus:border-purple-500 "
-          />
-        </div>
-        <div className="my-5">
-          <button className=" h-10 border-2 border-purple-500 hover:bg-purple-500">
-            Login
-          </button>
-        </div>
-        <hr />
-      </form>
-      <div className="my-5">
-        <span>Re-DanSe로 달려와요 =======> </span>
-        <Link
-          to="/accounts/signup/"
-          className="h-10 border-2 border-purple-500 hover:bg-purple-500"
-        >
-          회원가입
-        </Link>
       </div>
     </div>
   );
