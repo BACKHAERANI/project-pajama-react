@@ -47,8 +47,6 @@ function ClothesList({ itemsPerPage = 9 }) {
   };
 
   const search = (e) => {
-    // e.preventDefault();
-
     if (e.key === 'Enter') {
       fetchClothes(1, query);
     }

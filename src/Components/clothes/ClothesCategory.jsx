@@ -6,14 +6,24 @@ function ClothesCategory({ setCategory }) {
 
   return (
     <div>
-      <button className="mr-5" onClick={handlecategory} name="ALL" value="ALL">
+      <button
+        className="mr-5 hover:text-purple-800 hover:font-bold"
+        onClick={handlecategory}
+        name="ALL"
+        value="ALL"
+      >
         ALL
       </button>
-      <button className="mr-5" onClick={handlecategory} name="TOP" value="TOP">
+      <button
+        className="mr-5 hover:text-purple-400 hover:font-bold"
+        onClick={handlecategory}
+        name="TOP"
+        value="TOP"
+      >
         TOP
       </button>
       <button
-        className="mr-5"
+        className="mr-5 hover:text-purple-400 hover:font-bold"
         onClick={handlecategory}
         name="BLOUSE & SHIRT"
         value="BLOUSE & SHIRT"
@@ -21,7 +31,7 @@ function ClothesCategory({ setCategory }) {
         BLOUSE & SHIRT
       </button>
       <button
-        className="mr-5"
+        className="mr-5 hover:text-purple-400 hover:font-bold"
         onClick={handlecategory}
         name="DRESS"
         value="DRESS"
@@ -29,7 +39,7 @@ function ClothesCategory({ setCategory }) {
         DRESS
       </button>
       <button
-        className="mr-5"
+        className="mr-5 hover:text-purple-400 hover:font-bold"
         onClick={handlecategory}
         name="PANTS"
         value="PANTS"
@@ -37,7 +47,7 @@ function ClothesCategory({ setCategory }) {
         PANTS
       </button>
       <button
-        className="mr-5"
+        className="mr-5 hover:text-purple-400 hover:font-bold"
         onClick={handlecategory}
         name="SKIRT"
         value="SKIRT"
@@ -45,7 +55,7 @@ function ClothesCategory({ setCategory }) {
         SKIRT
       </button>
       <button
-        className="mr-5"
+        className="mr-5 hover:text-purple-400 hover:font-bold"
         onClick={handlecategory}
         name="OUTER"
         value="OUTER"
@@ -53,7 +63,7 @@ function ClothesCategory({ setCategory }) {
         OUTER
       </button>
       <button
-        className="mr-5"
+        className="mr-5 hover:text-purple-400 hover:font-bold"
         onClick={handlecategory}
         name="ACC & CAP"
         value="ACC & CAP"
