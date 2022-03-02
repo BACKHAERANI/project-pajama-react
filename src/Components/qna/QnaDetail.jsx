@@ -103,7 +103,7 @@ function QnaDetail({ qna_num }) {
           </>
         )}
 
-        <div className=" ml-2 pr-1 inline-block align-middle flex justify-end">
+        <div className=" ml-2 pr-1  align-middle flex justify-end">
           <Link
             className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
             type="button"
