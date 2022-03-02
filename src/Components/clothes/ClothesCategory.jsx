@@ -5,7 +5,7 @@ function ClothesCategory({ setCategory }) {
   };
 
   return (
-    <div>
+    <div className="my-5">
       <button
         className="mr-5 hover:text-purple-800 hover:font-bold"
         onClick={handlecategory}
