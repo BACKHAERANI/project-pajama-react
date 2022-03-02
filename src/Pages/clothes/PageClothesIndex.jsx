@@ -10,7 +10,12 @@ function PageClothesIndex() {
     return (
       <div>
         <div className="float-right my-5 mr-10">
-          <button onClick={() => navigate('/clothes/new/')}>빌려줄래요!</button>
+          <button
+            onClick={() => navigate('/clothes/new/')}
+            className="w-28 h-8 ml-2 bg-gray-400 rounded-2xl text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
+          >
+            빌려줄래요!
+          </button>
         </div>
 
         <ClothesList />
@@ -20,7 +25,10 @@ function PageClothesIndex() {
     return (
       <div>
         <div className="float-right my-5 mr-10">
-          <button onClick={() => navigate('/accounts/login/')}>
+          <button
+            onClick={() => navigate('/accounts/login/')}
+            className="w-28 h-8 ml-2 bg-gray-400 rounded-2xl text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
+          >
             빌려줄래요!
           </button>
         </div>
