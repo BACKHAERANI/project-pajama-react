@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useApiAxios } from 'Base/api/base';
 import useFieldValues from 'Base/hooks/useFieldValues';
 import produce from 'immer';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from 'Base/Context/AuthContext';
 import DebugStates from 'DebugStates';
 
@@ -167,6 +167,9 @@ function QnaForm({ qna_num, handleDidSave }) {
               onClick={() => navigate('/qna/new/')}
             >
               저장
+            </button>
+            <button className="w-24 h-8 ml-2 bg-white rounded-sm text-gray-500 border border-gray-300 ">
+              취소
             </button>
           </div>
         </form>
