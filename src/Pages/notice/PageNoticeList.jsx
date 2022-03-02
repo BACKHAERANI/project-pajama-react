@@ -16,12 +16,14 @@ function PageNoticeList() {
       <NoticeList />
 
       {auth.is_superuser && (
-        <button
-          onClick={() => navigate('/notice/new/')}
-          className="mt-4 mb-3 bg-gray-400"
-        >
-          글쓰기
-        </button>
+        <div className="flex justify-end">
+          <button
+            onClick={() => navigate('/notice/new/')}
+            className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600 "
+          >
+            글쓰기
+          </button>
+        </div>
       )}
     </div>
   );
