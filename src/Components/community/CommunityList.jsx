@@ -73,15 +73,25 @@ function CommunityList({ itemsPerPage = 10 }) {
       </div>
       {loading && '로딩 중 ...'}
       {error && '로딩 중 에러가 발생했습니다.'}
-      <div className="flex my-5">
-        <h3 className="flex-none"> 번호</h3>
-        <h3 className="grow ml-40"> 제목</h3>
-        <h3 className="flex-none mr-40">작성자</h3>
-        <h3 className="flex-none mr-5">작성일</h3>
-      </div>
-      {currentItems?.map((community) => (
-        <CommunitySummary community={community} key={community.community_num} />
-      ))}
+      <table className="border-t-2  border-gray-150 w-full text-xs">
+        <thead className="border-b font-semibold border-gray-150">
+          <tr>
+            <td className="p-5 text-justify">번호</td>
+            <td className="p-5 text-center">제목</td>
+            <td className="p-5 text-justify">작성자</td>
+            <td className="p-5 text-right">
+              <div className="mr-6">등록일</div>
+            </td>
+          </tr>
+        </thead>
+        {currentItems?.map((community, index) => (
+          <CommunitySummary
+            community={community}
+            index={index}
+            key={community.community_num}
+          />
+        ))}
+      </table>
 
       <ReactPaginate
         className="pagination"
