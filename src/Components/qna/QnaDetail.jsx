@@ -94,9 +94,16 @@ function QnaDetail({ qna_num }) {
             </button>
           </>
         )}
-        <button className="w-24 h-8 ml-2 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600">
-          <Link to="/qna/">목록</Link>
-        </button>
+
+        <div className=" ml-2 pr-1 inline-block align-middle flex justify-end">
+          <Link
+            className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
+            type="button"
+            to="/qna/"
+          >
+            <h1 className="text-center mt-1.5 text-sm">목록</h1>
+          </Link>
+        </div>
       </div>
     </div>
   );
