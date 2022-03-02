@@ -114,44 +114,62 @@ function QnaForm({ qna_num, handleDidSave }) {
     );
   } else {
     return (
-      <div>
-        <h2>QnA Form {qna_num ? '수정' : '입력'}</h2>
-
-        <form onSubmit={handleSubmit}>
+      <>
+        <form onSubmit={handleSubmit} className=" text-sm">
           <div>
-            title
-            <input
-              type="text"
-              name="title"
-              value={fieldValues.title}
-              onChange={handleFieldChange}
-            />
-          </div>
+            <hr className=" border-t border-gray-400" />
 
-          <div>
-            content
-            <input
-              type="text"
-              name="content"
-              value={fieldValues.content}
-              onChange={handleFieldChange}
-            />
-          </div>
+            <div>
+              <label className="bg-gray-100 font-medium p-5 pr-20 ">제목</label>
+              <input
+                type="text"
+                name="title"
+                value={fieldValues.title}
+                onChange={handleFieldChange}
+                className="my-4 ml-4 mr-0 p-1 w-10/12  border border-gray-200 focus-visible:border-gray-500"
+              />
+            </div>
 
-          <div>
-            <input
-              type="file"
-              name="img"
-              onChange={handleFieldChange}
-              accept=".jpg, .png, .jpeg"
-            />
-          </div>
+            <hr className=" border-t border-gray-100" />
 
-          <div>
-            <button>저장</button>
+            <div>
+              <label className="bg-gray-100 font-medium p-5 pr-20">
+                문의내용
+              </label>
+              <input
+                type="text"
+                name="content"
+                value={fieldValues.content}
+                onChange={handleFieldChange}
+                className=" my-4 ml-4 mr-0 p-1 w-9/12 h-24  border border-gray-200"
+              />
+            </div>
+
+            <div>
+              <label className="bg-gray-100 font-medium p-5 pr-20 ">
+                첨부파일
+              </label>
+
+              <input
+                type="file"
+                name="img"
+                onChange={handleFieldChange}
+                accept=".jpg, .png, .jpeg"
+                className="my-4 ml-4 mr-0 p-1"
+              />
+            </div>
+            <hr className=" border-t border-gray-400" />
+            <div className="p-4 pt-7 pr-1 text-sm text-right inline-block align-middle">
+              <button
+                className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
+                onClick={() => navigate('/qna/new/')}
+              >
+                저장
+              </button>
+            </div>
           </div>
         </form>
-      </div>
+      </>
     );
   }
 }
