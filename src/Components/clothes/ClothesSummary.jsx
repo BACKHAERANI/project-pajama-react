@@ -13,8 +13,11 @@ function ClothesSummary({ clothes }) {
         )}
       </Link>
       <div className="grid">
+        <div className="text-gray-500 text-sm">
+          {clothes.user_id.user_nickname}님의 옷장!
+        </div>
         <Link to={`/clothes/${clothes.clothes_num}/`}>{clothes.title}</Link>
-        <Link to={`/clothes/${clothes.clothes_num}/`}>[{clothes.price}원]</Link>
+        <div>{clothes.price}won</div>
       </div>
     </div>
   );
