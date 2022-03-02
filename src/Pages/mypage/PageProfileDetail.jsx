@@ -7,12 +7,13 @@ function PageProfileDetail() {
   const navigate = useNavigate();
   return (
     <>
-      <div className="flex">
-        <SideNav />
+      <div className="grid grid-cols-5">
         <div>
-          <div className="flex pt-20 pr-100 text-lg">
-            <h1>[ Profile ]</h1>
-          </div>
+          <SideNav />
+        </div>
+
+        <div className="grid col-span-4 auto-rows-max">
+          <h1 className="pt-10 text-xl font-bold">개인정보확인💡</h1>
 
           <div>
             <ProfileDetail user_id={user_id} />
