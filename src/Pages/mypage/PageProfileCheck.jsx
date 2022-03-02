@@ -13,7 +13,7 @@ function PageProfileCheck() {
         </div>
 
         <div className="grid col-span-4 auto-rows-max">
-          <h1 className=" pt-10 pb-5 text-xl font-bold">비밀번호 재입력</h1>
+          <h1 className=" pt-10 pb-5 text-xl font-bold">비밀번호 입력🖊</h1>
 
           <div>
             <ProfileCheck user_id={user_id} />

@@ -67,9 +67,6 @@ function ProfileCheck({ user_id }) {
           <div className="">
             <div className=" bg-white shadow-md border border-gray-200 rounded-lg p-10 ">
               <form className="space-y-6" onSubmit={handleSubmit}>
-                <p className="text-center text-2xl font-medium text-indigo-900 ">
-                  비밀번호 확인
-                </p>
                 <div>
                   <label
                     htmlFor="ID"
