@@ -13,7 +13,10 @@ function PageQnaForm() {
       </div>
 
       <div className="grid col-span-4 auto-rows-max">
-        <h1 className=" pt-10 pb-5 text-xl font-bold">1:1 문의</h1>
+        <h1 className=" pt-8  text-xl font-bold">1:1 문의</h1>
+        <h6 className=" flex justify-end m-1 text-xs text-gray-400">
+          * 비방 및 욕설은 관리자에 의해 삭제될 수 있습니다.
+        </h6>
         <QnaForm
           qna_num={qna_num}
           handleDidSave={(savedQna) => navigate(`/qna/${savedQna.qna_num}/`)}

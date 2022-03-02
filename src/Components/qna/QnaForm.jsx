@@ -116,40 +116,41 @@ function QnaForm({ qna_num, handleDidSave }) {
     return (
       <>
         <form onSubmit={handleSubmit} className=" text-sm">
-          <div>
-            <hr className=" border-t border-gray-400" />
-
-            <div>
-              <label className="bg-gray-100 font-medium p-5 pr-20 ">제목</label>
+          <div className="grid grid-cols-5 grid-rows-5  ">
+            <div className="p-5  bg-gray-200 border-t border-gray-300">
+              <label className=" ml-12  font-medium">제목</label>
+            </div>
+            <div className="col-span-4 border-t border-gray-300">
               <input
                 type="text"
                 name="title"
                 value={fieldValues.title}
                 onChange={handleFieldChange}
-                className="my-4 ml-4 mr-0 p-1 w-10/12  border border-gray-200 focus-visible:border-gray-500"
+                className=" my-4 ml-4 mr-4 p-1 w-11/12  border border-gray-200 focus-visible:border-gray-500"
               />
             </div>
-
-            <hr className=" border-t border-gray-100" />
-
-            <div>
-              <label className="bg-gray-100 font-medium p-5 pr-20">
+            <div className="p-5  row-span-2 bg-gray-200">
+              <label className=" ml-9  align-middle font-medium ">
                 문의내용
               </label>
+            </div>
+            <div className="row-span-2 col-span-4">
               <input
                 type="text"
                 name="content"
                 value={fieldValues.content}
                 onChange={handleFieldChange}
-                className=" my-4 ml-4 mr-0 p-1 w-9/12 h-24  border border-gray-200"
+                className=" my-4 ml-4 mr-0 p-1 w-11/12 h-24  border border-gray-200"
               />
             </div>
 
-            <div>
-              <label className="bg-gray-100 font-medium p-5 pr-20 ">
-                첨부파일
-              </label>
+            {/* <hr className=" border-t border-gray-100" /> */}
 
+            <div className="p-5 bg-gray-200 row-span-2">
+              <label className="ml-9  font-medium ">첨부파일</label>
+            </div>
+
+            <div className="row-span-2 col-span-4">
               <input
                 type="file"
                 name="img"
@@ -158,15 +159,15 @@ function QnaForm({ qna_num, handleDidSave }) {
                 className="my-4 ml-4 mr-0 p-1"
               />
             </div>
-            <hr className=" border-t border-gray-400" />
-            <div className="p-4 pt-7 pr-1 text-sm text-right inline-block align-middle">
-              <button
-                className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
-                onClick={() => navigate('/qna/new/')}
-              >
-                저장
-              </button>
-            </div>
+          </div>
+          <hr className=" border-t border-gray-300 p-1" />
+          <div className=" flex justify-end p-1  text-sm align-middle">
+            <button
+              className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
+              onClick={() => navigate('/qna/new/')}
+            >
+              저장
+            </button>
           </div>
         </form>
       </>
