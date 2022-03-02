@@ -7,19 +7,14 @@ function PageProfileForm() {
 
   return (
     <>
-      <div className="flex">
-        <SideNav />
+      <div className="grid grid-cols-5">
         <div>
-          <div className="flex pt-20 pr-100 text-lg">
-            <h1>[ 개인정보 수정 ]</h1>
-          </div>
-          <div>
-            genre: 팝핀, 브레이킹, 락킹, 왁킹, 힙합, 하우스, 크럼프, 기타
-          </div>
+          <SideNav />
+        </div>
 
-          <div>
-            <ProfileForm />
-          </div>
+        <div className="grid col-span-4 auto-rows-max">
+          <h1 className=" pt-8  text-xl font-bold">개인정보 수정</h1>
+          <ProfileForm />
         </div>
       </div>
     </>
