@@ -1,7 +1,6 @@
 import Rating from 'Pages/review/Rating';
-import { Link } from 'react-router-dom';
 
-function ReviewSummary({ review, score }) {
+function ReviewSummary({ review }) {
   return (
     <div className="grid grid-rows-3 grid-flow-col gap-4">
       <div className="row-span-3">
