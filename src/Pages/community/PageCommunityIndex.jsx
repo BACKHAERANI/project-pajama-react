@@ -12,7 +12,7 @@ function PageCommunityIndex() {
         <h1 className="text-xl mr-40 inline">커뮤니티</h1>
       </div>
       <CommunityList />
-      <div>
+      <div className="flex justify-end">
         <button
           className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600 "
           onClick={() => navigate('/community/new/')}
