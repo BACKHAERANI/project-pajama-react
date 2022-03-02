@@ -62,7 +62,6 @@ function TopNav() {
                 >
                   로그아웃
                 </button>
-                <MyLink to="/qna/">마이페이지</MyLink>
 
                 <MyLink to="/admin/">관리자페이지</MyLink>
               </>

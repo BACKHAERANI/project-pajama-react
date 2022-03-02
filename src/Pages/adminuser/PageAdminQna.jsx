@@ -1,19 +1,16 @@
-import { useNavigate } from 'react-router-dom';
-import 'Base/css/Pagination.css';
-import { useAuth } from 'Base/Context/AuthContext';
-import SideNavAdmin from 'SideNavAdmin';
+import QnaDetail from 'Components/qna/QnaDetail';
 import QnaList from 'Components/qna/QnaList';
+import { useParams } from 'react-router-dom';
+import SideNavAdmin from 'SideNavAdmin';
 
 function PageAdminQna() {
-  const navigate = useNavigate();
-
   return (
-    <div className="flex">
-      <SideNavAdmin />
+    <div className="grid grid-cols-5">
       <div>
-        <div className="flex pt-20 pr-100 text-lg">
-          <h1>[ QnA ]</h1>
-        </div>
+        <SideNavAdmin />
+      </div>
+      <div className="grid col-span-4 auto-rows-max">
+        <h1 className=" pt-10 pb-5 text-xl font-bold">1:1 문의</h1>
         <QnaList />
       </div>
     </div>
