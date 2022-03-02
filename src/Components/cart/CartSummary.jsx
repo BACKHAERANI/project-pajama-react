@@ -1,16 +1,27 @@
 import { Link, useParams } from 'react-router-dom';
 
-function CartSummary({ cart }) {
+function CartSummary({ cart, index }) {
   return (
-    <div className="flex">
-      <Link to={`/clothes/${cart?.clothes_num.clothes_num}/`}>
-        <div>{cart?.clothes_num?.title}</div>
-        <img className="rounded-full w-40" src={cart?.clothes_num?.img1} />
-      </Link>
-      <div>{cart?.clothes_num?.price}원</div>
-      <div>{cart.rental_date}</div>
-      <div>{cart.return_date}</div>
-    </div>
+    <>
+      <div className="col-start-2 m-auto">
+        <Link to={`/clothes/${cart?.clothes_num.clothes_num}/`}>
+          <img
+            className="w-24 h-24 object-cover shrink-0"
+            src={cart?.clothes_num?.img1}
+          />
+        </Link>
+      </div>
+
+      <div className="col-start-3 col-span-2 m-auto">
+        <p>{cart?.clothes_num?.title}</p>
+      </div>
+
+      <div className="col-start-6 m-auto">{cart?.clothes_num?.price}won</div>
+
+      <div className="col-start-7 col-span-2 m-auto">
+        {cart.rental_date}~{cart.return_date}
+      </div>
+    </>
   );
 }
 
