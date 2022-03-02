@@ -24,6 +24,14 @@ function QnaForm({ qna_num, handleDidSave }) {
   const [formData, setFormData] = useState();
   const [answer, setAnswer] = useState();
 
+  const [{ data: qna, loading, error }, refetch] = useApiAxios(
+    { url: `/qna/api/qna/${qna_num}/`, method: 'GET' },
+    { manual: true },
+  );
+  useEffect(() => {
+    refetch();
+  }, []);
+
   const [
     {
       loading: saveLoading,
@@ -88,28 +96,100 @@ function QnaForm({ qna_num, handleDidSave }) {
       navigate(`/qna/${savedQnaPhoto.qna_num}/`);
     });
   };
+  useEffect(() => {
+    refetch();
+  }, []);
 
   if (auth.isLoggedIn && auth.is_superuser) {
     return (
       <div>
-        {DATA_FIELDS.map((dataType, index) => (
-          <div key={index}>
-            <input
-              type="text"
-              name={dataType}
-              onChange={(e) => {
-                setAnswer(e.target.value);
-              }}
-              placeholder={dataType}
-            />
-          </div>
-        ))}
         <div>
-          <button onClick={handleSubmit2}>Modify</button>
+          {qna && (
+            <div>
+              <hr className=" border-t border-gray-300 " />
+              <div className="grid grid-cols-6   border border-gray-300 ">
+                <div className="bg-gray-200">
+                  <label className=" mt-4 flex justify-center ">제목</label>
+                </div>
+                <div className="col-span-3">
+                  <p className=" col-start-3 my-4 ml-4 mr-0 w-10/12">
+                    {qna.title}
+                  </p>
+                </div>
 
-          <button onClick={() => navigate(`/qna/${qna_num}`)}>Cancle</button>
+                <div className="bg-gray-200">
+                  <label className=" mt-4 flex justify-center ">작성일</label>
+                </div>
+                <div>
+                  <p className=" col-start-3 my-4 ml-4 mr-0  w-10/12">
+                    {qna.registration_date.slice(0, 10)}
+                  </p>
+                </div>
+              </div>
+              <div className="border border-t-0 border-gray-300">
+                <div className="col-span-6 pl-8 pt-6">
+                  {qna.content.split(/[\r\n]/).map((line, index) => (
+                    <p key={index}>{line}</p>
+                  ))}
+                </div>
+                <div className="col-span-6 pl-8 py-6 max-h-full max-w-full">
+                  {qna.img && (
+                    <img
+                      className="max-w-3xl max-h-full"
+                      src={qna.img}
+                      alt={qna.title}
+                    />
+                  )}
+                </div>
+                <div className="text-sm bg-gray-200 m-5 ">
+                  <div className=" p-10 pb-5 text-center ">
+                    <p className=" pt-2 rounded-3xl bg-gray-50 w-32 h-8 ">
+                      관리자 답변
+                    </p>
+                  </div>
+
+                  <div className="p-10 pt-0">{qna.answer}</div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
-        <DebugStates fieldValues={fieldValues} />
+        <div className=" grid grid-cols-8 mt-10 p-5 bg-gray-300 text-sm">
+          <div>
+            <p className=" ml-6 mt-2">답변</p>
+          </div>
+          <div className="col-span-7 mt-2">
+            {DATA_FIELDS.map((dataType, index) => (
+              <div key={index}>
+                <textarea
+                  type="textarea"
+                  name={dataType}
+                  onChange={(e) => {
+                    setAnswer(e.target.value);
+                  }}
+                  placeholder={dataType}
+                  className=" w-11/12 h-44 p-3 rounded-sm outline-none "
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="bg-gray-300 pb-7">
+          <div className=" flex justify-end p-1 mr-20 text-sm align-middle">
+            <button
+              className="w-16 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
+              onClick={handleSubmit2}
+            >
+              저장
+            </button>
+            <button
+              className="w-16 h-8 ml-2 bg-white rounded-sm text-gray-500 border border-gray-300 "
+              onClick={() => navigate(`/qna/${qna_num}`)}
+            >
+              취소
+            </button>
+          </div>
+        </div>
       </div>
     );
   } else {
@@ -169,7 +249,7 @@ function QnaForm({ qna_num, handleDidSave }) {
               저장
             </button>
             <button className="w-24 h-8 ml-2 bg-white rounded-sm text-gray-500 border border-gray-300 ">
-              취소
+              <Link to="/qna/">취소</Link>
             </button>
           </div>
         </form>
