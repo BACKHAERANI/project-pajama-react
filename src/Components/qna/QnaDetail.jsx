@@ -71,7 +71,15 @@ function QnaDetail({ qna_num }) {
                 />
               )}
             </div>
-            <div className="bg-gray-200">{qna.answer}</div>
+            <div className="text-sm bg-gray-200 m-5 ">
+              <div className=" p-10 pb-5 text-center ">
+                <p className=" pt-2 rounded-3xl bg-gray-50 w-32 h-8 ">
+                  관리자 답변
+                </p>
+              </div>
+
+              <div className="p-10 pt-0">{qna.answer}</div>
+            </div>
           </div>
         </div>
       )}
