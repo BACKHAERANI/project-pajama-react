@@ -7,12 +7,13 @@ function PageProfileCheck() {
   const navigate = useNavigate();
   return (
     <>
-      <div className="flex">
-        <SideNav />
+      <div className="grid grid-cols-5">
         <div>
-          <div className="flex pt-20 pr-100 text-lg">
-            <h1>[ Password Check ]</h1>
-          </div>
+          <SideNav />
+        </div>
+
+        <div className="grid col-span-4 auto-rows-max">
+          <h1 className=" pt-10 pb-5 text-xl font-bold">비밀번호 입력🖊</h1>
 
           <div>
             <ProfileCheck user_id={user_id} />
