@@ -116,7 +116,7 @@ function NoticeForm({ notice_num }) {
               placeholder="제목을 입력해주세요."
               onChange={handleFieldChange}
               type="text"
-              className="my-4 ml-4 mr-0 p-1 w-11/12  border border-gray-200 focus-visible:border-gray-500"
+              className="outline-none my-4 ml-4 mr-0 p-1 w-11/12  border border-gray-200 focus-visible:border-gray-500"
             />
             {saveErrorMessages.title?.map((message, index) => (
               <p key={index} className="text-xs text-red-400">
@@ -134,7 +134,7 @@ function NoticeForm({ notice_num }) {
               value={fieldValues.content}
               onChange={handleFieldChange}
               placeholder="내용을 입력해주세요."
-              className=" my-4 ml-4 mr-0 p-1 w-11/12 h-60  border border-gray-200"
+              className="outline-none my-4 ml-4 mr-0 p-1 w-11/12 h-60  border border-gray-200"
             />
 
             {saveErrorMessages.content?.map((message, index) => (
