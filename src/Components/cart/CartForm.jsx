@@ -84,6 +84,7 @@ function CartForm({ clothes_num, cart_num, handleDidSave }) {
           value={fieldValues.rental_date}
           onChange={handleFieldChange}
           type="date"
+          className="mb-5 mr-3 border border-gray-200"
         />
         <input
           name="return_date"
@@ -91,10 +92,12 @@ function CartForm({ clothes_num, cart_num, handleDidSave }) {
           value={fieldValues.return_date}
           onChange={handleFieldChange}
           type="date"
+          className="mb-5 border border-gray-200"
         />
-        <div className="my-10 text-center rounded-3xl text-white w-full h-10 bg-violet-700">
-          <button className="mt-2">장바구니</button>
-        </div>
+
+        <button className=" text-center rounded-3xl text-white w-full h-10 bg-violet-700">
+          장바구니
+        </button>
       </form>
     </div>
   );
