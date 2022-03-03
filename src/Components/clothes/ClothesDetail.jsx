@@ -1,12 +1,10 @@
 import { useApiAxios } from 'Base/api/base';
-
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import LoadingIndicator from 'Components/LoadingIndicator';
 import { useAuth } from 'Base/Context/AuthContext';
 import PageCartForm from 'Pages/cart/PageCartForm';
 import ReviewList from 'Components/review/ReviewList';
-import Calendar from 'react-calendar';
 
 function ClothesDetail({ clothes_num }) {
   const navigate = useNavigate();
