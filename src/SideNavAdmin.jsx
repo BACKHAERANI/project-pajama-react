@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function SideNavAdmin() {
   return (
     <div className="flex flex-col pr-20 ">
-      <div className="text-align: text-xl right-1 mt-8 mb-3 ml-5 mr-12 ">
+      <div className="text-align: text-xl font-semibold right-1 mt-8 mb-3">
         관리자페이지
       </div>
       <MyLink to="/admin/">개인회원관리</MyLink>
