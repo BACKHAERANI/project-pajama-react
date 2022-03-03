@@ -7,6 +7,8 @@ import produce from 'immer';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import React, { useState } from 'react';
+
 const INIT_FIELD_VALUES = {
   rental_date: '',
   return_date: '',
@@ -90,10 +92,8 @@ function CartForm({ clothes_num, cart_num, handleDidSave }) {
           onChange={handleFieldChange}
           type="date"
         />
-        <div className="my-3">
-          <button className="border-2 border-purple-400 hover:bg-purple-400">
-            저장하기
-          </button>
+        <div className="my-10 text-center rounded-3xl text-white w-full h-10 bg-violet-700">
+          <button className="mt-2">장바구니</button>
         </div>
       </form>
     </div>

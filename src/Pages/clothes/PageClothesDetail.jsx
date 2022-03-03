@@ -5,7 +5,6 @@ function PageClothesDetail() {
   const { clothes_num } = useParams();
   return (
     <div>
-      <h2>PageClothesDetail</h2>
       <ClothesDetail clothes_num={clothes_num} />
     </div>
   );
