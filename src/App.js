@@ -172,11 +172,17 @@ function App() {
             element={<PageClothesDetail />}
           />
 
+          <Route path="/community/" element={<PageCommunityIndex />} />
+
+          <Route path="/notice/" element={<PageNoticeList />} />
+          <Route path="/notice/:notice_num/" element={<PageNoticeDetail />} />
+
           <Route path="/review/" element={<PageReviewIndex />} />
         </Routes>
-
-        <hr className="mt-5" />
-        <h6 className="text-xs mt-4 mb-7 text-gray-500">@PaJaMa compamy.</h6>
+        <div className=" ">
+          <hr className="mt-5 " />
+          <h6 className="text-xs mt-4 mb-7 text-gray-500">@PaJaMa compamy.</h6>
+        </div>
       </div>
     );
   }
