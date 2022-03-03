@@ -31,6 +31,7 @@ import PageUserDropOut from 'Pages/adminuser/PageUserDropOut';
 import PageUserDetail from 'Pages/adminuser/PageUserDetail';
 import PagerentalList from 'Pages/mypage/PagerentalList';
 import PageRentalreview from 'Pages/mypage/PageRentalreview';
+import PageAdminUserDetail from 'Pages/adminuser/PageAdminUserDetail';
 
 function App() {
   const [auth, _, login] = useAuth();
@@ -46,6 +47,7 @@ function App() {
           <Route path="/admin/" element={<PageUserIndex />} />
           <Route path="/admin/dropout/" element={<PageUserDropOut />} />
           <Route path="/admin/edit/:user_id/" element={<PageUserDetail />} />
+          <Route path="/admin/:user_id/" element={<PageAdminUserDetail />} />
           <Route path="/admin/qna/" element={<PageAdminQna />} />
           <Route path="/clothes/" element={<PageClothesIndex />} />
           <Route
@@ -87,10 +89,6 @@ function App() {
             path="/review/:payment_detail_num/new/"
             element={<PageReviewForm />}
           />
-          {/* <Route
-            path="/review/:review_num/edit/"
-            element={<PageReviewForm />}
-          /> */}
         </Routes>
 
         <hr className="mt-5" />
