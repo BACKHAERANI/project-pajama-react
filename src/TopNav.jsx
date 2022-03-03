@@ -12,13 +12,7 @@ function TopNav() {
 
   return (
     <div className="my-3">
-      <div className="flex justify-between justify-items-stretch">
-        <div>
-          <NavLink to="/">
-            <img src={logo} alt="logo-img" />
-          </NavLink>
-        </div>
-
+      <div className="">
         <div>
           <div className="flex justify-end mt-2 md:flex-row md:mt-0 md:mx-1">
             {!auth.isLoggedIn && (
@@ -69,24 +63,32 @@ function TopNav() {
             )}
           </div>
         </div>
+        <div className="flex justify-center">
+          <NavLink to="/">
+            <img className="w-32" src={logo} alt="logo-img" />
+          </NavLink>
+        </div>
       </div>
 
-      <div className="flex">
-        <div className="text-align: right-1 mt-8 mb-3 mr-12 ">
-          <Link to="/clothes/" className="text-gray-800">
+      <div className="flex mt-10 mb-3">
+        <div className="text-align: right-1 mr-20 ">
+          <Link to="/clothes/" className="font-bold text-gray-800">
             Clothes
           </Link>
         </div>
-        <div className="text-align: right-1 mt-8 mb-3 mr-12 ">
-          <Link to="/community/" className="text-gray-800">
+        <div className="text-align: right-1  mr-20 ">
+          <Link to="/community/" className="font-bold text-gray-800">
             Community
           </Link>
         </div>
-        <div className="text-align: right-1 mt-8 mb-3 mr-12 ">
-          <Link to="/notice/" className="text-gray-800">
+        <div className="text-align: right-1 mr-20 ">
+          <Link to="/notice/" className="font-bold text-gray-800">
             Notice
           </Link>
         </div>
+      </div>
+      <div className="mb-10 borter-t border-gray-100">
+        <hr />
       </div>
     </div>
   );
