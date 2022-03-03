@@ -53,17 +53,31 @@ function Rentalreview({ score }) {
         ?.filter((List) => List.payment_num.user_id.user_id === auth.user_id)
         .map((review) => {
           return (
-            <div key={review.payment_detail_num}>
-              <div>{review.title}</div>
-              <div>{review.content}</div>
-              <div>{review.score}</div>
-              <Rating score={review.score} />
-              <img className="h-20 w-20" src={review.clothes_num.img1} />
-              <div>{review.clothes_num.title}</div>
-              <div className="ml-10">{review.clothes_num.price}원</div>
-              <button onClick={handleDelete} value={review.payment_detail_num}>
-                삭제
-              </button>
+            <div className="grid col-span-4 auto-rows-max">
+              <h1 className=" pt-8  text-xl font-bold">대여후기</h1>
+              <div
+                className="grid grid-cols-5 grid-rows-5 border-t"
+                key={review.payment_detail_num}
+              >
+                <div className="row-span-1 col-span-1">{review.title}</div>
+                <div className="row-span-1 col-span-1">{review.content}</div>
+                <div className="row-span-1 col-span-1">{review.score}</div>
+                <Rating score={review.score} />
+                <img className="h-20 w-20" src={review.clothes_num.img1} />
+                <div className="row-span-1 col-span-1">
+                  {review.clothes_num.title}
+                </div>
+                <div className="row-span-1 col-span-1">
+                  {review.clothes_num.price}원
+                </div>
+                <button
+                  className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
+                  onClick={handleDelete}
+                  value={review.payment_detail_num}
+                >
+                  삭제
+                </button>
+              </div>
             </div>
           );
         })}
