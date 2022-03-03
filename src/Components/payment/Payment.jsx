@@ -150,7 +150,7 @@ function Payment() {
           })}
           <hr />
 
-          <div>
+          {/* <div>
             <span>----대여회원정보----</span>
 
             {filterstate.map((check) => {
@@ -163,70 +163,67 @@ function Payment() {
                 </div>
               );
             })}
-          </div>
-        </div>
+          </div> */}
 
-        <hr />
-        <form onSubmit={handleSave}>
-          <div>
+          <form onSubmit={handleSave}>
             <div>
-              <select name="return_method">
-                <option>반납방법을 선택해주세요!</option>
-                <option>직접반납</option>
-                <option>택배반납(+2500원 추가)</option>
-              </select>
+              <div>
+                <select name="return_method">
+                  <option>반납방법을 선택해주세요!</option>
+                  <option>직접반납</option>
+                  <option>택배반납(+2500원 추가)</option>
+                </select>
+              </div>
+              <div>
+                <select
+                  name="payment_method"
+                  onChange={handleFieldChange}
+                  value={fieldValues.payment_method}
+                >
+                  <option value="selected">결제방법을 선택해주세요!</option>
+                  <option value="카드">카드</option>
+                  <option value="현금">만나서 현금결제</option>
+                </select>
+              </div>
             </div>
+
             <div>
-              <select
-                name="payment_method"
-                onChange={handleFieldChange}
-                value={fieldValues.payment_method}
+              <h2 className="text-lg">총 결제정보</h2>
+              <div>
+                <span>대여의상 수:</span>
+                <input
+                  className="outline-none"
+                  name="total_amount"
+                  onChange={handleFieldChange}
+                  value={amount}
+                />
+              </div>
+
+              <div>
+                <span>총결제금액:</span>
+                <input
+                  className="outline-none"
+                  name="total_price"
+                  onChange={handleFieldChange}
+                  value={totalPrice}
+                />
+              </div>
+            </div>
+
+            <button className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600">
+              결제
+            </button>
+            <div className=" mt-2 text-sm text-right inline-block align-middle">
+              <Link
+                className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
+                type="button"
+                to={'/cart/'}
               >
-                <option value="selected">결제방법을 선택해주세요!</option>
-                <option value="카드">카드</option>
-                <option value="현금">만나서 현금결제</option>
-              </select>
+                <h1 className="text-center mt-1.5 text-sm">취소</h1>
+              </Link>
             </div>
-          </div>
-          <hr />
-          <div>
-            <h2 className="text-lg">----총결제정보----</h2>
-            <div>
-              <span>대여의상 수:</span>
-              <input
-                className="outline-none"
-                name="total_amount"
-                onChange={handleFieldChange}
-                value={amount}
-              />
-            </div>
-
-            <div>
-              <span>총결제금액:</span>
-              <input
-                className="outline-none"
-                name="total_price"
-                onChange={handleFieldChange}
-                value={totalPrice}
-              />
-            </div>
-          </div>
-
-          <hr className="border-t border-gray-400" />
-
-          <button className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600">
-            결제
-          </button>
-          <div className=" mt-2 text-sm text-right inline-block align-middle">
-            <Link
-              className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
-              type="button"
-              to={'/cart/'}
-            >
-              <h1 className="text-center mt-1.5 text-sm">취소</h1>
-            </Link>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );
