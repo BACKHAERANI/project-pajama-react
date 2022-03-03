@@ -45,7 +45,7 @@ function ReviewList({ itemsPerPage = 10, clothes_num }) {
 
   return (
     <div>
-      <div className="flex flex-row">
+      <div className="">
         {currentItems?.map((review) => (
           <ReviewSummary review={review} key={review.payment_detail_num} />
         ))}
