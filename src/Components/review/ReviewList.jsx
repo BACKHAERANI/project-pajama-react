@@ -45,12 +45,13 @@ function ReviewList({ itemsPerPage = 10, clothes_num }) {
 
   return (
     <div>
+      <hr className="border-t-2 border-gray-300" />
       <div className="">
         {currentItems?.map((review) => (
           <ReviewSummary review={review} key={review.payment_detail_num} />
         ))}
       </div>
-      <ReactPaginate
+      {/* <ReactPaginate
         className="pagination"
         breakLabel="..."
         previousLabel="<"
@@ -59,7 +60,7 @@ function ReviewList({ itemsPerPage = 10, clothes_num }) {
         pageRangeDisplayed={itemsPerPage}
         onPageChange={handlePageClick}
         renderOnZeroPageCount={null}
-      />
+      /> */}
     </div>
   );
 }

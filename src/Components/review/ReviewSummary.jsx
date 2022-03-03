@@ -2,7 +2,7 @@ import Rating from 'Pages/review/Rating';
 
 function ReviewSummary({ review }) {
   return (
-    <div className="">
+    <div className="my-3">
       {review.img1 && (
         <img
           src={review.img1}
@@ -11,11 +11,11 @@ function ReviewSummary({ review }) {
         />
       )}
 
-      <div className="">{review.user_nickname}</div>
-
+      <div className="">{review.nickname}</div>
+      <Rating score={review.score} />
       <div>{review.title}</div>
       <div>{review.content}</div>
-      <Rating score={review.score} />
+      <hr className="mt-3" />
     </div>
   );
 }

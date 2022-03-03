@@ -123,8 +123,6 @@ function ClothesDetail({ clothes_num }) {
 
       <ReviewList clothes_num={clothes_num} />
 
-      <hr className="my-3" />
-
       <div className="flex flex-row-reverse gap-4 mt-3 mb-10">
         <Link
           to="/clothes/"
@@ -136,9 +134,9 @@ function ClothesDetail({ clothes_num }) {
           <>
             <Link
               to={`/clothes/${clothes_num}/edit/`}
-              className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
+              className="text-center  w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
             >
-              <button>수정</button>
+              <button className="mt-1">수정</button>
             </Link>
             <button
               disabled={deleteLoading}
