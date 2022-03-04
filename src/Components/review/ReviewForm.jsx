@@ -133,7 +133,7 @@ function ReviewForm({ payment_detail_num, handleDidSave }) {
           <div className="row-span-1 col-span-4">
             <input
               type="file"
-              name="img"
+              name="img1"
               onChange={handleFieldChange}
               accept=".jpg, .png, .jpeg"
               className="my-4 ml-4 mr-0 p-1"
@@ -152,7 +152,7 @@ function ReviewForm({ payment_detail_num, handleDidSave }) {
           <div className="row-span-1 col-span-4">
             <input
               type="file"
-              name="img"
+              name="img2"
               onChange={handleFieldChange}
               accept=".jpg, .png, .jpeg"
               className="my-4 ml-4 mr-0 p-1"
@@ -171,7 +171,7 @@ function ReviewForm({ payment_detail_num, handleDidSave }) {
           <div className="row-span-1 col-span-4">
             <input
               type="file"
-              name="img"
+              name="img3"
               onChange={handleFieldChange}
               accept=".jpg, .png, .jpeg"
               className="my-4 ml-4 mr-0 p-1"
@@ -190,7 +190,7 @@ function ReviewForm({ payment_detail_num, handleDidSave }) {
           <div className="row-span-1 col-span-4">
             <input
               type="file"
-              name="img"
+              name="img4"
               onChange={handleFieldChange}
               accept=".jpg, .png, .jpeg"
               className="my-4 ml-4 mr-0 p-1"
@@ -209,7 +209,7 @@ function ReviewForm({ payment_detail_num, handleDidSave }) {
           <div className="row-span-1 col-span-4">
             <input
               type="file"
-              name="img"
+              name="img5"
               onChange={handleFieldChange}
               accept=".jpg, .png, .jpeg"
               className="my-4 ml-4 mr-0 p-1"
