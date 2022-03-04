@@ -149,82 +149,71 @@ function Payment() {
             );
           })}
           <hr />
+        </div>
+      </div>
+      <div className="grid grid-cols-8 m-10 mb-0  ">
+        <hr className="col-start-2 col-span-7 pt-5 border-t-2 border-gray-400" />
+        <div className="col-start-3 col-span-3 m-auto">반납방법</div>
+        <div className="col-start-6 mr-2 m-auto">결제방법</div>
+      </div>
 
-          {/* <div>
-            <span>----대여회원정보----</span>
+      <form onSubmit={handleSave}>
+        <div className="grid grid-cols-8 m-10 mt-2">
+          <div className=""></div>
+          <div className="col-span-7">
+            <select
+              className="col-start-3 col-span-2 ml-60 outline-none"
+              name="return_method"
+            >
+              <option>반납방법을 선택해주세요!</option>
+              <option>직접반납</option>
+              <option>택배반납</option>
+            </select>
 
-            {filterstate.map((check) => {
-              return (
-                <div key={check.cart_num}>
-                  <span>회원이름:</span>
-                  <div>{check.user_id?.username}</div>
-                  <span>회원전화번호:</span>
-                  <div>{check.user_id?.user_tel}</div>
-                </div>
-              );
-            })}
-          </div> */}
+            <select
+              className="col-start-6 col-span-2 ml-20 outline-none"
+              name="payment_method"
+              onChange={handleFieldChange}
+              value={fieldValues.payment_method}
+            >
+              <option value="selected">결제방법을 선택해주세요!</option>
+              <option value="카드">카드</option>
+              <option value="현금">만나서 현금결제</option>
+            </select>
+          </div>
+        </div>
 
-          <form onSubmit={handleSave}>
+        <div>
+          <h2 className="text-lg">총 결제정보</h2>
+          <div>
+            대여의상 수:
+            <div>{amount}</div>
+          </div>
+
+          <div>
             <div>
-              <div>
-                <select name="return_method">
-                  <option>반납방법을 선택해주세요!</option>
-                  <option>직접반납</option>
-                  <option>택배반납(+2500원 추가)</option>
-                </select>
-              </div>
-              <div>
-                <select
-                  name="payment_method"
-                  onChange={handleFieldChange}
-                  value={fieldValues.payment_method}
-                >
-                  <option value="selected">결제방법을 선택해주세요!</option>
-                  <option value="카드">카드</option>
-                  <option value="현금">만나서 현금결제</option>
-                </select>
-              </div>
+              결제금액:
+              <div>{totalPrice}</div>
             </div>
-
-            <div>
-              <h2 className="text-lg">총 결제정보</h2>
-              <div>
-                <span>대여의상 수:</span>
-                <input
-                  className="outline-none"
-                  name="total_amount"
-                  onChange={handleFieldChange}
-                  value={amount}
-                />
-              </div>
-
-              <div>
-                <span>총결제금액:</span>
-                <input
-                  className="outline-none"
-                  name="total_price"
-                  onChange={handleFieldChange}
-                  value={totalPrice}
-                />
-              </div>
-            </div>
-
+          </div>
+        </div>
+        <div>
+          <div>
             <button className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600">
               결제
             </button>
-            <div className=" mt-2 text-sm text-right inline-block align-middle">
-              <Link
-                className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
-                type="button"
-                to={'/cart/'}
-              >
-                <h1 className="text-center mt-1.5 text-sm">취소</h1>
-              </Link>
-            </div>
-          </form>
+          </div>
+          <div className=" mt-2 text-sm text-right inline-block align-middle">
+            <Link
+              className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
+              type="button"
+              to={'/cart/'}
+            >
+              <h1 className="text-center mt-1.5 text-sm">취소</h1>
+            </Link>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
