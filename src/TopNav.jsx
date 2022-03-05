@@ -87,8 +87,8 @@ function TopNav() {
           </Link>
         </div>
       </div>
-      <div className="mb-10 borter-t border-gray-100">
-        <hr />
+      <div>
+        <hr className="mb-10 borter-t border-gray-100" />
       </div>
     </div>
   );
