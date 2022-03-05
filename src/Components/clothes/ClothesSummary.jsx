@@ -19,7 +19,7 @@ function ClothesSummary({ clothes }) {
             <img
               src={noneimg}
               alt="noneimg"
-              className="w-80 h-96 object-cover shrink-0 rounded inline"
+              className="w-80 h-96 object-cover shrink-0 rounded inline "
             />
           )}
         </Link>
