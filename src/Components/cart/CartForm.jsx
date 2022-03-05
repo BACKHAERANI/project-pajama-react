@@ -65,7 +65,7 @@ function CartForm({ clothes_num, cart_num, handleDidSave }) {
 
     saveRequest({
       data: formData,
-    }).then((response) => {
+    }).then(() => {
       if (window.confirm('장바구니로 이동하시겠습니까?')) {
         navigate('/cart/');
       }
@@ -77,28 +77,30 @@ function CartForm({ clothes_num, cart_num, handleDidSave }) {
       {saveLoading && <LoadingIndicator>저장하고 있어요.</LoadingIndicator>}
       {saveError &&
         `저장 중 에러가 발생했습니다.(${saveError.response.status} ${saveError.response.statusText})`}
-      <form onSubmit={handleSubmit}>
-        <input
-          name="rental_date"
-          placeholder="대여 시작일을 입력해주세요."
-          value={fieldValues.rental_date}
-          onChange={handleFieldChange}
-          type="date"
-          className="mb-5 mr-3 border border-gray-200"
-        />
-        <input
-          name="return_date"
-          placeholder="반납일을 입력해주세요."
-          value={fieldValues.return_date}
-          onChange={handleFieldChange}
-          type="date"
-          className="mb-5 border border-gray-200"
-        />
+      {!auth.is_superuser && (
+        <form onSubmit={handleSubmit}>
+          <input
+            name="rental_date"
+            placeholder="대여 시작일을 입력해주세요."
+            value={fieldValues.rental_date}
+            onChange={handleFieldChange}
+            type="date"
+            className="mb-5 mr-3 border border-gray-200"
+          />
+          <input
+            name="return_date"
+            placeholder="반납일을 입력해주세요."
+            value={fieldValues.return_date}
+            onChange={handleFieldChange}
+            type="date"
+            className="mb-5 border border-gray-200"
+          />
 
-        <button className=" text-center rounded-3xl text-white w-full h-10 bg-violet-700">
-          장바구니
-        </button>
-      </form>
+          <button className=" text-center rounded-3xl text-white w-full h-10 bg-violet-700">
+            장바구니
+          </button>
+        </form>
+      )}
     </div>
   );
 }
