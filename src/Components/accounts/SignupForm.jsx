@@ -50,7 +50,7 @@ function SignForm() {
     <div className="mt-16 flex justify-center">
       <div className="w-2/5">
         {error &&
-          `가입에 실패했습니다.' (${error.response?.status} ${error.response?.statusText})`}
+          `가입에 실패했습니다. 다시 입력해주세요. (${error.response?.status} ${error.response?.statusText})`}
 
         <div className="">
           <div className=" bg-white shadow-md border border-gray-200 rounded-lg p-10 ">
