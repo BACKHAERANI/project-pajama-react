@@ -9,7 +9,7 @@ function NoticeSummary({ notice, index }) {
           <td>
             <Link to={`/notice/${notice.notice_num}/`}>{notice.title}</Link>
           </td>
-          <td className="ml-20">{notice?.user_id?.user_nickname}</td>
+          <td className="pl-5">{notice?.user_id?.user_nickname}</td>
           <td className="text-right pr-5">
             {notice.registration_date.slice(0, 10)}
           </td>

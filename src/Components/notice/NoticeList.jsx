@@ -86,7 +86,7 @@ function NoticeList({ itemsPerPage = 10 }) {
           <tr>
             <td className="p-5 text-justify">번호</td>
             <td className="p-5 text-center">제목</td>
-            <td className="p-5 text-justify">작성자</td>
+            <td className="p-5 ">작성자</td>
             <td className="p-5 text-right">
               <div className="mr-6">등록일</div>
             </td>
