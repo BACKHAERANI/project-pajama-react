@@ -32,11 +32,8 @@ import PageUserDetail from 'Pages/adminuser/PageUserDetail';
 import PagerentalList from 'Pages/mypage/PagerentalList';
 import PageRentalreview from 'Pages/mypage/PageRentalreview';
 import PageAdminUserDetail from 'Pages/adminuser/PageAdminUserDetail';
-<<<<<<< HEAD
-import Footer from 'Footer';
-=======
+
 import NotFound from 'Base/css/NotFound';
->>>>>>> d70e96771c735b176007e5184dad21525639bef5
 
 function App() {
   const [auth, _, login] = useAuth();
@@ -96,7 +93,6 @@ function App() {
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Footer />
       </div>
     );
   } else if (auth.isLoggedIn && !auth.is_superuser) {
@@ -157,8 +153,6 @@ function App() {
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
-
-        <Footer />
       </div>
     );
   } else {
@@ -184,7 +178,6 @@ function App() {
           <Route path="/review/" element={<PageReviewIndex />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Footer />
       </div>
     );
   }
