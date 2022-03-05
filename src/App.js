@@ -34,6 +34,7 @@ import PageRentalreview from 'Pages/mypage/PageRentalreview';
 import PageAdminUserDetail from 'Pages/adminuser/PageAdminUserDetail';
 
 import NotFound from 'Base/css/NotFound';
+import Footer from 'Footer';
 
 function App() {
   const [auth, _, login] = useAuth();
@@ -93,6 +94,7 @@ function App() {
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Footer />
       </div>
     );
   } else if (auth.isLoggedIn && !auth.is_superuser) {
@@ -153,6 +155,7 @@ function App() {
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Footer />
       </div>
     );
   } else {
@@ -178,6 +181,7 @@ function App() {
           <Route path="/review/" element={<PageReviewIndex />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Footer />
       </div>
     );
   }
