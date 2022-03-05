@@ -1,6 +1,6 @@
 import { useAuth } from 'Base/Context/AuthContext';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
-import logo from 'Base/css/logo.png';
+import logo250 from 'Base/css/logo250.png';
 
 function TopNav() {
   const navigate = useNavigate();
@@ -65,7 +65,7 @@ function TopNav() {
         </div>
         <div className="flex justify-center">
           <NavLink to="/">
-            <img className="w-32" src={logo} alt="logo-img" />
+            <img className="w-32" src={logo250} alt="logo-img" />
           </NavLink>
         </div>
       </div>
