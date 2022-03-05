@@ -18,8 +18,8 @@ function PaymentDetail({ payment_num }) {
   }, []);
 
   return (
-    <div className="grid grid-cols-5 grid-rows-5">
-      <div className="ml-24 mt-16 pb- col-span-2  bg-violet-50 bg-opacity-50">
+    <div className="grid grid-cols-5 ">
+      <div className="ml-24 mt-16 col-span-2  bg-violet-50 bg-opacity-50">
         <div className="m-4 pb-10 border-y-4 border-dotted border-violet-300 ">
           <div className="m-4 pt-4 ">
             <h2 className=" mt-7 text-indigo-900 text-2xl text-center">
@@ -50,7 +50,7 @@ function PaymentDetail({ payment_num }) {
           </div>
         </div>
       </div>
-      <div className="col-start-3 col-span-3 row-span-5">
+      <div className="col-start-3 col-span-3">
         <img className="w-5/6" src={payment_detail} alt="예약 완료" />
       </div>
     </div>
