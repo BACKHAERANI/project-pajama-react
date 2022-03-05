@@ -43,7 +43,7 @@ function Rentalreview({ payment_detail_num }) {
 
   return (
     <>
-      <div className="grid grid-cols-8 mt-8 font-semibold">
+      <div className="grid grid-cols-8 mt-8 font-semibold ">
         <div className="col-span-8">
           <h1 className="text-xl font-bold m-auto">대여후기</h1>
         </div>

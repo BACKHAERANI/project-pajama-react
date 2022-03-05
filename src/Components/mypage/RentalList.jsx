@@ -39,10 +39,10 @@ function RentalList() {
           <h1 className="text-xl font-bold m-auto">대여내역</h1>
         </div>
         <hr className="mt-4 col-span-8 pt-5 border-t-2 border-gray-400" />
-        <div className="col-start-1 m-auto">번호</div>
-        <div className="col-start-2 m-auto">상품정보</div>
-        <div className="col-start-6 m-auto">가격</div>
-        <div className="col-start-7 col-span-2 m-auto">리뷰</div>
+        <div className="col-start-1 font-semibold m-auto">번호</div>
+        <div className="col-start-2 font-semibold m-auto">상품정보</div>
+        <div className="col-start-6 font-semibold m-auto">가격</div>
+        <div className="col-start-7 font-semibold col-span-2 m-auto">리뷰</div>
       </div>
 
       <div className="grid grid-cols-8">
