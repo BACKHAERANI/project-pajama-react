@@ -2,13 +2,11 @@ import { useApiAxios } from 'Base/api/base';
 import { useAuth } from 'Base/Context/AuthContext';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ReactPaginate from 'react-paginate';
 
 function RentalList() {
   const navigate = useNavigate();
   const [auth] = useAuth();
   const [currentItems, setCurrentItems] = useState(null);
-  const [pageCount, setPageCount] = useState();
   const [query, setQuery] = useState();
   const [reload, setReload] = useState(false);
   const [{ data: payment_detail, loading, error }, refetch] = useApiAxios(
@@ -74,7 +72,7 @@ function RentalList() {
                       <div className="col-start-6 m-auto">
                         {check.clothes_num.price}원
                       </div>
-                      {check.review.length === 0 && (
+                      {check.review?.length === 0 && (
                         <div className="col-start-7 col-span-2 m-auto">
                           <button
                             className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"

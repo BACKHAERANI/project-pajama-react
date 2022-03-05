@@ -32,6 +32,11 @@ import PageUserDetail from 'Pages/adminuser/PageUserDetail';
 import PagerentalList from 'Pages/mypage/PagerentalList';
 import PageRentalreview from 'Pages/mypage/PageRentalreview';
 import PageAdminUserDetail from 'Pages/adminuser/PageAdminUserDetail';
+<<<<<<< HEAD
+import Footer from 'Footer';
+=======
+import NotFound from 'Base/css/NotFound';
+>>>>>>> d70e96771c735b176007e5184dad21525639bef5
 
 function App() {
   const [auth, _, login] = useAuth();
@@ -89,10 +94,9 @@ function App() {
             path="/review/:payment_detail_num/new/"
             element={<PageReviewForm />}
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
-
-        <hr className="mt-5" />
-        <h6 className="text-xs mt-4 mb-7 text-gray-500">@PaJaMa compamy.</h6>
+        <Footer />
       </div>
     );
   } else if (auth.isLoggedIn && !auth.is_superuser) {
@@ -151,10 +155,10 @@ function App() {
             path="/review/:payment_detail_num/new/"
             element={<PageReviewForm />}
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
-        <hr className="mt-5" />
-        <h6 className="text-xs mt-4 mb-7 text-gray-500">@PaJaMa compamy.</h6>
+        <Footer />
       </div>
     );
   } else {
@@ -178,14 +182,11 @@ function App() {
           <Route path="/notice/:notice_num/" element={<PageNoticeDetail />} />
 
           <Route path="/review/" element={<PageReviewIndex />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
-        <div className=" ">
-          <hr className="mt-5 " />
-          <h6 className="text-xs mt-4 mb-7 text-gray-500">@PaJaMa compamy.</h6>
-        </div>
+        <Footer />
       </div>
     );
   }
 }
-
 export default App;

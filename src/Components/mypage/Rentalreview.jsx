@@ -3,22 +3,18 @@ import { useAuth } from 'Base/Context/AuthContext';
 import Rating from 'Pages/review/Rating';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import SideNav from 'SideNav';
 
-function Rentalreview({ score }) {
-  const Navigate = useNavigate();
+function Rentalreview({ payment_detail_num }) {
   const [auth] = useAuth();
-  const [currentItems, setCurrentItems] = useState(null);
   const [reload, setReload] = useState(false);
-  const [{ data, loading, error }, getReview] = useApiAxios(
-    { url: '/review/api/review_detail/', method: 'GET' },
+
+  const [{ data: ReviewList, loading, error }, getReview] = useApiAxios(
+    { url: '/review/api/review_detail/?all', method: 'GET' },
     { manual: true },
   );
 
   useEffect(() => {
-    getReview().then((response) => {
-      setCurrentItems(response?.data.results);
-    });
+    getReview();
   }, [reload]);
 
   //리뷰 삭제
@@ -26,7 +22,7 @@ function Rentalreview({ score }) {
   const [{ loading: deleteLoading, error: deleteError }, deletereview] =
     useApiAxios(
       {
-        url: `/review/api/review_detail/${data?.results?.payment_detail_num}`,
+        url: `/review/api/review_detail/${payment_detail_num}/`,
         method: 'DELETE',
       },
       { manual: true },
@@ -37,7 +33,7 @@ function Rentalreview({ score }) {
 
     if (window.confirm('삭제하시겠습니까?')) {
       deletereview({
-        url: `/review/api/review_detail/${payment_detail_num}`,
+        url: `/review/api/review_detail/${payment_detail_num}/`,
         method: 'DELETE',
       }).then(() => {
         setReload((prevState) => !prevState);
@@ -62,44 +58,39 @@ function Rentalreview({ score }) {
         <div className=""></div>
 
         <div className="col-span-8">
-          {currentItems
-            ?.filter(
-              (List) => List.payment_num.user_id.user_id === auth.user_id,
-            )
-            .map((review, index) => {
-              return (
-                <div className="grid grid-cols-8 my-3 pt-3 border-t border-gray-400">
-                  <div className="m-auto">{index + 1}</div>
-                  <>
-                    <Rating
-                      className="col-start-2 m-auto"
-                      score={review.score}
-                    />
+          {ReviewList?.filter(
+            (List) => List.payment_num.user_id.user_id === auth.user_id,
+          ).map((review, index) => {
+            return (
+              <div className="grid grid-cols-8 my-3 pt-3 border-t border-gray-400">
+                <div className="m-auto">{index + 1}</div>
+                <>
+                  <Rating className="col-start-2 m-auto" score={review.score} />
 
-                    <div className="col-start-3 col-span-2 ">
-                      <img
-                        className="w-24 h-24 object-cover shrink-0"
-                        src={review.clothes_num.img1}
-                      />
-                      {review.clothes_num.title}
-                    </div>
-                    <div className="col-start-5 ">
-                      <p className="font-bold">{review.title}</p>
-                      <p>{review.content}</p>
-                    </div>
-                    <div className="col-start-8">
-                      <button
-                        className="mt-10 w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
-                        onClick={handleDelete}
-                        value={review.payment_detail_num}
-                      >
-                        삭제
-                      </button>
-                    </div>
-                  </>
-                </div>
-              );
-            })}
+                  <div className="col-start-3 col-span-2 ">
+                    <img
+                      className="w-24 h-24 object-cover shrink-0"
+                      src={review.clothes_num.img1}
+                    />
+                    {review.clothes_num.title}
+                  </div>
+                  <div className="col-start-5 ">
+                    <p className="font-bold">{review.title}</p>
+                    <p>{review.content}</p>
+                  </div>
+                  <div className="col-start-8">
+                    <button
+                      className="mt-10 w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
+                      onClick={handleDelete}
+                      value={review.payment_detail_num}
+                    >
+                      삭제
+                    </button>
+                  </div>
+                </>
+              </div>
+            );
+          })}
         </div>
       </div>
     </>
