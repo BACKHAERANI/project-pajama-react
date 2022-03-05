@@ -1,10 +1,7 @@
 import { useApiAxios } from '../../Base/api/base';
-import { useAuth } from '../../Base/Context/AuthContext';
 import { useEffect, useState } from 'react';
-import ReactPaginate from 'react-paginate';
 import '../../Base/css/Pagination.css';
 import ReviewSummary from './ReviewSummary';
-import ReviewDetail from './ReviewDetail';
 
 function ReviewList({ itemsPerPage = 10, clothes_num }) {
   const [query, setQuery] = useState();
@@ -39,10 +36,6 @@ function ReviewList({ itemsPerPage = 10, clothes_num }) {
       });
   }, [reload]);
 
-  const handlePageClick = (event) => {
-    setPage(event.selected);
-  };
-
   return (
     <div>
       <hr className="border-t-2 border-gray-300" />
@@ -51,16 +44,6 @@ function ReviewList({ itemsPerPage = 10, clothes_num }) {
           <ReviewSummary review={review} key={review.payment_detail_num} />
         ))}
       </div>
-      {/* <ReactPaginate
-        className="pagination"
-        breakLabel="..."
-        previousLabel="<"
-        nextLabel=">"
-        pageCount={pageCount}
-        pageRangeDisplayed={itemsPerPage}
-        onPageChange={handlePageClick}
-        renderOnZeroPageCount={null}
-      /> */}
     </div>
   );
 }
