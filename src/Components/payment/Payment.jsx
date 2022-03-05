@@ -107,8 +107,10 @@ function Payment() {
   return (
     <div>
       {saveLoading && <LoadingIndicator>저장하고 있어요.</LoadingIndicator>}
-      {saveError &&
-        `저장 중 에러가 발생했습니다.(${saveError.response.status} ${saveError.response.statusText})`}
+      <div className="text-indigo-800">
+        {saveError &&
+          `결제정보를 확인해주세요. (${saveError.response.status} ${saveError.response.statusText})`}
+      </div>
 
       <h1 className="text-xl font-bold m-auto">결제💰</h1>
 
