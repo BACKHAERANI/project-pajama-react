@@ -32,6 +32,7 @@ import PageUserDetail from 'Pages/adminuser/PageUserDetail';
 import PagerentalList from 'Pages/mypage/PagerentalList';
 import PageRentalreview from 'Pages/mypage/PageRentalreview';
 import PageAdminUserDetail from 'Pages/adminuser/PageAdminUserDetail';
+import NotFound from 'Base/css/NotFound';
 
 function App() {
   const [auth, _, login] = useAuth();
@@ -89,6 +90,7 @@ function App() {
             path="/review/:payment_detail_num/new/"
             element={<PageReviewForm />}
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
         <hr className="mt-5" />
@@ -151,6 +153,7 @@ function App() {
             path="/review/:payment_detail_num/new/"
             element={<PageReviewForm />}
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
         <hr className="mt-5" />
@@ -178,6 +181,7 @@ function App() {
           <Route path="/notice/:notice_num/" element={<PageNoticeDetail />} />
 
           <Route path="/review/" element={<PageReviewIndex />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <div className=" ">
           <hr className="mt-5 " />
@@ -187,5 +191,4 @@ function App() {
     );
   }
 }
-
 export default App;
