@@ -110,9 +110,11 @@ function Payment() {
       {saveError &&
         `저장 중 에러가 발생했습니다.(${saveError.response.status} ${saveError.response.statusText})`}
 
+      <h1 className="text-xl font-bold m-auto">결제💰</h1>
+
       <div className="grid grid-cols-8 m-10 mb-0  ">
         <div className="">
-          <h1 className="text-xl font-bold m-auto">결제💰</h1>
+          <h1 className="font-bold m-auto">결제목록</h1>
         </div>
         <hr className="col-start-2 col-span-7 pt-5 border-t-2 border-gray-400" />
         <div className="col-start-3 col-span-2 m-auto">상품정보</div>
@@ -152,6 +154,9 @@ function Payment() {
         </div>
       </div>
       <div className="grid grid-cols-8 m-10 mb-0  ">
+        <div className="">
+          <h1 className="font-bold m-auto">결제정보</h1>
+        </div>
         <hr className="col-start-2 col-span-7 pt-5 border-t-2 border-gray-400" />
         <div className="col-start-3 col-span-3 m-auto">반납방법</div>
         <div className="col-start-6 mr-2 m-auto">결제방법</div>
@@ -183,27 +188,32 @@ function Payment() {
           </div>
         </div>
 
-        <div>
-          <h2 className="text-lg">총 결제정보</h2>
-          <div>
-            대여의상 수:
-            <div>{amount}</div>
-          </div>
+        <div className="grid grid-cols-8 m-10 mb-0  ">
+          <hr className="col-start-2 col-span-7 pt-5 border-t-2 border-gray-400" />
+          <div className="col-start-3 col-span-3 m-auto">대여의상 수</div>
+          <div className="col-start-6 mr-2 m-auto">결제금액</div>
+        </div>
 
-          <div>
-            <div>
-              결제금액:
-              <div>{totalPrice}</div>
+        <div className="grid grid-cols-8 m-10 mt-2">
+          <div className=""></div>
+          <div className="col-span-7">
+            <div className="col-start-3 col-span-2 ml-60 outline-none">
+              {amount}
+            </div>
+
+            <div className="col-start-6 col-span-2 ml-20 outline-none">
+              {totalPrice}
             </div>
           </div>
         </div>
-        <div>
+
+        <div className="flex justify-end">
           <div>
-            <button className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600">
+            <button className="mr-2 w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600">
               결제
             </button>
           </div>
-          <div className=" mt-2 text-sm text-right inline-block align-middle">
+          <div className=" text-sm text-right inline-block align-middle">
             <Link
               className="w-24 h-8 bg-gray-400 rounded-sm text-white transition duration-300 ease-in-out hover:bg-white hover:border hover:border-gray-400 hover:text-gray-600"
               type="button"
