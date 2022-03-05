@@ -38,10 +38,11 @@ function PaymentDetail({ payment_num }) {
             )}
 
             <div className="mx-5 text-gray-500 text-sm">
-              Re-danse를 이용해주셔서 감사합니다. 우리 또, 만나요.
+              Re-danse를 이용해주셔서 감사합니다.
             </div>
+            <div className="mx-5 text-gray-500 text-sm">우리 또, 만나요.</div>
             <hr className="m-5 mt-3 mb-7" />
-            <div className="m-auto pt-1 w-24 h-8 rounded-md bg-gray-300">
+            <div className="m-auto pt-1 w-24 h-8 rounded-md bg-indigo-900">
               <Link to={'/clothes/'} className=" ml-4 text-white">
                 더 볼래요
               </Link>
