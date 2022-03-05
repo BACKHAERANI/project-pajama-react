@@ -5,6 +5,7 @@ import ReactPaginate from 'react-paginate';
 import 'Base/css/Pagination.css';
 import { Link } from 'react-router-dom';
 import { render } from '@testing-library/react';
+import DebugStates from 'DebugStates';
 
 function UserList({ itemsPerPage = 10 }) {
   const [query, setQuery] = useState();
@@ -79,9 +80,9 @@ function UserList({ itemsPerPage = 10 }) {
       <table className="border-t-2  border-gray-150 w-full text-xs">
         <thead className="border-b font-semibold border-gray-150">
           <tr>
-            <td className="p-4 text-justify">번호</td>
-            <td className="p-4 text-center">아이디</td>
-            <td className="p-4 text-right">이름</td>
+            <td className="p-4 ">번호</td>
+            <td className="p-4 ">아이디</td>
+            <td className="p-4 ">이름</td>
           </tr>
         </thead>
 
@@ -90,13 +91,13 @@ function UserList({ itemsPerPage = 10 }) {
             user.is_active && (
               <tbody className="border-b border-gray-150">
                 <tr>
-                  <td className="p-4 pl-6">{index + 1}</td>
+                  <td className="p-4">{index + 1}</td>
                   <td>
-                    <Link className="p-4" to={`/admin/${user.user_id}/`}>
+                    <Link className="" to={`/admin/${user.user_id}/`}>
                       {user.user_id}
                     </Link>
                   </td>
-                  <td className="p-4">{user.username}</td>
+                  <td className="">{user.username}</td>
                 </tr>
               </tbody>
             ),

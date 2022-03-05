@@ -101,10 +101,10 @@ function UserDropOut({ user_id }) {
       <table className="border-t-2  border-gray-150 w-full text-xs">
         <thead className="border-b font-semibold border-gray-150">
           <tr>
-            <td className="p-4 text-justify">번호</td>
-            <td className="p-4 text-center">아이디</td>
-            <td className="p-4 text-center">이름</td>
-            <td className="p-4 text-right">✔</td>
+            <td className="p-4 ">번호</td>
+            <td className="p-4">아이디</td>
+            <td className="p-4 ">이름</td>
+            <td className="p-4 ">✔</td>
           </tr>
         </thead>
 
