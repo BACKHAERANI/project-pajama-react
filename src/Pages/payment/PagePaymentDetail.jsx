@@ -8,7 +8,6 @@ function PagePaymentDetail() {
   return (
     <div>
       <PaymentDetail payment_num={payment_num} />
-      <Link to={'/clothes/'}>더 볼래요!</Link>
     </div>
   );
 }
