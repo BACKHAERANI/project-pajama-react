@@ -2,12 +2,9 @@ import { useApiAxios } from 'Base/api/base';
 import { useAuth } from 'Base/Context/AuthContext';
 import useFieldValues from 'Base/hooks/useFieldValues';
 import LoadingIndicator from 'Components/LoadingIndicator';
-import DebugStates from 'DebugStates';
 import produce from 'immer';
 import { useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-
-import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const INIT_FIELD_VALUES = {
   rental_date: '',
@@ -75,8 +72,11 @@ function CartForm({ clothes_num, cart_num, handleDidSave }) {
   return (
     <div>
       {saveLoading && <LoadingIndicator>저장하고 있어요.</LoadingIndicator>}
-      {saveError &&
-        `저장 중 에러가 발생했습니다.(${saveError.response.status} ${saveError.response.statusText})`}
+      <div className=" text-indigo-800">
+        {' '}
+        {saveError &&
+          `날짜를 다시 선택해주세요.(${saveError.response.status} ${saveError.response.statusText})`}
+      </div>
       {!auth.is_superuser && (
         <form onSubmit={handleSubmit}>
           <input
