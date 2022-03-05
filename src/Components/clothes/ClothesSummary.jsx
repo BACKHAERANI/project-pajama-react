@@ -26,10 +26,12 @@ function ClothesSummary({ clothes }) {
       </div>
       <div className="flex justify-between pt-2">
         <div>
-          <Link to={`/clothes/${clothes.clothes_num}/`}>{clothes.title}</Link>
-        </div>
-        <div className="mr-9 text-gray-500 text-xs flex justify-end">
-          {clothes.user_id.user_nickname}님의 옷장
+          <Link
+            className="font-semibold"
+            to={`/clothes/${clothes.clothes_num}/`}
+          >
+            {clothes.title}
+          </Link>
         </div>
       </div>
       <div className="mb-8">{clothes.price}won</div>
