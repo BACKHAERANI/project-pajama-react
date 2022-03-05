@@ -4,6 +4,7 @@ import QnaSummary from './QnaSummary';
 import ReactPaginate from 'react-paginate';
 import { useAuth } from 'Base/Context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
+import DebugStates from 'DebugStates';
 
 function QnaList({ itemsPerPage = 10 }) {
   const [auth] = useAuth();
@@ -64,13 +65,12 @@ function QnaList({ itemsPerPage = 10 }) {
         <>
           <table className="border-t-2  border-gray-150 w-full text-xs">
             <thead className="border-b font-semibold border-gray-150">
-              <tr>
-                <td className="p-5 text-justify">번호</td>
-                <td className="p-5 text-center">제목</td>
-                <td className="p-5 text-justify">작성자</td>
-                <td className="p-5 text-right">
-                  <div className="mr-6">등록일</div>
-                </td>
+              <tr className="bg-gray-100">
+                <td className="p-5 ">번호</td>
+                <td className="p-5 w-1/2">제목</td>
+                <td className="p-5">작성자</td>
+                <td className="p-5 ">등록일</td>
+                <td className="p-5">답변여부</td>
               </tr>
             </thead>
 
@@ -83,9 +83,10 @@ function QnaList({ itemsPerPage = 10 }) {
                       <td>
                         <Link to={`/qna/${qna.qna_num}/`}>{qna.title}</Link>
                       </td>
-                      <td className="p-4"> {qna.user_id.user_id}</td>
-                      <td className="text-right pr-5">
-                        {qna.registration_date.slice(0, 10)}
+                      <td className=""> {qna.user_id.user_id}</td>
+                      <td className="">{qna.registration_date.slice(0, 10)}</td>
+                      <td className="pl-9">
+                        {qna.answer === `답변예정` ? 'X' : 'O'}
                       </td>
                     </tr>
                   </tbody>
@@ -103,7 +104,6 @@ function QnaList({ itemsPerPage = 10 }) {
             onPageChange={handlePageClick}
             renderOnZeroPageCount={null}
           />
-          <div className="p-4 pt-7 pr-1 text-sm text-right inline-block align-middle"></div>
         </>
       </>
     );
@@ -112,12 +112,12 @@ function QnaList({ itemsPerPage = 10 }) {
       <>
         <table className="border-t-2  border-gray-150 w-full text-xs">
           <thead className="border-b font-semibold border-gray-150">
-            <tr>
-              <td className="p-5 text-justify">번호</td>
-              <td className="p-5 text-center">제목</td>
-              <td className="p-5 text-right">
-                <div className="mr-6">등록일</div>
-              </td>
+            <tr className="bg-gray-100">
+              <td className="pl-5 w-20 text-justify">번호</td>
+              <td className="pl-20 w-7/12">제목</td>
+              <td></td>
+              <td className="p-5">등록일</td>
+              <td className="pl-5">답변여부</td>
             </tr>
           </thead>
 

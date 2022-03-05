@@ -9,9 +9,9 @@ function QnaSummary({ qna, index }) {
           <td>
             <Link to={`/qna/${qna.qna_num}/`}>{qna.title}</Link>
           </td>
-          <td className="text-right pr-5">
-            {qna.registration_date.slice(0, 10)}
-          </td>
+          <td></td>
+          <td className=" pr-5">{qna.registration_date.slice(0, 10)}</td>
+          <td className="pl-9">{qna.answer === `답변예정` ? 'X' : 'O'}</td>
         </tr>
       </tbody>
     </>
