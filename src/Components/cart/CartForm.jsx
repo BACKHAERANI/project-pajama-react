@@ -73,9 +73,12 @@ function CartForm({ clothes_num, cart_num, handleDidSave }) {
     <div>
       {saveLoading && <LoadingIndicator>저장하고 있어요.</LoadingIndicator>}
       <div className=" text-indigo-800">
-        {' '}
-        {saveError &&
+        {auth.isLoggedIn &&
+          saveError &&
           `날짜를 다시 선택해주세요.(${saveError.response.status} ${saveError.response.statusText})`}
+        {!auth.isLoggedIn &&
+          saveError &&
+          `로그인 해주세요.(${saveError.response.status} ${saveError.response.statusText})`}
       </div>
       {!auth.is_superuser && (
         <form onSubmit={handleSubmit}>
