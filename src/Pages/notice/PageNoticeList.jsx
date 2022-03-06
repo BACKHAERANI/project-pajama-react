@@ -10,7 +10,7 @@ function PageNoticeList() {
   return (
     <div>
       <div>
-        <h1 className="text-xl mr-40 inline">공지사항</h1>
+        <h1 className="pt-8  text-xl font-bold">공지사항</h1>
       </div>
 
       <NoticeList />

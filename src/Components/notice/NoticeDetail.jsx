@@ -40,7 +40,6 @@ function NoticeDetail({ notice_num }) {
         `로딩 중 에러가 발생했습니다. (${error.response.status} ${error.response.statusText})`}
       {notice && (
         <>
-          <hr className=" border-t border-gray-300" />
           <div className="grid grid-cols-6 border border-gray-300">
             <div className="bg-gray-200">
               <label className=" mt-4 flex justify-center ">제목</label>
