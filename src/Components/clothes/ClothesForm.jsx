@@ -186,8 +186,8 @@ function ClothesForm({ clothes_num, handleDidSave }) {
             <label className="mt-1 flex justify-center">내용</label>
           </div>
           <div className="row-span-2 col-span-4">
-            <input
-              type="text"
+            <textarea
+              type="textarea"
               name="content"
               value={fieldValues.content}
               onChange={handleFieldChange}

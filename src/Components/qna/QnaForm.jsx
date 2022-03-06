@@ -215,8 +215,8 @@ function QnaForm({ qna_num, handleDidSave }) {
               </label>
             </div>
             <div className="row-span-2 col-span-4">
-              <input
-                type="text"
+              <textarea
+                type="textarea"
                 name="content"
                 value={fieldValues.content}
                 onChange={handleFieldChange}

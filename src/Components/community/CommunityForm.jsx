@@ -114,8 +114,8 @@ function CommunityForm({ community_num, handleDidSave }) {
             <label className="mt-1 flex justify-center">내용</label>
           </div>
           <div className="row-span-4 col-span-4">
-            <input
-              type="text"
+            <textarea
+              type="textarea"
               name="content"
               value={fieldValues.content}
               onChange={handleFieldChange}
