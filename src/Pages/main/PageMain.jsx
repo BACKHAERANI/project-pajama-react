@@ -22,7 +22,10 @@ function PageMain() {
         <p className="mb-20 font-bold text-2xl text-center">
           이번 주 인기 상품
         </p>
-        <div className="relative overflow-hidden">
+        <div
+          className="relative overflow-hidden cursor-pointer"
+          onClick={() => navigate('/clothes/81/')}
+        >
           <div className="flex flex-row animate-slider">
             <img src={new1} alt="html logo" />
             <img src={new2} alt="html logo" />
