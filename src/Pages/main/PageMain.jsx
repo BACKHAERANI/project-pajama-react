@@ -1,72 +1,59 @@
+import { useNavigate } from 'react-router-dom';
+import new1 from 'Base/css/001.png';
+import new2 from 'Base/css/002.png';
+import new3 from 'Base/css/003.png';
+import new4 from 'Base/css/004.png';
+import new5 from 'Base/css/005.png';
+import new6 from 'Base/css/006.png';
+
 function PageMain() {
+  const navigate = useNavigate();
   return (
-    <div>
-      <img className=" py-1 mx-auto " src="img/mainPhoto.png" alt="main"></img>
-      <h1 className="font-bold animate-fade-in-down">
-        hia;sdlkfja;sldkfj;lksdj
-      </h1>
+    <div className="">
       <div>
-        <h1>안녕하세요. 화이팅입니다.</h1>
+        <img
+          className="animate-fadeIn"
+          src="img/main891.png"
+          alt="main"
+          onClick={() => navigate('/ourstory/')}
+        ></img>
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <div
-        aos-init
-        aos-animate
-        href="#0"
-        data-aos="fade-down"
-        data-aos-anchor="[data-aos-id-featbl]"
-        data-aos-delay="200"
-      >
-        <h1>안녕하세요. 화이팅입니다.</h1>
-      </div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <div className="mainSkill pb-16 relative overflow-hidden">
-        <div className="flex flex-row mb-10 absolute animate-slider">
-          <img className="h-full mx-10" src="img/logo.png" alt="html logo" />
-          <img className="h-full mx-10" src="img/logo.png" alt="html logo" />
-          <img className="h-full mx-10" src="img/logo.png" alt="html logo" />
-          <img className="h-full mx-10" src="img/logo.png" alt="html logo" />
-          <img className="h-full mx-10" src="img/logo.png" alt="html logo" />
-          <img className="h-full mx-10" src="img/logo.png" alt="html logo" />
-          <img className="h-full mx-10" src="img/logo.png" alt="html logo" />
-          <img className="h-full mx-10" src="img/logo.png" alt="html logo" />
-          <img className="h-full mx-10" src="img/logo.png" alt="html logo" />
-          <img className="h-full mx-10" src="img/logo.png" alt="html logo" />
-          <img className="h-full mx-10" src="img/logo.png" alt="html logo" />
+      <div className="mt-32">
+        <p className="mb-20 font-bold text-2xl text-center">
+          이번 주 인기 상품
+        </p>
+        <div className="relative overflow-hidden">
+          <div className="flex flex-row animate-slider">
+            <img src={new1} alt="html logo" />
+            <img src={new2} alt="html logo" />
+            <img src={new3} alt="html logo" />
+            <img src={new4} alt="html logo" />
+            <img src={new5} alt="html logo" />
+            <img src={new6} alt="html logo" />
+            <img src={new1} alt="html logo" />
+            <img src={new2} alt="html logo" />
+            <img src={new3} alt="html logo" />
+            <img src={new4} alt="html logo" />
+            <img src={new5} alt="html logo" />
+            <img src={new6} alt="html logo" />
+            <img src={new1} alt="html logo" />
+            <img src={new2} alt="html logo" />
+            <img src={new3} alt="html logo" />
+            <img src={new4} alt="html logo" />
+            <img src={new5} alt="html logo" />
+            <img src={new6} alt="html logo" />
+            <img src={new1} alt="html logo" />
+            <img src={new2} alt="html logo" />
+            <img src={new3} alt="html logo" />
+            <img src={new4} alt="html logo" />
+            <img src={new5} alt="html logo" />
+            <img src={new6} alt="html logo" />
+          </div>
         </div>
       </div>
+
       <br />
       <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <div className="h-full bg-blue-500 animate-fadeIn">
-        <h1>안녕</h1>
-        <img src="img/mainPhoto.png" alt="main"></img>
-      </div>
     </div>
   );
 }

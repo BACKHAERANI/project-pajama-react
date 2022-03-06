@@ -11,7 +11,7 @@ function TopNav() {
   };
 
   return (
-    <div className="my-3">
+    <div className="mt-3">
       <div className="">
         <div>
           <div className="flex justify-end mt-2 md:flex-row md:mt-0 md:mx-1">
@@ -88,7 +88,7 @@ function TopNav() {
         </div>
       </div>
       <div>
-        <hr className="mb-10 borter-t border-gray-100" />
+        <hr className=" borter-t border-gray-50" />
       </div>
     </div>
   );
