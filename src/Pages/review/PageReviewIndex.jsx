@@ -9,9 +9,6 @@ function PageReviewIndex() {
       <div className="flex">
         <SideNav />
         <div>
-          <div className="flex pt-20 pr-100 text-lg">
-            <h1>[ Review ]</h1>
-          </div>
           <ReviewList />
         </div>
       </div>
