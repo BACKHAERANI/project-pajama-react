@@ -5,6 +5,7 @@ import LoadingIndicator from 'Components/LoadingIndicator';
 import { useAuth } from 'Base/Context/AuthContext';
 import PageCartForm from 'Pages/cart/PageCartForm';
 import ReviewList from 'Components/review/ReviewList';
+import noneimg from 'Base/css/noneimg.jpg';
 
 function ClothesDetail({ clothes_num }) {
   const navigate = useNavigate();
@@ -57,6 +58,13 @@ function ClothesDetail({ clothes_num }) {
                   src={clothes.img1}
                   alt={clothes.title}
                   className=" w-full max-h-screen object-cover shrink-0"
+                />
+              )}
+              {!clothes.img1 && (
+                <img
+                  src={noneimg}
+                  alt="noneimg"
+                  className="w-full max-h-screen object-cover shrink-0"
                 />
               )}
             </div>
