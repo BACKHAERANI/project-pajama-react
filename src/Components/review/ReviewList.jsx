@@ -41,7 +41,11 @@ function ReviewList({ itemsPerPage = 10, clothes_num }) {
       <hr className="border-t-2 border-gray-300" />
       <div className="">
         {currentItems?.map((review) => (
-          <ReviewSummary review={review} key={review.payment_detail_num} />
+          <ReviewSummary
+            clothes_num={clothes_num}
+            review={review}
+            key={review.payment_detail_num}
+          />
         ))}
       </div>
     </div>

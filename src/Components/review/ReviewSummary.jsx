@@ -3,7 +3,7 @@ import { useAuth } from 'Base/Context/AuthContext';
 import Rating from 'Pages/review/Rating';
 import { useState } from 'react';
 
-function ReviewSummary({ review }) {
+function ReviewSummary({ review, clothes_num }) {
   const [auth] = useAuth();
   const [reload, setReload] = useState(false);
 
@@ -18,7 +18,10 @@ function ReviewSummary({ review }) {
 
   const handleDelete = (e) => {
     if (window.confirm('삭제하시겠습니까?')) {
-      deletereview().then(() => reload());
+      deletereview().then(() => {
+        setReload((prevState) => !prevState);
+        window.location.replace(`/clothes/${clothes_num}`);
+      });
     }
   };
 
@@ -75,7 +78,7 @@ function ReviewSummary({ review }) {
         <div>
           {auth.is_superuser && (
             <button
-              className="mr-2 text-gray-400"
+              className="mr-2 text-red-600"
               disabled={deleteLoading}
               onClick={handleDelete}
             >
