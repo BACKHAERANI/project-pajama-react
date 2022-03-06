@@ -1,6 +1,27 @@
+import { useApiAxios } from 'Base/api/base';
+import { useAuth } from 'Base/Context/AuthContext';
 import Rating from 'Pages/review/Rating';
+import { useState } from 'react';
 
 function ReviewSummary({ review }) {
+  const [auth] = useAuth();
+  const [reload, setReload] = useState(false);
+
+  const [{ loading: deleteLoading, error: deleteError }, deletereview] =
+    useApiAxios(
+      {
+        url: `/review/api/review_detail/${review.payment_detail_num}/`,
+        method: 'DELETE',
+      },
+      { manual: true },
+    );
+
+  const handleDelete = (e) => {
+    if (window.confirm('삭제하시겠습니까?')) {
+      deletereview().then(() => reload());
+    }
+  };
+
   return (
     <div className="my-3">
       <Rating score={review.score} />
@@ -51,8 +72,20 @@ function ReviewSummary({ review }) {
         <div className="mr-2 text-gray-400">
           | {review.registration_date.slice(0, 10)}
         </div>
+        <div>
+          {auth.is_superuser && (
+            <button
+              className="mr-2 text-gray-400"
+              disabled={deleteLoading}
+              onClick={handleDelete}
+            >
+              삭제
+            </button>
+          )}
+        </div>
+
+        <hr className="mt-3" />
       </div>
-      <hr className="mt-3" />
     </div>
   );
 }
