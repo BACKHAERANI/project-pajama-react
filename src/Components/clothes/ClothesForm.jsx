@@ -2,8 +2,8 @@ import { useApiAxios } from 'Base/api/base';
 import LoadingIndicator from 'Components/LoadingIndicator';
 import useFieldValues from 'Base/hooks/useFieldValues';
 import produce from 'immer';
-import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'Base/Context/AuthContext';
 
 const INIT_FIELD_VALUES = {
@@ -16,7 +16,6 @@ const INIT_FIELD_VALUES = {
 function ClothesForm({ clothes_num, handleDidSave }) {
   const [auth] = useAuth();
   const navigate = useNavigate();
-  const [imageSrc, setImageSrc] = useState('');
 
   const [{ data: clothesData }, Save] = useApiAxios(
     {
