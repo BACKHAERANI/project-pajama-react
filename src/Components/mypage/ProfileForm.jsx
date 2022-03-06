@@ -1,8 +1,6 @@
 import { useApiAxios } from 'Base/api/base';
 import { useAuth } from 'Base/Context/AuthContext';
 import useFieldValues from 'Base/hooks/useFieldValues';
-import DebugStates from 'DebugStates';
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const DATA_FIELDS = ['user_nickname', 'user_tel', 'user_genre'];
@@ -87,7 +85,6 @@ function ProfileForm() {
           </div>
         </div>
       </div>
-      <DebugStates fieldValues={fieldValues} />
     </div>
   );
 }
