@@ -2,7 +2,7 @@ import { useApiAxios } from 'Base/api/base';
 import LoadingIndicator from 'Components/LoadingIndicator';
 import useFieldValues from 'Base/hooks/useFieldValues';
 import produce from 'immer';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'Base/Context/AuthContext';
 
@@ -17,7 +17,7 @@ function ClothesForm({ clothes_num, handleDidSave }) {
   const [auth] = useAuth();
   const navigate = useNavigate();
 
-  const [{ data: clothesData }, Save] = useApiAxios(
+  const [{ data: clothesData, loading, error }, Save] = useApiAxios(
     {
       url: `/clothes/api/clothes/${clothes_num}/`,
       method: 'GET',
