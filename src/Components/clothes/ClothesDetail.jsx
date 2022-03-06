@@ -107,7 +107,7 @@ function ClothesDetail({ clothes_num }) {
               </p>
             ))}
           </div>
-          <div className="grid grid-cols-2 gap-4 my-20">
+          <div className="grid grid-cols-2 gap-4  mb-20">
             {clothes.img1 && (
               <img src={clothes.img1} alt={clothes.title} className="rounded" />
             )}
