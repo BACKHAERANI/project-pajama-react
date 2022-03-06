@@ -12,7 +12,7 @@ function PageCommunityIndex() {
     return (
       <div>
         <div>
-          <h1 className="text-xl mr-40 inline">커뮤니티</h1>
+          <h1 className="pt-8  text-xl font-bold">커뮤니티</h1>
         </div>
         <CommunityList />
         <div className="flex justify-end">

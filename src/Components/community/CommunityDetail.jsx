@@ -44,7 +44,6 @@ function CommunityDetail({ community_num }) {
       {community && (
         <>
           <div>
-            <hr className=" border-t border-gray-300 " />
             <div className="grid grid-cols-6   border border-gray-300 ">
               <div className="bg-gray-200">
                 <label className=" mt-4 flex justify-center ">제목</label>
@@ -107,7 +106,7 @@ function CommunityDetail({ community_num }) {
           ))}
         </>
       )}
-      <hr className="my-3" />
+      <hr className="mt-10 mb-3" />
       <div className="flex justify-end">
         {community?.user_id?.user_id === auth.user_id && !auth.is_superuser && (
           <>

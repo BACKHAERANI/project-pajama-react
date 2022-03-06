@@ -7,7 +7,7 @@ function PageCommunityDetail() {
   return (
     <div>
       <div>
-        <h1 className="text-xl mr-40 inline">커뮤니티</h1>
+        <h1 className="pt-8 pb-5  text-xl font-bold">커뮤니티</h1>
       </div>
 
       <CommunityDetail community_num={community_num} />
